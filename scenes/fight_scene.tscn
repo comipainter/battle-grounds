@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://c7gevibljits3"]
+
+[ext_resource type="Script" uid="uid://x8b7mfi2mewj" path="res://scripts/scenes/fight_scene.gd" id="1_p8b18"]
+
+[node name="FightScene" type="Node2D" unique_id=989947060 node_paths=PackedStringArray("enemyHandCardContainer", "enemyDeskCardContainer", "playerHandCardContainer", "playerDeskCardContainer", "cardFatherNode")]
+script = ExtResource("1_p8b18")
+enemyHandCardContainer = NodePath("Enemy/HandCard/ScrollContainer/CardContainer")
+enemyDeskCardContainer = NodePath("Enemy/DeskCard/ScrollContainer/CardContainer")
+playerHandCardContainer = NodePath("Player/HandCard/ScrollContainer/CardContainer")
+playerDeskCardContainer = NodePath("Player/DeskCard/ScrollContainer/CardContainer")
+cardFatherNode = NodePath("CardFather")
+playerDeskPosition = Vector2(0, 288)
+playerHandPosition = Vector2(0, 544)
+enemyDeskPosition = Vector2(0, -288)
+enemyHandPosition = Vector2(0, -544)
+
+[node name="Enemy" type="Control" parent="." unique_id=620350666]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -800.0
+offset_top = 304.0
+offset_right = 744.0
+offset_bottom = 560.0
+
+[node name="HandCard" type="Control" parent="Enemy" unique_id=987384089]
+layout_mode = 1
+anchor_top = -0.0625
+anchor_bottom = -0.0625
+offset_left = 416.0
+offset_top = -944.0
+offset_right = 1184.0
+offset_bottom = -944.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Enemy/HandCard" unique_id=1349507601]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CardContainer" type="HBoxContainer" parent="Enemy/HandCard/ScrollContainer" unique_id=773861109]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="DeskCard" type="Control" parent="Enemy" unique_id=266781912]
+anchors_preset = 0
+offset_left = 32.0
+offset_top = -616.0
+offset_right = 1568.0
+offset_bottom = -616.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Enemy/DeskCard" unique_id=708274615]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CardContainer" type="HBoxContainer" parent="Enemy/DeskCard/ScrollContainer" unique_id=897672614]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1622706233]
+
+[node name="Player" type="Control" parent="." unique_id=1686292081]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -704.0
+offset_top = 192.0
+offset_right = 704.0
+offset_bottom = 448.0
+
+[node name="HandCard" type="Control" parent="Player" unique_id=1319317558]
+anchors_preset = 0
+offset_left = 256.0
+offset_top = 256.0
+offset_right = 1152.0
+offset_bottom = 256.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Player/HandCard" unique_id=2063417195]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CardContainer" type="HBoxContainer" parent="Player/HandCard/ScrollContainer" unique_id=2010947764]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="DeskCard" type="Control" parent="Player" unique_id=627575984]
+anchors_preset = 0
+offset_left = -64.0
+offset_top = -128.0
+offset_right = 1472.0
+offset_bottom = -128.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Player/DeskCard" unique_id=393707399]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CardContainer" type="HBoxContainer" parent="Player/DeskCard/ScrollContainer" unique_id=1696648920]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="CardFather" type="Control" parent="." unique_id=1841747233]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

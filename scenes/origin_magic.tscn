@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://b2gkaf5yhtd2g"]
+
+[ext_resource type="Script" uid="uid://bnn3n3bn8wc1j" path="res://scripts/cards/origin_magic.gd" id="1_aj5sj"]
+
+[node name="OriginMagic" type="Control" unique_id=861866546]
+custom_minimum_size = Vector2(192, 256)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2368.0
+offset_bottom = -1184.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aj5sj")
+
+[node name="Panel" type="Panel" parent="." unique_id=845967604]
+custom_minimum_size = Vector2(160, 240)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Panel" unique_id=595355960]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/ColorRect" unique_id=1318501525]
+position = Vector2(95.99999, 80)
+scale = Vector2(1.0026041, 0.96354175)
+
+[node name="Button" type="Button" parent="Panel" unique_id=1487807084]
+self_modulate = Color(1, 1, 1, 0.22745098)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NameLabel" type="Label" parent="Panel" unique_id=676547950]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 136.0
+offset_right = 160.0
+offset_bottom = 159.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CostLabel" type="Label" parent="Panel" unique_id=2018676737]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 32.0
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(0.49864662, 0.4986465, 3.85046e-07, 1)
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="Panel" unique_id=856489615]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 168.0
+offset_right = 152.0
+offset_bottom = 240.0
+theme_override_colors/font_color = Color(0.3529412, 0.3529412, 0.3529412, 1)
+theme_override_font_sizes/font_size = 13
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

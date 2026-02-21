@@ -1,0 +1,267 @@
+[gd_scene format=3 uid="uid://bi56xbefwrvfp"]
+
+[ext_resource type="Script" uid="uid://bwwwg2jcr4d0h" path="res://scripts/scenes/shop_scene.gd" id="1_r1uou"]
+[ext_resource type="Texture2D" uid="uid://cngu3ptumcbd6" path="res://assets/image/icon/LevelUp.png" id="2_ykrk4"]
+[ext_resource type="Texture2D" uid="uid://cbsflyufnvong" path="res://assets/image/icon/arrow_load_update_sync_loading_reload_refresh_icon_267799.webp" id="3_fdhsn"]
+[ext_resource type="Texture2D" uid="uid://dxeid3blrom34" path="res://assets/image/icon/cost.png" id="4_tvdqs"]
+
+[node name="ShopScene" type="Node2D" unique_id=1443481585 node_paths=PackedStringArray("handCardContainer", "deskCardContainer", "shopCardContainer", "cardFatherNode", "choose", "levelUpCostLabel", "freshCostLabel", "coinLabel", "levelSprite", "bugRegionNode", "deskRegionNode", "sellRegionNode")]
+script = ExtResource("1_r1uou")
+handCardContainer = NodePath("HandCard/ScrollContainer/CardContainer")
+deskCardContainer = NodePath("DeskCard/ScrollContainer/CardContainer")
+shopCardContainer = NodePath("ShopCard/ScrollContainer/CardContainer")
+cardFatherNode = NodePath("CardFather")
+handPosition = Vector2(0, 544)
+deskPosition = Vector2(0, 16)
+shopPosition = Vector2(0, -448)
+choose = NodePath("Choose")
+levelUpCostLabel = NodePath("ShopCard/LevelUp/CostLabel")
+freshCostLabel = NodePath("ShopCard/Fresh/CostLabel")
+coinLabel = NodePath("Coin/CoinLabel")
+levelSprite = NodePath("ShopCard/Level/Sprite2D")
+bugRegionNode = NodePath("Region/BuyRegion")
+deskRegionNode = NodePath("Region/DeskRegion")
+sellRegionNode = NodePath("Region/SellRegion")
+
+[node name="Choose" type="Control" parent="." unique_id=1741751141]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1296.0
+offset_top = -736.0
+offset_right = 1296.0
+offset_bottom = 736.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Choose" unique_id=170731595]
+layout_mode = 0
+offset_left = -512.0
+offset_top = 408.0
+offset_right = 2728.0
+offset_bottom = 1032.0
+alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1579174902]
+
+[node name="HandCard" type="Control" parent="." unique_id=1806533940]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1128.0
+offset_top = 448.0
+offset_right = 1112.0
+offset_bottom = 448.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HandCard" unique_id=934133207]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CardContainer" type="HBoxContainer" parent="HandCard/ScrollContainer" unique_id=99013206]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="DeskCard" type="Control" parent="." unique_id=284309087]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -936.0
+offset_top = -80.0
+offset_right = 944.0
+offset_bottom = -80.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="DeskCard" unique_id=740287396]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CardContainer" type="HBoxContainer" parent="DeskCard/ScrollContainer" unique_id=1987242853]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="ShopCard" type="Control" parent="." unique_id=453085835]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -672.0
+offset_top = -448.0
+offset_right = 640.0
+offset_bottom = -448.0
+mouse_filter = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ShopCard" unique_id=2125979439]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CardContainer" type="HBoxContainer" parent="ShopCard/ScrollContainer" unique_id=430321421]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="LevelUp" type="Control" parent="ShopCard" unique_id=161942230]
+anchors_preset = 0
+offset_left = 1696.0
+offset_top = 80.0
+offset_right = 1824.0
+offset_bottom = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="ShopCard/LevelUp" unique_id=1459158419]
+position = Vector2(2.7656555e-05, -1.3113022e-06)
+scale = Vector2(0.56, 0.56000006)
+texture = ExtResource("2_ykrk4")
+
+[node name="CostLabel" type="Label" parent="ShopCard/LevelUp" unique_id=605673764]
+layout_mode = 0
+offset_left = 88.0
+offset_top = -32.0
+offset_right = 128.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelButton" type="Button" parent="ShopCard/LevelUp" unique_id=1454022101]
+layout_mode = 0
+offset_left = -72.0
+offset_top = -72.0
+offset_right = 192.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+flat = true
+
+[node name="Fresh" type="Control" parent="ShopCard" unique_id=917981440]
+anchors_preset = 0
+offset_left = 1632.0
+offset_top = 232.0
+offset_right = 1672.0
+offset_bottom = 272.0
+
+[node name="Sprite2D" type="Sprite2D" parent="ShopCard/Fresh" unique_id=787929891]
+position = Vector2(64.000015, 31.999994)
+scale = Vector2(1.166667, 1.1666666)
+texture = ExtResource("3_fdhsn")
+
+[node name="CostLabel" type="Label" parent="ShopCard/Fresh" unique_id=48598339]
+layout_mode = 0
+offset_left = 144.0
+offset_right = 184.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "1"
+
+[node name="FreshButton" type="Button" parent="ShopCard/Fresh" unique_id=1783389085]
+layout_mode = 0
+offset_left = -8.0
+offset_top = -40.0
+offset_right = 256.0
+offset_bottom = 104.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+flat = true
+
+[node name="Level" type="Control" parent="ShopCard" unique_id=1247093379]
+anchors_preset = 0
+offset_left = 672.0
+offset_top = -208.0
+offset_right = 712.0
+offset_bottom = -168.0
+
+[node name="Sprite2D" type="Sprite2D" parent="ShopCard/Level" unique_id=271600658]
+
+[node name="Region" type="Control" parent="." unique_id=859370454]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="BuyRegion" type="Control" parent="Region" unique_id=1517051887]
+anchors_preset = 0
+offset_left = -1664.0
+offset_right = 1696.0
+offset_bottom = 960.0
+mouse_filter = 2
+
+[node name="DeskRegion" type="Control" parent="Region" unique_id=453528617]
+anchors_preset = 0
+offset_left = -1408.0
+offset_top = -360.0
+offset_right = 1384.0
+offset_bottom = 440.0
+mouse_filter = 2
+
+[node name="SellRegion" type="Control" parent="Region" unique_id=44556165]
+anchors_preset = 0
+offset_left = -1528.0
+offset_top = -912.0
+offset_right = 1536.0
+offset_bottom = -272.0
+mouse_filter = 2
+
+[node name="CardFather" type="Control" parent="." unique_id=626131250]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -496.0
+offset_top = 280.0
+offset_right = -456.0
+offset_bottom = 320.0
+
+[node name="EndButton" type="Button" parent="." unique_id=1664365163]
+offset_left = 960.0
+offset_top = -640.0
+offset_right = 1152.0
+offset_bottom = -544.0
+
+[node name="Label" type="Label" parent="EndButton" unique_id=1439581856]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "结束回合"
+
+[node name="Coin" type="Control" parent="." unique_id=548983700]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1032.0
+offset_top = 312.0
+offset_right = 1112.0
+offset_bottom = 384.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Coin" unique_id=1930169831]
+position = Vector2(-51, 33)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_tvdqs")
+
+[node name="CoinLabel" type="Label" parent="Coin" unique_id=17746250]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 42
+
+[connection signal="button_up" from="ShopCard/LevelUp/LevelButton" to="." method="_on_level_button_button_up"]
+[connection signal="button_up" from="ShopCard/Fresh/FreshButton" to="." method="_on_fresh_button_button_up"]
+[connection signal="button_up" from="EndButton" to="." method="_on_end_button_button_up"]

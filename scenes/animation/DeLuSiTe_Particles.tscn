@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bl01if254r5fr"]
+
+[ext_resource type="Script" uid="uid://d0oivt3qh3ebb" path="res://scenes/animation/DeLuSiTe_particles.gd" id="1_5e4d4"]
+[ext_resource type="Texture2D" uid="uid://deqgrbsaw5g7i" path="res://assets/image/animation/HuoYaoYunShuGong_AddInfo.png" id="2_dh2ie"]
+
+[sub_resource type="Gradient" id="Gradient_2f0kq"]
+offsets = PackedFloat32Array(0.032786883, 0.5147541, 0.7409836, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4y3dq"]
+gradient = SubResource("Gradient_2f0kq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3s1y0"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 180.00002
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angular_velocity_min = -200.00002
+angular_velocity_max = 199.99998
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+gravity = Vector3(0, 200, 0)
+scale_min = 0.01
+scale_max = 0.03
+color_ramp = SubResource("GradientTexture1D_4y3dq")
+
+[node name="DeLuSiTe_Particles" type="Control" unique_id=640792809 node_paths=PackedStringArray("particles")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5e4d4")
+particles = NodePath("GPUParticles2D")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1090096464]
+emitting = false
+amount = 60
+texture = ExtResource("2_dh2ie")
+one_shot = true
+fixed_fps = 120
+process_material = SubResource("ParticleProcessMaterial_3s1y0")
