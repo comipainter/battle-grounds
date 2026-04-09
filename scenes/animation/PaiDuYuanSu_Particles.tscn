@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://ctcwby1ewyh8v"]
+
+[ext_resource type="Script" uid="uid://buap68td7x2l3" path="res://scripts/animation/card/particles/PaiDuiYuanSu_Particles.gd" id="1_8007p"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kwwgy"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tgy8g"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_06810"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
+[node name="PaiDuiYuanSu_Particles" type="Control" unique_id=1199164974 node_paths=PackedStringArray("main_particles", "sparkle_particles", "sub_emitter")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8007p")
+main_particles = NodePath("Main_Particles")
+sparkle_particles = NodePath("Sparkle_Particles")
+sub_emitter = NodePath("Sub_Emitter")
+
+[node name="Main_Particles" type="GPUParticles2D" parent="." unique_id=1554239158]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_kwwgy")
+
+[node name="Sparkle_Particles" type="GPUParticles2D" parent="." unique_id=80901448]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_tgy8g")
+
+[node name="Sub_Emitter" type="GPUParticles2D" parent="." unique_id=124632919]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_06810")

@@ -659,8 +659,14 @@ class PaiDuiYuanSu extends MinionAnimation:
 	func execute() -> void:
 		print("触发派对元素动画")
 		if GameManager.is_shopping():
+			var control : PaiDuiYuanSu_Particles = GameManager.animationAssets.PaiDuiYuanSu_Particles_Template.instantiate()
+			minion.animationFather.add_child(control)
+			control.position = Vector2(0, 0)
+			control.emit()
 			var stats: Stats = AnimationAssets.YuanSuAddInfo.get_stats(AnimationAssets.YuanSuAddInfo.paiduiyuansu)
 			minion.add_stats(stats)
+			await minion.get_tree().create_timer(control.get_total_lifetime()).timeout
+			control.queue_free()
 			
 class ZhaoZeYouDangZhe extends MinionAnimation:
 	var minion: Minion

@@ -30,6 +30,8 @@ var HuangJinKuangChao_Sprite = "res://assets/image/minion/click.png"
 var HuangJinKuangChao_Sprite_Scale = Vector2(0.438, 0.438)
 var HuangJinKuangChao_Particles_Template = preload("res://scenes/animation/HuangJinKuangChao_Particles.tscn")
 
+var PaiDuiYuanSu_Particles_Template = preload("res://scenes/animation/PaiDuYuanSu_Particles.tscn")
+
 class YuanSuAddInfo:
 	static var baoliejufeng: Stats = Stats.new(1, 0)
 	static var paiduiyuansu: Stats = Stats.new(2, 3)
