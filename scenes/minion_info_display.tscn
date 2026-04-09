@@ -1,0 +1,240 @@
+[gd_scene format=3 uid="uid://c6282d1ntncbr"]
+
+[ext_resource type="Script" uid="uid://dc32ensb5ptmy" path="res://scripts/cards/minion_info_display.gd" id="1_35c3p"]
+[ext_resource type="Shader" uid="uid://jpntmov22pkn" path="res://assets/shader/gloden_info.gdshader" id="2_i3w47"]
+[ext_resource type="Texture2D" uid="uid://b32ng7sqwg62m" path="res://assets/image/minion/不灭残荷.png" id="3_5e50s"]
+[ext_resource type="Texture2D" uid="uid://deapctntff7lj" path="res://assets/image/minion/attack.png" id="4_li0fu"]
+[ext_resource type="Texture2D" uid="uid://nf74dvkdj4vk" path="res://assets/image/minion/blood.png" id="5_fnk1e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_osafq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_su3jf"]
+bg_color = Color(0.6, 0.6, 0.6, 0.78431374)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0.8627451)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uyd81"]
+shader = ExtResource("2_i3w47")
+shader_parameter/speed = 5.00000023424012
+shader_parameter/intensity = 1.5
+shader_parameter/gold_color = Color(1, 0.84, 0, 1)
+shader_parameter/highlight_color = Color(1, 1, 0.9, 1)
+shader_parameter/gold_opacity = 0.2
+shader_parameter/enable = false
+shader_parameter/corner_radius = 0.1
+shader_parameter/edge_softness = 0.05
+shader_parameter/edge_glow_width = 0.05
+
+[node name="MinionInfoDisplay" type="Control" unique_id=593908175 node_paths=PackedStringArray("minionSprite", "minionSprite2", "levelSprite", "attackLabel", "healthLabel", "raceLabel", "nameLabel", "descriptionLabel", "effectFlowContainer")]
+material = SubResource("ShaderMaterial_osafq")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2560.0
+offset_bottom = -1440.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_35c3p")
+minionSprite = NodePath("Panel/MinionSprite")
+minionSprite2 = NodePath("Panel/MinionSprite2")
+levelSprite = NodePath("Panel/LevelSprite")
+attackLabel = NodePath("Panel/Stats/VBoxContainer/Attack/CenterContainer/HBoxContainer/AttackLabel")
+healthLabel = NodePath("Panel/Stats/VBoxContainer/Health/CenterContainer/HBoxContainer/HealthLabel")
+raceLabel = NodePath("Panel2/Control/CenterContainer/VBoxContainer/RaceLabel")
+nameLabel = NodePath("Panel2/Control/CenterContainer/VBoxContainer/NameLabel")
+descriptionLabel = NodePath("Panel2/Control/CenterContainer/VBoxContainer/DescriptionLabel")
+effectFlowContainer = NodePath("Control/EffectFlowContainer")
+
+[node name="Panel" type="Panel" parent="." unique_id=1914012810]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -108.0
+offset_top = -192.0
+offset_right = 108.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(108, 192)
+theme_override_styles/panel = SubResource("StyleBoxFlat_su3jf")
+
+[node name="MinionSprite2" type="Sprite2D" parent="Panel" unique_id=1874334897]
+material = SubResource("ShaderMaterial_uyd81")
+position = Vector2(108, 136)
+scale = Vector2(0.195, 0.195)
+texture = ExtResource("3_5e50s")
+
+[node name="MinionSprite" type="Sprite2D" parent="Panel" unique_id=248459294]
+material = SubResource("ShaderMaterial_uyd81")
+position = Vector2(108, 136)
+scale = Vector2(0.195, 0.195)
+texture = ExtResource("3_5e50s")
+
+[node name="LevelSprite" type="Sprite2D" parent="Panel" unique_id=1662448085]
+position = Vector2(36, 40)
+scale = Vector2(0.078947365, 0.076281294)
+
+[node name="Stats" type="Control" parent="Panel" unique_id=2125566233]
+anchors_preset = 0
+offset_left = 92.0
+offset_top = 264.0
+offset_right = 132.0
+offset_bottom = 304.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Stats" unique_id=89591557]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 64.0
+theme_override_constants/separation = 45
+
+[node name="Attack" type="Control" parent="Panel/Stats/VBoxContainer" unique_id=1793486208]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/Stats/VBoxContainer/Attack" unique_id=2003317609]
+layout_mode = 0
+offset_left = -48.0
+offset_top = -3.0
+offset_right = 104.0
+offset_bottom = 25.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Stats/VBoxContainer/Attack/CenterContainer" unique_id=98165644]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Control" type="Control" parent="Panel/Stats/VBoxContainer/Attack/CenterContainer/HBoxContainer" unique_id=588585597]
+layout_mode = 2
+
+[node name="AttackSprite" type="Sprite2D" parent="Panel/Stats/VBoxContainer/Attack/CenterContainer/HBoxContainer/Control" unique_id=2114204335]
+position = Vector2(0, 28)
+scale = Vector2(0.069, 0.069)
+texture = ExtResource("4_li0fu")
+
+[node name="AttackLabel" type="Label" parent="Panel/Stats/VBoxContainer/Attack/CenterContainer/HBoxContainer" unique_id=704829359]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "10"
+vertical_alignment = 1
+
+[node name="Health" type="Control" parent="Panel/Stats/VBoxContainer" unique_id=1252481891]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/Stats/VBoxContainer/Health" unique_id=1268396977]
+layout_mode = 0
+offset_left = -48.0
+offset_top = -3.0
+offset_right = 104.0
+offset_bottom = 25.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Stats/VBoxContainer/Health/CenterContainer" unique_id=553602721]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Control" type="Control" parent="Panel/Stats/VBoxContainer/Health/CenterContainer/HBoxContainer" unique_id=1144411653]
+layout_mode = 2
+
+[node name="HealthSprite" type="Sprite2D" parent="Panel/Stats/VBoxContainer/Health/CenterContainer/HBoxContainer/Control" unique_id=31955174]
+position = Vector2(0, 28)
+scale = Vector2(0.056, 0.056)
+texture = ExtResource("5_fnk1e")
+
+[node name="HealthLabel" type="Label" parent="Panel/Stats/VBoxContainer/Health/CenterContainer/HBoxContainer" unique_id=490919066]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "10"
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="." unique_id=1920398953]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = -192.0
+offset_right = 344.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(104, 192)
+theme_override_styles/panel = SubResource("StyleBoxFlat_su3jf")
+
+[node name="Control" type="Control" parent="Panel2" unique_id=1835394276]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel2/Control" unique_id=145697383]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/Control/CenterContainer" unique_id=1159425309]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="NameLabel" type="Label" parent="Panel2/Control/CenterContainer/VBoxContainer" unique_id=1124925586]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 34
+text = "不灭残荷"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RaceLabel" type="Label" parent="Panel2/Control/CenterContainer/VBoxContainer" unique_id=160736356]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+text = "元素（水）"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="Panel2/Control/CenterContainer/VBoxContainer" unique_id=136005405]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 20
+text = "当本随从被融合后，使新的元素随从获得两个元素的身材的两倍"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Control" type="Control" parent="." unique_id=889097725]
+anchors_preset = 0
+offset_left = 360.0
+offset_top = -192.0
+offset_right = 360.0
+offset_bottom = -192.0
+
+[node name="EffectFlowContainer" type="FlowContainer" parent="Control" unique_id=1876042076]
+custom_minimum_size = Vector2(1000, 384)
+layout_mode = 0
+offset_right = 1000.0
+offset_bottom = 384.0
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 101
+vertical = true

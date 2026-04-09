@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dw0rstf4itemf"]
+
+[ext_resource type="Texture2D" uid="uid://dymiaxb81oa2b" path="res://assets/image/animation/LuoShuLongGuFan_Click.png" id="1_ack4d"]
+[ext_resource type="Script" uid="uid://cj0ku0h3ucdwe" path="res://scripts/animation/card/particles/LuoShuLongGuFan_particles.gd" id="1_vkjkf"]
+
+[sub_resource type="Curve" id="Curve_ack4d"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1607565, 0.52452517), 0.0, 0.0, 0, 0, Vector2(0.49881798, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_vkjkf"]
+curve = SubResource("Curve_ack4d")
+
+[sub_resource type="Curve" id="Curve_jctie"]
+_data = [Vector2(0, 0.1927985), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vklpq"]
+curve = SubResource("Curve_jctie")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vkjkf"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 100.0
+emission_ring_inner_radius = 80.0
+emission_ring_cone_angle = 90.0
+spread = 0.0
+orbit_velocity_min = 0.40000013
+orbit_velocity_max = 0.40000013
+radial_velocity_min = -100.00002
+radial_velocity_max = -100.00002
+gravity = Vector3(0, 0, 0)
+tangential_accel_min = 9.999997
+tangential_accel_max = 39.999996
+damping_min = 10.0
+damping_max = 10.0
+scale_min = 0.07
+scale_max = 0.19999999
+scale_curve = SubResource("CurveTexture_vklpq")
+alpha_curve = SubResource("CurveTexture_vkjkf")
+
+[node name="LuoShuLongGuFan_Particles" type="Control" unique_id=647377859 node_paths=PackedStringArray("particles")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vkjkf")
+particles = NodePath("GPUParticles2D")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=939888950]
+amount = 100
+texture = ExtResource("1_ack4d")
+fixed_fps = 120
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_vkjkf")

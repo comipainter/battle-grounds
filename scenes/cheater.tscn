@@ -1,0 +1,184 @@
+[gd_scene format=3 uid="uid://bihkismpxe2t1"]
+
+[ext_resource type="Script" uid="uid://ot8vs4rcqb3y" path="res://scripts/scenes/cheater.gd" id="1_bdwu8"]
+
+[node name="Cheater" type="Control" unique_id=1298324699 node_paths=PackedStringArray("container", "minionFatherNode", "haidaoButton", "yuansuButton")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_bdwu8")
+container = NodePath("Panel/Minion/ScrollContainer/FlowContainer")
+minionFatherNode = NodePath("MinionFather")
+haidaoButton = NodePath("Panel/Race/VBoxContainer/Control/HaiDaoButton")
+yuansuButton = NodePath("Panel/Race/VBoxContainer/Control2/YuanSuButton")
+
+[node name="Panel" type="Panel" parent="." unique_id=1820151333]
+layout_mode = 0
+offset_left = -1152.0
+offset_top = -648.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Race" type="Control" parent="Panel" unique_id=150424129]
+anchors_preset = 0
+offset_left = 128.0
+offset_top = 136.0
+offset_right = 168.0
+offset_bottom = 176.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Race" unique_id=264217103]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 100
+
+[node name="Control" type="Control" parent="Panel/Race/VBoxContainer" unique_id=1414119505]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+
+[node name="HaiDaoButton" type="Button" parent="Panel/Race/VBoxContainer/Control" unique_id=573692729]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/Race/VBoxContainer/Control" unique_id=243846098]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -34.0
+offset_right = 49.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 49
+text = "海盗"
+
+[node name="Control2" type="Control" parent="Panel/Race/VBoxContainer" unique_id=628075704]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+
+[node name="YuanSuButton" type="Button" parent="Panel/Race/VBoxContainer/Control2" unique_id=829544169]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/Race/VBoxContainer/Control2" unique_id=639632694]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -34.0
+offset_right = 49.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 49
+text = "元素"
+
+[node name="Minion" type="Control" parent="Panel" unique_id=963471019]
+anchors_preset = 0
+offset_left = 512.0
+offset_top = 80.0
+offset_right = 512.0
+offset_bottom = 80.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/Minion" unique_id=1702657978]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1664.0
+offset_bottom = 1136.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/scrollbar_h_separation = 100
+theme_override_constants/scrollbar_v_separation = 20
+
+[node name="FlowContainer" type="FlowContainer" parent="Panel/Minion/ScrollContainer" unique_id=1337900336]
+custom_minimum_size = Vector2(1500, 0)
+layout_mode = 2
+theme_override_constants/h_separation = 350
+theme_override_constants/v_separation = 300
+alignment = 1
+last_wrap_alignment = 2
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=277938828]
+
+[node name="MinionFather" type="Control" parent="." unique_id=605057181]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=487741517]
+layout_mode = 0
+offset_left = -1408.0
+offset_top = -856.0
+offset_right = 1352.0
+offset_bottom = -600.0
+color = Color(0.20784314, 0.20784314, 0.20784314, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=809311362]
+layout_mode = 0
+offset_left = -1496.0
+offset_top = -872.0
+offset_right = -1072.0
+offset_bottom = 840.0
+color = Color(0.20784314, 0.20784314, 0.20784314, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=689998920]
+layout_mode = 0
+offset_left = -1376.0
+offset_top = 592.0
+offset_right = 1384.0
+offset_bottom = 848.0
+color = Color(0.20784314, 0.20784314, 0.20784314, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="." unique_id=1586104388]
+layout_mode = 0
+offset_left = 1152.0
+offset_top = -880.0
+offset_right = 1576.0
+offset_bottom = 832.0
+color = Color(0.20784314, 0.20784314, 0.20784314, 1)
+
+[node name="EndButton" type="Button" parent="." unique_id=2083799218]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = -1216.0
+offset_top = -768.0
+offset_right = -1088.0
+offset_bottom = -640.0
+
+[node name="Label" type="Label" parent="EndButton" unique_id=1549307374]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_up" from="Panel/Race/VBoxContainer/Control/HaiDaoButton" to="." method="_on_hai_dao_button_button_up"]
+[connection signal="button_up" from="Panel/Race/VBoxContainer/Control2/YuanSuButton" to="." method="_on_yuan_su_button_button_up"]
+[connection signal="button_up" from="EndButton" to="." method="_on_end_button_button_up"]

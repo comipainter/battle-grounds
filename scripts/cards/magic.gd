@@ -28,16 +28,17 @@ func _ready() -> void:
 	use_info()
 	
 # 悬停相关
+var magicInfoDisplay: MagicInfoDisplay
 func hover() -> void:
 	super.hover()
-	originCardNode = GameManager.originMagicTemplate.instantiate()
-	originCardNode.set_magicInfo(MagicData.get_magic_by_id(get_id()))
-	self.add_child(originCardNode)
-	originCardNode.set_global_position(self.global_position + Vector2(250, 0))
+	magicInfoDisplay = GameManager.magicInfoDisplayTemplate.instantiate()
+	magicInfoDisplay.set_magicInfo(MagicData.get_magic_by_id(GameManager.allMagicInfo, get_id()))
+	self.add_child(magicInfoDisplay)
+	magicInfoDisplay.set_global_position(self.global_position + Vector2(250, 0))
 
 func exit_hover() -> void:
 	super.exit_hover()
-	originCardNode.queue_free()
+	magicInfoDisplay.queue_free()
 
 func _on_button_button_down() -> void:
 	super._button_down()

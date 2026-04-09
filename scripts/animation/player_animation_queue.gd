@@ -1,14 +1,25 @@
 class_name PlayerAnimationQueue
 
+var is_playing: bool = false
+
 var queue: Array[PlayerAnimation] = []
+
+func is_idle() -> bool:
+	return !is_playing and queue.is_empty()
 
 func add_animation(animation: PlayerAnimation) -> void:
 	queue.append(animation)
 
-# 回合开始效果
-func round_start():
-	for animation in queue:
-		if animation is PlayerAnimation.GeLeiSiFaXiEr1:
-			animation.execute()
-		elif animation is PlayerAnimation.GeLeiSiFaXiEr2:
-			animation.execute()
+func play_next() -> void:
+	if queue.is_empty():
+		is_playing = false
+		return
+	var current_animation = queue.pop_front()
+	await current_animation.execute()
+	play_next()
+
+func play() -> void:
+	if not is_playing:
+		if not queue.is_empty():
+			is_playing = true
+			self.play_next()

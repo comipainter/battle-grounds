@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bi56xbefwrvfp"]
 
 [ext_resource type="Script" uid="uid://bwwwg2jcr4d0h" path="res://scripts/scenes/shop_scene.gd" id="1_r1uou"]
+[ext_resource type="Texture2D" uid="uid://dce2hsnw48ty1" path="res://assets/image/background/图片1.png" id="2_fdhsn"]
 [ext_resource type="Texture2D" uid="uid://cngu3ptumcbd6" path="res://assets/image/icon/LevelUp.png" id="2_ykrk4"]
 [ext_resource type="Texture2D" uid="uid://cbsflyufnvong" path="res://assets/image/icon/arrow_load_update_sync_loading_reload_refresh_icon_267799.webp" id="3_fdhsn"]
 [ext_resource type="Texture2D" uid="uid://dxeid3blrom34" path="res://assets/image/icon/cost.png" id="4_tvdqs"]
@@ -23,6 +24,11 @@ bugRegionNode = NodePath("Region/BuyRegion")
 deskRegionNode = NodePath("Region/DeskRegion")
 sellRegionNode = NodePath("Region/SellRegion")
 
+[node name="BackgroundSprite" type="Sprite2D" parent="." unique_id=919870665]
+position = Vector2(1.2874603e-05, -2.4795532e-05)
+scale = Vector2(0.684309, 0.5947956)
+texture = ExtResource("2_fdhsn")
+
 [node name="Choose" type="Control" parent="." unique_id=1741751141]
 layout_mode = 3
 anchors_preset = 0
@@ -44,10 +50,10 @@ alignment = 1
 [node name="HandCard" type="Control" parent="." unique_id=1806533940]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -1128.0
-offset_top = 448.0
-offset_right = 1112.0
-offset_bottom = 448.0
+offset_left = -1120.0
+offset_top = 552.0
+offset_right = 1120.0
+offset_bottom = 552.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HandCard" unique_id=934133207]
 layout_mode = 1
@@ -66,10 +72,10 @@ alignment = 1
 [node name="DeskCard" type="Control" parent="." unique_id=284309087]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -936.0
-offset_top = -80.0
-offset_right = 944.0
-offset_bottom = -80.0
+offset_left = -960.0
+offset_top = 192.0
+offset_right = 920.0
+offset_bottom = 192.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="DeskCard" unique_id=740287396]
 layout_mode = 1
@@ -88,10 +94,10 @@ alignment = 1
 [node name="ShopCard" type="Control" parent="." unique_id=453085835]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -672.0
-offset_top = -448.0
-offset_right = 640.0
-offset_bottom = -448.0
+offset_left = -656.0
+offset_top = -120.0
+offset_right = 656.0
+offset_bottom = -120.0
 mouse_filter = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ShopCard" unique_id=2125979439]
@@ -99,6 +105,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -520.0
+offset_right = 304.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -110,10 +118,10 @@ alignment = 1
 
 [node name="LevelUp" type="Control" parent="ShopCard" unique_id=161942230]
 anchors_preset = 0
-offset_left = 1696.0
-offset_top = 80.0
-offset_right = 1824.0
-offset_bottom = 200.0
+offset_left = 312.0
+offset_top = -312.0
+offset_right = 440.0
+offset_bottom = -192.0
 
 [node name="Sprite2D" type="Sprite2D" parent="ShopCard/LevelUp" unique_id=1459158419]
 position = Vector2(2.7656555e-05, -1.3113022e-06)
@@ -122,10 +130,10 @@ texture = ExtResource("2_ykrk4")
 
 [node name="CostLabel" type="Label" parent="ShopCard/LevelUp" unique_id=605673764]
 layout_mode = 0
-offset_left = 88.0
-offset_top = -32.0
-offset_right = 128.0
-offset_bottom = 32.0
+offset_left = -24.0
+offset_top = -136.0
+offset_right = 16.0
+offset_bottom = -72.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
@@ -133,19 +141,19 @@ vertical_alignment = 1
 
 [node name="LevelButton" type="Button" parent="ShopCard/LevelUp" unique_id=1454022101]
 layout_mode = 0
-offset_left = -72.0
-offset_top = -72.0
-offset_right = 192.0
-offset_bottom = 72.0
+offset_left = -88.0
+offset_top = -128.0
+offset_right = 88.0
+offset_bottom = 96.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 flat = true
 
 [node name="Fresh" type="Control" parent="ShopCard" unique_id=917981440]
 anchors_preset = 0
-offset_left = 1632.0
-offset_top = 232.0
-offset_right = 1672.0
-offset_bottom = 272.0
+offset_left = 880.0
+offset_top = -344.0
+offset_right = 920.0
+offset_bottom = -304.0
 
 [node name="Sprite2D" type="Sprite2D" parent="ShopCard/Fresh" unique_id=787929891]
 position = Vector2(64.000015, 31.999994)
@@ -154,28 +162,29 @@ texture = ExtResource("3_fdhsn")
 
 [node name="CostLabel" type="Label" parent="ShopCard/Fresh" unique_id=48598339]
 layout_mode = 0
-offset_left = 144.0
-offset_right = 184.0
-offset_bottom = 64.0
+offset_left = 56.0
+offset_top = -96.0
+offset_right = 96.0
+offset_bottom = -32.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "1"
 
 [node name="FreshButton" type="Button" parent="ShopCard/Fresh" unique_id=1783389085]
 layout_mode = 0
-offset_left = -8.0
-offset_top = -40.0
-offset_right = 256.0
-offset_bottom = 104.0
+offset_left = -24.0
+offset_top = -96.0
+offset_right = 152.0
+offset_bottom = 120.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 flat = true
 
 [node name="Level" type="Control" parent="ShopCard" unique_id=1247093379]
 anchors_preset = 0
-offset_left = 672.0
-offset_top = -208.0
-offset_right = 712.0
-offset_bottom = -168.0
+offset_left = 480.0
+offset_top = -296.0
+offset_right = 520.0
+offset_bottom = -256.0
 
 [node name="Sprite2D" type="Sprite2D" parent="ShopCard/Level" unique_id=271600658]
 
@@ -218,10 +227,10 @@ offset_right = -456.0
 offset_bottom = 320.0
 
 [node name="EndButton" type="Button" parent="." unique_id=1664365163]
-offset_left = 960.0
-offset_top = -640.0
-offset_right = 1152.0
-offset_bottom = -544.0
+offset_left = 824.0
+offset_top = -544.0
+offset_right = 1016.0
+offset_bottom = -448.0
 
 [node name="Label" type="Label" parent="EndButton" unique_id=1439581856]
 layout_mode = 1
@@ -242,10 +251,10 @@ text = "结束回合"
 [node name="Coin" type="Control" parent="." unique_id=548983700]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 1032.0
-offset_top = 312.0
-offset_right = 1112.0
-offset_bottom = 384.0
+offset_left = 856.0
+offset_top = 552.0
+offset_right = 936.0
+offset_bottom = 624.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Coin" unique_id=1930169831]
 position = Vector2(-51, 33)
@@ -262,6 +271,54 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 42
 
+[node name="BookButton" type="Button" parent="." unique_id=428111294]
+custom_minimum_size = Vector2(100, 100)
+offset_left = -1264.0
+offset_top = -712.0
+offset_right = -1164.0
+offset_bottom = -612.0
+
+[node name="Label" type="Label" parent="BookButton" unique_id=1102699098]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "读书"
+
+[node name="EffectButton" type="Button" parent="." unique_id=1979459951]
+custom_minimum_size = Vector2(100, 100)
+offset_left = -1080.0
+offset_top = -712.0
+offset_right = -980.0
+offset_bottom = -612.0
+
+[node name="Label" type="Label" parent="EffectButton" unique_id=1126004544]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Buff"
+
 [connection signal="button_up" from="ShopCard/LevelUp/LevelButton" to="." method="_on_level_button_button_up"]
 [connection signal="button_up" from="ShopCard/Fresh/FreshButton" to="." method="_on_fresh_button_button_up"]
 [connection signal="button_up" from="EndButton" to="." method="_on_end_button_button_up"]
+[connection signal="button_up" from="BookButton" to="." method="_on_book_button_button_up"]
+[connection signal="button_up" from="EffectButton" to="." method="_on_effect_button_button_up"]

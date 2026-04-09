@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dhx33yqbobmi2"]
 
-[ext_resource type="Script" uid="uid://cwmfisa6d4isn" path="res://scripts/animation/card/particles/HuoYaoYunShuGong_Particles.gd" id="1_n37au"]
+[ext_resource type="Script" uid="uid://cwmfisa6d4isn" path="res://scripts/animation/card/particles/HuoYaoYunShuGong_particles.gd" id="1_n37au"]
 [ext_resource type="Texture2D" uid="uid://deqgrbsaw5g7i" path="res://assets/image/animation/HuoYaoYunShuGong_AddInfo.png" id="2_kvw0m"]
 
 [sub_resource type="Gradient" id="Gradient_a74gh"]
@@ -46,4 +46,5 @@ lifetime = 2.0
 one_shot = true
 explosiveness = 1.0
 fixed_fps = 120
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_4y3dq")

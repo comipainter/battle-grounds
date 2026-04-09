@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bl01if254r5fr"]
 
-[ext_resource type="Script" uid="uid://d0oivt3qh3ebb" path="res://scenes/animation/DeLuSiTe_particles.gd" id="1_5e4d4"]
+[ext_resource type="Script" uid="uid://d0oivt3qh3ebb" path="res://scripts/animation/card/particles/DeLuSiTe_particles.gd" id="1_5e4d4"]
 [ext_resource type="Texture2D" uid="uid://deqgrbsaw5g7i" path="res://assets/image/animation/HuoYaoYunShuGong_AddInfo.png" id="2_dh2ie"]
 
 [sub_resource type="Gradient" id="Gradient_2f0kq"]
@@ -42,4 +42,5 @@ amount = 60
 texture = ExtResource("2_dh2ie")
 one_shot = true
 fixed_fps = 120
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_3s1y0")

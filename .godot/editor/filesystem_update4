@@ -1,6 +1,5 @@
 res://scenes/fight_scene.tscn
+res://assets/shader/shengdun.gdshader
 res://assets/shader/minion.gdshader
-res://scripts/scenes/shop_scene.gd
-res://scenes/shop_scene.tscn
-res://scenes/animation/zhanhou_button.tscn
-res://scripts/scenes/fight_scene.gd
+res://assets/shader/gloden.gdshader
+res://assets/shader/gloden_info.gdshader

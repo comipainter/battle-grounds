@@ -12,6 +12,21 @@ var handCardList: Array[Card] = []
 var shopCardList: Array[Card] = []
 
 func end() -> void:
+	# 回合结束，创建遮罩，禁止输入
+	var _overlay :ColorRect = ColorRect.new()
+	_overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	
+	# 触发回合结束判定
+	var cardList: Array[Card] = deskCardList
+	MinionAnimationCheck.check_round_end(cardList)
+	await get_tree().create_timer(0.5).timeout
+	
+	# 等待所有动画完成
+	cardList = deskCardList + handCardList
+	while is_list_idle(cardList) == false:
+		await GameManager.get_tree().process_frame
+	await get_tree().create_timer(0.5).timeout
+	
 	var deskInfoList: Array[CardInfo] = []
 	for card in deskCardList:
 		deskInfoList.append(card.get_info().duplicate())
@@ -23,12 +38,15 @@ func end() -> void:
 	GameManager.end_shop()
 	
 func fresh() -> void:
-	sub_coin(1)
+	if not PlayerEffectCheck.free_fresh():
+		sub_coin(1)
 	for card in shopCardList.duplicate(true):
 		delete_shopCard(card)
-	var shopCardInfoList = generate_shopCardInfoList()
+	var shopCardInfoList: Array[CardInfo] = generate_shopCardInfoList() 
+	shopCardInfoList = shopCardInfoList + PlayerEffectCheck.more_fresh()
 	for info in shopCardInfoList:
 		create_shopCard(info, shopPosition)
+	display_fresh()
 
 func levelUp() -> void:
 	if GameManager.shopLevel < GameManager.shopLevelCost.size():
@@ -39,7 +57,8 @@ func levelUp() -> void:
 	
 func buy(card: Card) -> void:
 	if (card.is_minion() and coinRest < 3) or\
-	(card.is_magic() and coinRest < card.get_cost()):
+	(card.is_magic() and coinRest < card.get_cost()) or\
+	(GameManager.handCardLimit == handCardList.size()):
 		print("购买失败")
 	else:
 		if card.is_minion():
@@ -49,22 +68,25 @@ func buy(card: Card) -> void:
 		MinionAnimationCheck.check_buy(deskCardList, card)
 		remove_shopCard(card)
 		add_handCard(card)
-		add_card_tripleCheckList(card)
 
 func use(card: Card) -> void:
+	if card.is_minion() and GameManager.deskCardLimit == deskCardList.size():
+		print("满场了")
+		return
 	remove_handCard(card)
+	PlayerEffectCheck.use(card)
 	if card.is_minion():
 		add_deskCard(card)
 		MinionAnimationCheck.use(card)
+		MinionAnimationCheck.check_use_minion(deskCardList, card)
 	else:
 		MagicAnimationCheck.use(card)
 		MinionAnimationCheck.check_use_magic(deskCardList)
 	
 func sell(card: Card) -> void:
-	add_coin(1)
 	MinionAnimationCheck.sell(card)
 	card.add_animation(MinionAnimation.RemoveAnimation.new(card))
-	sub_card_tripleCheckList(card)
+	add_coin(1)
 
 # 金币相关
 func add_coin(num: int) -> void:
@@ -79,6 +101,9 @@ func sub_coin(num: int) -> void:
 	coinRest -= num
 	MinionAnimationCheck.check_coin_decrease(deskCardList, num)
 	display_coin()
+
+func update_coinLimit() -> void:
+	coinLimit = GameManager.coinLimit
 
 # 节点相关
 
@@ -98,14 +123,21 @@ var separationSize: int = 250
 
 @export var levelUpCostLabel: Label
 func display_levelUp() -> void:
-	levelUpCostLabel.text = str(GameManager.shopLevelCost[GameManager.shopLevel])
+	if GameManager.shopLevel < 6:
+		levelUpCostLabel.text = str(GameManager.shopLevelCost[GameManager.shopLevel])
+	else:
+		levelUpCostLabel.text = ""
 
 @export var freshCostLabel: Label
 func display_fresh() -> void:
-	freshCostLabel.text = str(1)
+	if PlayerEffectCheck.check_free_fresh():
+		freshCostLabel.text = str(0)
+	else:
+		freshCostLabel.text = str(1)
 
 @export var coinLabel: Label
 func display_coin() -> void:
+	update_coinLimit()
 	coinLabel.text = str(coinRest) + " / " + str(coinLimit)
 
 @export var levelSprite: Sprite2D
@@ -132,8 +164,6 @@ func _ready() -> void:
 	deskCardContainer.add_theme_constant_override("separation", separationSize)
 	shopCardContainer.add_theme_constant_override("separation", separationSize)
 	
-	init_tripleCheckList()
-	
 	coinRest = GameManager.coinRest
 	coinLimit = GameManager.coinLimit
 	display_coin()
@@ -149,46 +179,33 @@ func _ready() -> void:
 	animationCheck = true
 	
 	# 触发全局回合开始效果
-	GameManager.playerAnimationQueue.round_start()
+	PlayerEffectCheck.round_start()
 	await GameManager.get_tree().process_frame
 	# 触发随从回合开始效果
 	MinionAnimationCheck.check_round_start(deskCardList)
 	
 func init_deskCard() -> void:
-	var deskCardInfoList: Array[CardInfo]
-	for deskCardInfo in GameManager.deskCardInfoList:
-		deskCardInfoList.append(deskCardInfo.duplicate())
-	for info in deskCardInfoList:
-		var card: Card = GameManager.create_card(info)
-		cardFatherNode.add_child(card)
-		card.global_position = deskPosition
-		add_deskCard(card)
-		add_card_tripleCheckList(card)
+	for info in GameManager.deskCardInfoList:
+		create_deskCard(info, deskPosition)
 func init_handCard() -> void:
-	var handCardInfoList: Array[CardInfo]
-	for handCardInfo in GameManager.handCardInfoList:
-		handCardInfoList.append(handCardInfo.duplicate())
-	for info in handCardInfoList:
-		var card: Card = GameManager.create_card(info)
-		cardFatherNode.add_child(card)
-		card.global_position = deskPosition
-		add_handCard(card)
-		add_card_tripleCheckList(card)
+	for info in GameManager.handCardInfoList:
+		create_handCard(info, handPosition)
 func init_shopCard() -> void:
 	var shopCardInfoList: Array[CardInfo] = generate_shopCardInfoList()
 	for info in shopCardInfoList:
-		var card: Card = GameManager.create_card(info)
-		cardFatherNode.add_child(card)
-		card.global_position = shopPosition
-		add_shopCard(card)
+		create_shopCard(info, shopPosition)
 	
 func create_handCard(info: CardInfo, startPosition: Vector2) -> Card:
+	if GameManager.handCardLimit == handCardList.size():
+		return null
 	var card: Card = GameManager.create_card(info)
 	cardFatherNode.add_child(card)
 	card.global_position = startPosition
 	add_handCard(card)
 	return card
 func create_deskCard(info: CardInfo, startPosition: Vector2) -> Card:
+	if GameManager.deskCardLimit == deskCardList.size():
+		return null
 	var card: Card = GameManager.create_card(info)
 	cardFatherNode.add_child(card)
 	card.global_position = startPosition
@@ -202,12 +219,16 @@ func create_shopCard(info: CardInfo, startPosition: Vector2) -> Card:
 	return card
 	
 func add_handCard(card: Card) -> void:
+	if GameManager.handCardLimit == handCardList.size():
+		return
 	card.set_belong_hand()
 	handCardList.append(card)
 	if animationCheck == true: # 防止刚进入商店时加载卡牌入手动画
 		MinionAnimationCheck.check_add_hand(deskCardList, card)
 	add_card(handCardContainer, card)
 func add_deskCard(card: Card) -> void:
+	if GameManager.deskCardLimit == deskCardList.size():
+		return
 	card.set_belong_desk()
 	deskCardList.append(card)
 	add_card(deskCardContainer, card)
@@ -256,51 +277,58 @@ func remove_card(card: Card) -> void:
 	followNode.queue_free()
 	
 # 私有方法
-func generate_shopCardInfoList() -> Array[CardInfo]:
+#func generate_shopCardInfoList() -> Array[CardInfo]:
+	#var list: Array[CardInfo] = []
+	#for i in range(GameManager.shopCardNum):
+		#var cardInfo: CardInfo
+		#if i == GameManager.shopCardNum - 1:
+			#cardInfo = MagicData.get_random_magic_under_level(GameManager.shopMagicInfo, GameManager.shopLevel)
+		#else:
+			#cardInfo = MinionData.get_random_minion_under_level(GameManager.shopMinionInfo, GameManager.shopLevel)
+		#list.append(cardInfo)
+	#return list
+
+func generate_shopCardInfoList() -> Array[CardInfo]: # 只提供当前等级的牌
 	var list: Array[CardInfo] = []
 	for i in range(GameManager.shopCardNum):
 		var cardInfo: CardInfo
 		if i == GameManager.shopCardNum - 1:
-			cardInfo = MagicData.get_random_magic_under_level(GameManager.shopLevel)
+			cardInfo = MagicData.get_random_magic_under_level(GameManager.shopMagicInfo, GameManager.shopLevel)
 		else:
-			cardInfo = MinionData.get_random_minion_under_level(GameManager.shopLevel)
+			cardInfo = MinionData.get_random_minion_in_level(GameManager.shopMinionInfo, GameManager.shopLevel)
 		list.append(cardInfo)
 	return list
 
 # 判断三连
-var tripleCheckList: Array[int]
 var tripleTaskList: Array[Array] = []
-func init_tripleCheckList() -> void:
-	tripleCheckList.resize(GameManager.allMinionInfo.size())
-	tripleCheckList.fill(0)
-func sub_card_tripleCheckList(card: Card) -> void:
-	if card.is_minion():
-		var minion: Minion = card
-		if minion.is_golden() == false:
-			tripleCheckList[minion.get_id()] -= 1
-func be_golden_sub_card_tripleCheckList(card: Card) -> void:
-	tripleCheckList[card.get_id()] -= 1
-func add_card_tripleCheckList(card: Card) -> void:
-	if card.is_minion():
-		var minion: Minion = card
-		if minion.is_golden() == false:
-			tripleCheckList[minion.get_id()] += 1
-			if tripleCheckList[minion.get_id()] == 3:
-				# 触发三连,在场上牌和手牌中寻找目标牌
-				var deskAndHandCardList: Array[Card] = deskCardList + handCardList
-				var targetMinionList: Array[Minion]
-				for targetCard in deskAndHandCardList:
-					if targetCard.is_minion():
-						var targetMinion: Minion = targetCard
-						if targetMinion.is_golden() == false:
-							if targetMinion.get_id() == minion.get_id():
-								targetMinionList.append(targetMinion)
-								targetMinion.set_tripleLock(true)
-								if targetMinionList.size() == 3:
-									break
-				# 添加到三连工作列表
-				tripleTaskList.append(targetMinionList)
-
+class MinionList:
+	var minionList: Array[Minion] = []
+	func size() -> int: return minionList.size()
+	func get_list() -> Array[Minion]: return minionList
+	func add(minion: Minion) -> void: minionList.append(minion)
+func check_card_tripleCheckList() -> void:
+	var tripleCheckList: Array[MinionList] = []
+	tripleCheckList.resize(GameManager.allMinionInfo.size() + 1)
+	for i in range(tripleCheckList.size()):
+		tripleCheckList[i] = MinionList.new()
+	# 统计
+	var deskAndHandCardList: Array[Card] = deskCardList + handCardList
+	for card in deskAndHandCardList:
+		if card.is_minion():
+			var minion: Minion = card
+			if minion.get_id() > 0 and minion.is_golden() == false and minion.is_tripleLock() == false:
+				var id: int = minion.get_id()
+				tripleCheckList[id].add(minion)
+				if tripleCheckList[id].size() >= 3:
+					var targetMinionList: MinionList = MinionList.new()
+					for i in range(3):
+						var tripleMinion: Minion = tripleCheckList[id].minionList[0]
+						targetMinionList.add(tripleMinion)
+						tripleMinion.set_tripleLock(true)
+						tripleMinion.drag(false)
+						tripleCheckList[id].get_list().erase(tripleMinion)
+					tripleTaskList.append(targetMinionList.get_list())
+			
 func _process(delta: float) -> void:
 	for card in shopCardList:
 		if card.is_drag():
@@ -309,6 +337,7 @@ func _process(delta: float) -> void:
 		if card.is_drag():
 			sort_deskCard(card)
 	# 处理三连事件
+	check_card_tripleCheckList()
 	if tripleTaskList.is_empty() == false:
 		var minionList: Array[Minion] = tripleTaskList[0]
 		if is_minionList_idle(minionList):
@@ -323,7 +352,6 @@ func _process(delta: float) -> void:
 					remove_handCard(minion)
 				minion.add_animation(MinionAnimation.BeTripleAnimation.new(minion))
 			tripleTaskList.pop_front()
-			tripleCheckList[minionList[0].get_id()] -= 3
 			# 将合金随从挂载
 			cardFatherNode.add_child(golden_minion)
 			add_handCard(golden_minion)
@@ -365,12 +393,26 @@ func sort(container: HBoxContainer, card: Card, cardList: Array[Card]) -> void:
 	cardList.sort_custom(func(a, b): return a.global_position.x < b.global_position.x)
 
 func _on_level_button_button_up() -> void:
-	if coinRest >= GameManager.shopLevelCost[GameManager.shopLevel]:
-		levelUp()
+	if GameManager.shopLevel < 6:
+		if coinRest >= GameManager.shopLevelCost[GameManager.shopLevel]:
+			levelUp()
 
 func _on_fresh_button_button_up() -> void:
-	if coinRest >= 1:
-		fresh()
+	if PlayerEffectCheck.check_free_fresh():
+		if coinRest >= 0:
+			fresh()
+	else:
+		if coinRest >= 1:
+			fresh()
 
 func _on_end_button_button_up() -> void:
 	end()
+
+func _on_book_button_button_up() -> void:
+	var cheater = load("res://scenes/cheater.tscn").instantiate()
+	add_child(cheater)
+
+func _on_effect_button_button_up() -> void:
+	var effectTab: EffectTab = load("res://scenes/effect_tab.tscn").instantiate()
+	add_child(effectTab)
+	effectTab.position = Vector2(-900, -600)

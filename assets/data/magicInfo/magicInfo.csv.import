@@ -6,10 +6,10 @@ uid="uid://brbqolsnaikr3"
 
 [deps]
 
-files=["res://assets/data/magicInfo/magicInfo.level.translation", "res://assets/data/magicInfo/magicInfo.name.translation", "res://assets/data/magicInfo/magicInfo.cost.translation", "res://assets/data/magicInfo/magicInfo.description.translation"]
+files=["res://assets/data/magicInfo/magicInfo.level.translation", "res://assets/data/magicInfo/magicInfo.name.translation", "res://assets/data/magicInfo/magicInfo.cost.translation", "res://assets/data/magicInfo/magicInfo.description.translation", "res://assets/data/magicInfo/magicInfo.sellable.translation"]
 
 source_file="res://assets/data/magicInfo/magicInfo.csv"
-dest_files=["res://assets/data/magicInfo/magicInfo.level.translation", "res://assets/data/magicInfo/magicInfo.name.translation", "res://assets/data/magicInfo/magicInfo.cost.translation", "res://assets/data/magicInfo/magicInfo.description.translation"]
+dest_files=["res://assets/data/magicInfo/magicInfo.level.translation", "res://assets/data/magicInfo/magicInfo.name.translation", "res://assets/data/magicInfo/magicInfo.cost.translation", "res://assets/data/magicInfo/magicInfo.description.translation", "res://assets/data/magicInfo/magicInfo.sellable.translation"]
 
 [params]
 

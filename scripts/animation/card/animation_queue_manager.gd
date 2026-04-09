@@ -6,9 +6,12 @@ var animation_queue: Array = []
 var is_playing: bool = false
 
 func is_idle() -> bool:
-	return !is_playing
+	return !is_playing and animation_queue.is_empty()
 
 func add_animation(animation: CardAnimation) -> void:
+	animation_queue.append(animation)
+	
+func add_player_animation(animation: PlayerAnimation) -> void:
 	animation_queue.append(animation)
 
 func play_next() -> void:

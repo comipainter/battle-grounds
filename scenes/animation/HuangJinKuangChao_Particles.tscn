@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://ctl0kcf3vf2qi"]
+
+[ext_resource type="Texture2D" uid="uid://deqgrbsaw5g7i" path="res://assets/image/animation/HuoYaoYunShuGong_AddInfo.png" id="1_3no7r"]
+[ext_resource type="Script" uid="uid://dcdvnilvoioa0" path="res://scripts/animation/card/particles/HuangJinKuangChao_Particles.gd" id="1_my0rn"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3no7r"]
+particle_flag_disable_z = true
+spread = 0.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.099999994
+scale_max = 0.099999994
+
+[sub_resource type="Gradient" id="Gradient_my0rn"]
+offsets = PackedFloat32Array(0.47315437, 0.75838923)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4y3dq"]
+gradient = SubResource("Gradient_my0rn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iftn2"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 180.00002
+spread = 180.0
+initial_velocity_min = 800.0
+initial_velocity_max = 800.0
+angular_velocity_min = -200.00002
+angular_velocity_max = 199.99998
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -1200.0
+linear_accel_max = -600.0
+scale_min = 0.099999994
+scale_max = 0.099999994
+color_ramp = SubResource("GradientTexture1D_4y3dq")
+
+[node name="HuangJinKuangChao_Particles" type="Control" unique_id=37320979 node_paths=PackedStringArray("travelParticles", "explodeParticles")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2560.0
+offset_bottom = -1440.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_my0rn")
+travelParticles = NodePath("TravelParticles")
+explodeParticles = NodePath("ExplodeParticles")
+
+[node name="TravelParticles" type="GPUParticles2D" parent="." unique_id=1257850672]
+emitting = false
+amount = 3
+texture = ExtResource("1_3no7r")
+one_shot = true
+explosiveness = 0.5
+fixed_fps = 120
+process_material = SubResource("ParticleProcessMaterial_3no7r")
+
+[node name="ExplodeParticles" type="GPUParticles2D" parent="." unique_id=238412476]
+emitting = false
+amount = 40
+texture = ExtResource("1_3no7r")
+one_shot = true
+explosiveness = 0.5
+fixed_fps = 120
+process_material = SubResource("ParticleProcessMaterial_iftn2")

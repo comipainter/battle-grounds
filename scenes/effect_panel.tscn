@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://c2t1tt0trf2g1"]
+
+[ext_resource type="Shader" uid="uid://ltpq25vod3pw" path="res://assets/shader/effect_display.gdshader" id="1_mjxvc"]
+[ext_resource type="Script" uid="uid://ds8n7ojlebvgo" path="res://scripts/scenes/effect_panel.gd" id="1_w1rtx"]
+[ext_resource type="Texture2D" uid="uid://doabnrwm4vhip" path="res://assets/image/minion/守护者艾库隆.png" id="2_w1rtx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mr2h7"]
+bg_color = Color(0.6, 0.6, 0.6, 0.78431374)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0.8627451)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wdf72"]
+shader = ExtResource("1_mjxvc")
+shader_parameter/corner_radius = 0.2000000095
+shader_parameter/edge_softness = 0.05
+
+[node name="EffectPanel" type="Control" unique_id=722231061 node_paths=PackedStringArray("effectDescriptionLabel", "effectSprite")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2304.0
+offset_bottom = -1359.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w1rtx")
+effectDescriptionLabel = NodePath("EffectPanel/EffectDescriptionLabel")
+effectSprite = NodePath("EffectPanel/EffectSprite")
+
+[node name="EffectPanel" type="Panel" parent="." unique_id=290841607]
+custom_minimum_size = Vector2(256, 81)
+layout_mode = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mr2h7")
+
+[node name="EffectDescriptionLabel" type="Label" parent="EffectPanel" unique_id=526962838]
+custom_minimum_size = Vector2(100, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 14
+text = "直到下个回合开始时，使该随从获得圣盾"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="EffectSprite" type="Sprite2D" parent="EffectPanel" unique_id=1428917257]
+material = SubResource("ShaderMaterial_wdf72")
+position = Vector2(32, 40)
+scale = Vector2(0.064, 0.064)
+texture = ExtResource("2_w1rtx")

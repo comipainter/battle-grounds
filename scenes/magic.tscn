@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://u3kp633lcmvs"]
 
 [ext_resource type="Script" uid="uid://6i31ot6xcbi0" path="res://scripts/cards/magic.gd" id="1_fggut"]
-[ext_resource type="Shader" uid="uid://e5pwdl5651o0" path="res://assets/shader/minion.gdshader" id="2_fggut"]
+[ext_resource type="Shader" uid="uid://bd6q18gsc1sy4" path="res://assets/shader/minion.gdshader" id="2_fggut"]
 [ext_resource type="Texture2D" uid="uid://dkpfidj4dulk5" path="res://assets/image/minion/background.png" id="4_1hugi"]
 [ext_resource type="Texture2D" uid="uid://dxeid3blrom34" path="res://assets/image/icon/cost.png" id="5_87hvv"]
 
@@ -19,13 +19,12 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 bg_color = Color(0.19607843, 0.19607843, 0.19607843, 0.23529412)
 
 [node name="Magic" type="Control" unique_id=2100943558]
-custom_minimum_size = Vector2(192, 256)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -2368.0
-offset_bottom = -1184.0
+offset_right = -2560.0
+offset_bottom = -1440.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fggut")

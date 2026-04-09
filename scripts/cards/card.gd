@@ -29,7 +29,6 @@ func is_tripleReady() -> bool:
 	return tripleReady
 
 # 悬停相关
-var originCardNode: Control
 func hover() -> void:
 	pass
 func exit_hover() -> void:
@@ -40,6 +39,11 @@ var animationQueueManager: AnimationQueueManager = AnimationQueueManager.new()
 func add_animation(animation: CardAnimation) -> void:
 	animationQueueManager.add_animation(animation)
 func is_idle() -> bool:
+	if is_instance_valid(followNode):
+		var displacement = followNode.global_position - global_position
+		var distance = displacement.length()
+		if distance > 2.0:  # 已经足够达到目标，调整为idle状态
+			return false
 	return (!is_moving() and animationQueueManager.is_idle())
 func ableOperation(able: bool) -> void:
 	if able == false:
@@ -114,7 +118,7 @@ func is_drag() -> bool:
 func is_follow() -> bool:
 	return move == MOVE.FOLLOW
 func is_moving() -> bool:
-	return (following or is_drag())
+	return ((following and is_instance_valid(followNode)) or is_drag())
 
 # 附着参数
 var velocity = Vector2.ZERO

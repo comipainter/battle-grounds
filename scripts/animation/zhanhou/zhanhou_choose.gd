@@ -4,17 +4,20 @@ signal choice_made(targetMinion: Minion)
 
 var baseMinion: Minion
 
-var _waiting: bool = false
-var choosed_minion: Minion
+var _waiting: bool = true
+var choosed_minion: Minion = null
 
 var fatherNode: Control = GameManager.shopScene.choose
 
 var zhanhouButtonList: Array[Control]
 var _overlay: ColorRect
 
-func _init(baseMinion: Minion, cardList: Array[Card]) -> void:
+func _init(cardList: Array[Card]) -> void:
+	# 声明为独立场景
+	if not GameManager.tscnRegistry_create("zhanhou_choose"):
+		_waiting = false
+		return
 	GameManager.shopScene.move_child(fatherNode, GameManager.shopScene.get_child_count()-1)
-	self.baseMinion == baseMinion
 	# 创建遮罩层
 	_overlay = ColorRect.new()
 	_overlay.color = Color(0, 0, 0, 0.4)
@@ -36,7 +39,6 @@ func _on_option_chosed(minion: Minion) -> void:
 	_waiting = false
 
 func wait_for_choice() -> Minion:
-	_waiting = true
 	while _waiting:
 		await GameManager.get_tree().process_frame
 	return choosed_minion
@@ -44,5 +46,7 @@ func wait_for_choice() -> Minion:
 func quit() -> void:
 	for zhanhouButton in zhanhouButtonList:
 		zhanhouButton.queue_free()
-	_overlay.queue_free()
-	GameManager.shopScene.move_child(GameManager.shopScene.choose, 0)
+	if is_instance_valid(_overlay):
+		_overlay.queue_free()
+		GameManager.shopScene.move_child(GameManager.shopScene.choose, 0)
+	GameManager.tscnRegistry_delete("zhanhou_choose")

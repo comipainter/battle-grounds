@@ -6,6 +6,10 @@ func _init(cardData: Dictionary) -> void:
 	description = cardData["description"]
 	spritePath = cardData["sprite_path"]
 	type = cardData["type"]
+	if cardData["sellable"] == "1":
+		sellable = true
+	else:
+		sellable = false
 	
 var id: int
 
@@ -19,6 +23,11 @@ var spritePath: String
 
 var type: String
 
+var sellable: bool
+
+func create() -> CardInfo:
+	return duplicate()
+
 func duplicate() -> CardInfo:
 	var copy = CardInfo.new(_to_dict())
 	return copy
@@ -30,5 +39,6 @@ func _to_dict() -> Dictionary:
 		"level" : level,
 		"description" : description,
 		"sprite_path" : spritePath,
-		"type" : type
+		"type" : type,
+		"sellable": str(int(sellable))
 	}
