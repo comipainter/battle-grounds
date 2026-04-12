@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://cm631t1b5nxgd"]
+
+[ext_resource type="Script" uid="uid://bkggyd0mi47yt" path="res://scripts/scenes/settings.gd" id="1_5p8wc"]
+
+[node name="Settings" type="Control" unique_id=1488053461 node_paths=PackedStringArray("contentContainer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5p8wc")
+contentContainer = NodePath("Panel/ScrollContainer/ContentContainer")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1612059596]
+
+[node name="Panel" type="Panel" parent="." unique_id=42478916]
+layout_mode = 0
+offset_left = -1280.0
+offset_top = -720.0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="SettingsContainer" type="VBoxContainer" parent="Panel" unique_id=691468238]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 136.0
+offset_right = 448.0
+offset_bottom = 436.0
+theme_override_constants/separation = 100
+
+[node name="Control" type="Control" parent="Panel/SettingsContainer" unique_id=429864388]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+
+[node name="BGMButton" type="Button" parent="Panel/SettingsContainer/Control" unique_id=980181988]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/SettingsContainer/Control" unique_id=1732258055]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -34.0
+offset_right = 49.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 49
+text = "背景音乐"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel" unique_id=762580277]
+layout_mode = 0
+offset_left = 640.0
+offset_top = 152.0
+offset_right = 2240.0
+offset_bottom = 1288.0
+
+[node name="ContentContainer" type="VBoxContainer" parent="Panel/ScrollContainer" unique_id=881229737]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="EndButton" type="Button" parent="." unique_id=1914006528]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = -1232.0
+offset_top = -672.0
+offset_right = -1104.0
+offset_bottom = -544.0
+
+[node name="Label" type="Label" parent="EndButton" unique_id=791334781]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="Panel/SettingsContainer/Control/BGMButton" to="." method="_on_bgm_button_button_down"]
+[connection signal="button_down" from="EndButton" to="." method="_on_end_button_button_down"]

@@ -53,6 +53,8 @@ func levelUp() -> void:
 		if coinRest >= GameManager.shopLevelCost[GameManager.shopLevel]:
 			sub_coin(GameManager.shopLevelCost[GameManager.shopLevel])
 			GameManager.shopLevel += 1
+			# 播放升级酒馆的声音
+			GameManager.play_audio(GameManager.audioAssest.get_shopLevelUp())
 			display_level()
 	
 func buy(card: Card) -> void:
@@ -65,6 +67,10 @@ func buy(card: Card) -> void:
 			sub_coin(3)
 		else:
 			sub_coin(card.get_cost())
+		if card.is_minion():
+			# 播放购买随从的声音（50%概率触发）
+			if randf() < 0.5:
+				GameManager.play_audio(GameManager.audioAssest.get_buyMinion(card.get_info()))
 		MinionAnimationCheck.check_buy(deskCardList, card)
 		remove_shopCard(card)
 		add_handCard(card)
@@ -77,6 +83,8 @@ func use(card: Card) -> void:
 	PlayerEffectCheck.use(card)
 	if card.is_minion():
 		add_deskCard(card)
+		# 播放使用随从声音
+		GameManager.play_audio(GameManager.audioAssest.use_minion(card.get_info()))
 		MinionAnimationCheck.use(card)
 		MinionAnimationCheck.check_use_minion(deskCardList, card)
 	else:
@@ -84,6 +92,9 @@ func use(card: Card) -> void:
 		MinionAnimationCheck.check_use_magic(deskCardList)
 	
 func sell(card: Card) -> void:
+	if card.is_minion():
+		# 播放出售随从的声音
+		GameManager.play_audio(GameManager.audioAssest.get_sellMinion())
 	MinionAnimationCheck.sell(card)
 	card.add_animation(MinionAnimation.RemoveAnimation.new(card))
 	add_coin(1)
@@ -92,6 +103,8 @@ func sell(card: Card) -> void:
 func add_coin(num: int) -> void:
 	#if coinRest < coinLimit:
 	coinRest += num
+	# 播放铸币变化音效
+	GameManager.play_soundEffect(GameManager.soundEffectAsset.coin)
 	#if coinRest > coinLimit:
 		#coinRest = coinLimit
 	MinionAnimationCheck.check_coin_increase(deskCardList, num)
@@ -99,6 +112,8 @@ func add_coin(num: int) -> void:
 
 func sub_coin(num: int) -> void:
 	coinRest -= num
+	# 播放铸币变化音效
+	GameManager.play_soundEffect(GameManager.soundEffectAsset.coin)
 	MinionAnimationCheck.check_coin_decrease(deskCardList, num)
 	display_coin()
 
@@ -120,6 +135,12 @@ func update_coinLimit() -> void:
 
 # 分离参数
 var separationSize: int = 250
+
+@export var bloodLabel: Label
+@export var shieldLabel: Label
+func display_boold_and_shield() -> void:
+	bloodLabel.text = str(GameManager.blood)
+	shieldLabel.text = str(GameManager.shield)
 
 @export var levelUpCostLabel: Label
 func display_levelUp() -> void:
@@ -164,13 +185,14 @@ func _ready() -> void:
 	deskCardContainer.add_theme_constant_override("separation", separationSize)
 	shopCardContainer.add_theme_constant_override("separation", separationSize)
 	
+	# 初始化数据
 	coinRest = GameManager.coinRest
 	coinLimit = GameManager.coinLimit
 	display_coin()
 	display_fresh()
 	display_levelUp()
 	display_level()
-	
+	display_boold_and_shield()
 	
 	animationCheck = false
 	init_deskCard()
@@ -416,3 +438,7 @@ func _on_effect_button_button_up() -> void:
 	var effectTab: EffectTab = load("res://scenes/effect_tab.tscn").instantiate()
 	add_child(effectTab)
 	effectTab.position = Vector2(-900, -600)
+
+func _on_settings_button_button_down() -> void:
+	var settings = load("res://scenes/settings.tscn").instantiate()
+	add_child(settings)

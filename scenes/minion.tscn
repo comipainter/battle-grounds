@@ -19,10 +19,6 @@
 [ext_resource type="Shader" uid="uid://b1l0tpajw1yvx" path="res://assets/shader/boost.gdshader" id="7_o6cm8"]
 [ext_resource type="Texture2D" uid="uid://d24lotwo8aldm" path="res://assets/image/minion/boost.png" id="7_s41o6"]
 
-[sub_resource type="Environment" id="Environment_o6cm8"]
-background_mode = 3
-glow_enabled = true
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ll15l"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
@@ -114,9 +110,6 @@ clock = NodePath("Control/Clock")
 click = NodePath("Control/Click")
 clickSprite = NodePath("Control/Click/ClickSprite")
 clickRegion = NodePath("Control/Click/ClickRegion")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1809477527]
-environment = SubResource("Environment_o6cm8")
 
 [node name="Control" type="Control" parent="." unique_id=1203584784]
 anchors_preset = 0

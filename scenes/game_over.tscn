@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://vlrv5wxscln4"]
+
+[ext_resource type="Script" uid="uid://c2qeu4sb8kohu" path="res://scripts/scenes/game_over.gd" id="1_gameover"]
+[ext_resource type="Texture2D" uid="uid://ccpsbbhqyeuk8" path="res://assets/image/background/QQ20260409-105005.png" id="2_background"]
+
+[node name="GameOver" type="Control" unique_id=284981206]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gameover")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1902373216]
+
+[node name="BackgroundSprite" type="Sprite2D" parent="." unique_id=1693520592]
+position = Vector2(2383, 2049)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_background")
+
+[node name="Panel" type="Panel" parent="." unique_id=1895198049]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1568.0
+offset_top = -931.0
+offset_right = -968.0
+offset_bottom = -431.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="Panel" unique_id=1330175422]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 30.0
+offset_right = 150.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "游戏结束"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RoundLabel" type="Label" parent="Panel" unique_id=73307042]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 100.0
+offset_right = 150.0
+offset_bottom = 160.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "你坚持了 X 回合"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="Panel" unique_id=186758941]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = 180.0
+offset_right = 120.0
+offset_bottom = 240.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Panel/RestartButton" unique_id=1886065456]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "重新开始"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="Panel" unique_id=1734319085]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = 260.0
+offset_right = 120.0
+offset_bottom = 320.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Panel/MainMenuButton" unique_id=2100896309]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "返回主菜单"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_up" from="Panel/RestartButton" to="." method="_on_restart_button_button_up"]
+[connection signal="button_up" from="Panel/MainMenuButton" to="." method="_on_main_menu_button_button_up"]

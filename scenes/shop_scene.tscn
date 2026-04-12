@@ -5,8 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://cngu3ptumcbd6" path="res://assets/image/icon/LevelUp.png" id="2_ykrk4"]
 [ext_resource type="Texture2D" uid="uid://cbsflyufnvong" path="res://assets/image/icon/arrow_load_update_sync_loading_reload_refresh_icon_267799.webp" id="3_fdhsn"]
 [ext_resource type="Texture2D" uid="uid://dxeid3blrom34" path="res://assets/image/icon/cost.png" id="4_tvdqs"]
+[ext_resource type="Texture2D" uid="uid://jd3mx04glfxt" path="res://assets/image/icon/blood.png" id="6_tvdqs"]
+[ext_resource type="Texture2D" uid="uid://bssvnio4412gk" path="res://assets/image/icon/shield.png" id="7_bk5ov"]
 
-[node name="ShopScene" type="Node2D" unique_id=1443481585 node_paths=PackedStringArray("handCardContainer", "deskCardContainer", "shopCardContainer", "cardFatherNode", "choose", "levelUpCostLabel", "freshCostLabel", "coinLabel", "levelSprite", "bugRegionNode", "deskRegionNode", "sellRegionNode")]
+[node name="ShopScene" type="Node2D" unique_id=1443481585 node_paths=PackedStringArray("handCardContainer", "deskCardContainer", "shopCardContainer", "cardFatherNode", "choose", "bloodLabel", "shieldLabel", "levelUpCostLabel", "freshCostLabel", "coinLabel", "levelSprite", "bugRegionNode", "deskRegionNode", "sellRegionNode")]
 script = ExtResource("1_r1uou")
 handCardContainer = NodePath("HandCard/ScrollContainer/CardContainer")
 deskCardContainer = NodePath("DeskCard/ScrollContainer/CardContainer")
@@ -16,6 +18,8 @@ handPosition = Vector2(0, 544)
 deskPosition = Vector2(0, 16)
 shopPosition = Vector2(0, -448)
 choose = NodePath("Choose")
+bloodLabel = NodePath("Control/BloodLabel")
+shieldLabel = NodePath("Control/ShieldLabel")
 levelUpCostLabel = NodePath("ShopCard/LevelUp/CostLabel")
 freshCostLabel = NodePath("ShopCard/Fresh/CostLabel")
 coinLabel = NodePath("Coin/CoinLabel")
@@ -25,7 +29,6 @@ deskRegionNode = NodePath("Region/DeskRegion")
 sellRegionNode = NodePath("Region/SellRegion")
 
 [node name="BackgroundSprite" type="Sprite2D" parent="." unique_id=919870665]
-position = Vector2(1.2874603e-05, -2.4795532e-05)
 scale = Vector2(0.684309, 0.5947956)
 texture = ExtResource("2_fdhsn")
 
@@ -197,8 +200,8 @@ mouse_filter = 2
 
 [node name="BuyRegion" type="Control" parent="Region" unique_id=1517051887]
 anchors_preset = 0
-offset_left = -1664.0
-offset_right = 1696.0
+offset_left = -1672.0
+offset_right = 1688.0
 offset_bottom = 960.0
 mouse_filter = 2
 
@@ -317,8 +320,89 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "Buff"
 
+[node name="SettingsButton" type="Button" parent="." unique_id=1639967972]
+custom_minimum_size = Vector2(200, 100)
+offset_left = 1056.0
+offset_top = -704.0
+offset_right = 1256.0
+offset_bottom = -604.0
+
+[node name="Label" type="Label" parent="SettingsButton" unique_id=2066924895]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 45
+text = "设置"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="." unique_id=1712642993]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BloodSprite" type="Sprite2D" parent="Control" unique_id=958043997]
+position = Vector2(-160, 640)
+scale = Vector2(0.2516854, 0.22535203)
+texture = ExtResource("6_tvdqs")
+
+[node name="ShieldSprite" type="Sprite2D" parent="Control" unique_id=582906467]
+position = Vector2(104, 642.00006)
+scale = Vector2(0.085197024, 0.08306709)
+texture = ExtResource("7_bk5ov")
+
+[node name="BloodLabel" type="Label" parent="Control" unique_id=1746334047]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.0
+offset_top = 564.0
+offset_right = -125.0
+offset_bottom = 688.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 110
+text = "30"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShieldLabel" type="Label" parent="Control" unique_id=667829043]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 36.0
+offset_top = 564.0
+offset_right = 139.0
+offset_bottom = 688.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 110
+text = "30"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="button_up" from="ShopCard/LevelUp/LevelButton" to="." method="_on_level_button_button_up"]
 [connection signal="button_up" from="ShopCard/Fresh/FreshButton" to="." method="_on_fresh_button_button_up"]
 [connection signal="button_up" from="EndButton" to="." method="_on_end_button_button_up"]
 [connection signal="button_up" from="BookButton" to="." method="_on_book_button_button_up"]
 [connection signal="button_up" from="EffectButton" to="." method="_on_effect_button_button_up"]
+[connection signal="button_down" from="SettingsButton" to="." method="_on_settings_button_button_down"]

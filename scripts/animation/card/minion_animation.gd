@@ -443,7 +443,7 @@ class JinYingDaoHangYuan extends MinionAnimation:
 				cardList.append(targetMinion)
 			if cardList.is_empty():
 				return 
-			var chooseAnimation: PlayerAnimation = PlayerAnimation.zhanHouChoose.new(cardList)
+			var chooseAnimation: PlayerAnimation = PlayerAnimation.ZhanHouChoose.new(cardList)
 			GameManager.add_playerAnimation(chooseAnimation)
 			var choosedMinion: Minion = await await chooseAnimation.choice_made
 			if not is_instance_valid(choosedMinion):
@@ -579,7 +579,8 @@ class BaoLieJuFeng extends MinionAnimation:
 		var stats: Stats = AnimationAssets.YuanSuAddInfo.get_stats(AnimationAssets.YuanSuAddInfo.baoliejufeng)
 		minion.add_stats(stats)
 		var minionInfo:MinionInfo = GameManager.find_card(minion.get_uniqueId())
-		minionInfo.add_stats(stats)
+		if minionInfo != null:
+			minionInfo.add_stats(stats)
 		
 		var tween2 = minion.create_tween()
 		tween2.tween_property(minion, "scale", original_scale, 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN_OUT)
@@ -650,7 +651,13 @@ class YeHuoYuanSu extends MinionAnimation:
 			if neighborMinionList.is_empty():
 				return
 			var neiborMinion: Minion = neighborMinionList.pick_random()
+			var particles: YeHuoYuanSu_Particles = GameManager.animationAssets.YeHuoYuanSu_Particles_Template.instantiate()
+			attackMinion.minionFather.add_child(particles)
+			particles.position = Vector2(0, 0)
+			particles.emit(Vector2(0, 0), neiborMinion.global_position - attackMinion.global_position)
 			neiborMinion.take_damage(neiborMinion.get_health())
+			await attackMinion.get_tree().create_timer(particles.get_total_lifetime()).timeout
+			particles.queue_free()
 			
 class PaiDuiYuanSu extends MinionAnimation:
 	var minion: Minion
@@ -684,7 +691,7 @@ class ZhaoZeYouDangZhe extends MinionAnimation:
 				cardList.append(targetMinion)
 			if cardList.is_empty():
 				return 
-			var chooseAnimation: PlayerAnimation = PlayerAnimation.zhanHouChoose.new(cardList)
+			var chooseAnimation: PlayerAnimation = PlayerAnimation.ZhanHouChoose.new(cardList)
 			GameManager.add_playerAnimation(chooseAnimation)
 			var choosedMinion : Minion = await chooseAnimation.choice_made
 			if not is_instance_valid(choosedMinion):
@@ -747,7 +754,7 @@ class SuiLieJuYanMaiShaDun extends MinionAnimation:
 				cardList.append(targetMinion)
 		if cardList.is_empty():
 			return 
-		var chooseAnimation: PlayerAnimation = PlayerAnimation.zhanHouChoose.new(cardList)
+		var chooseAnimation: PlayerAnimation = PlayerAnimation.ZhanHouChoose.new(cardList)
 		GameManager.add_playerAnimation(chooseAnimation)
 		var choosedMinion : Minion = await chooseAnimation.choice_made
 		if not is_instance_valid(choosedMinion):
@@ -814,7 +821,7 @@ class WenHeDeDengShen extends MinionAnimation:
 				cardList.append(targetMinion)
 		if cardList.size() <= 1: # 不够两个随从
 			return 
-		var chooseAnimation1: PlayerAnimation = PlayerAnimation.zhanHouChoose.new(cardList)
+		var chooseAnimation1: PlayerAnimation = PlayerAnimation.ZhanHouChoose.new(cardList)
 		GameManager.add_playerAnimation(chooseAnimation1)
 		var choosedMinion1 : Minion = chooseAnimation1.choice_made
 		if not is_instance_valid(choosedMinion1):
@@ -830,7 +837,7 @@ class WenHeDeDengShen extends MinionAnimation:
 					cardList.append(targetMinion)
 		if cardList.is_empty():
 			return
-		var chooseAnimation2: PlayerAnimation = PlayerAnimation.zhanHouChoose.new(cardList)
+		var chooseAnimation2: PlayerAnimation = PlayerAnimation.ZhanHouChoose.new(cardList)
 		GameManager.add_playerAnimation(chooseAnimation2)
 		var choosedMinion2 : Minion = chooseAnimation2.choice_made
 		if not is_instance_valid(choosedMinion2):

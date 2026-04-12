@@ -1,8 +1,32 @@
 [gd_scene format=3 uid="uid://cnyr7xfa32wwx"]
 
 [ext_resource type="Script" uid="uid://b73qyrlqx0gmd" path="res://scripts/game_manager.gd" id="1_hwd4i"]
+[ext_resource type="Script" uid="uid://bupw1utjnvour" path="res://scripts/audio/audio_manager.gd" id="2_glms7"]
+[ext_resource type="Script" uid="uid://uiqsmj7upna2" path="res://scripts/audio/bgm_manager.gd" id="3_udu3i"]
+[ext_resource type="Script" uid="uid://cjkrjrdwvqh4l" path="res://scripts/audio/sound_effect_player.gd" id="4_sfx"]
 
-[node name="GameManager" type="Control" unique_id=1903682549]
+[sub_resource type="Environment" id="Environment_oo155"]
+background_mode = 3
+glow_enabled = true
+
+[node name="GameManager" type="Control" unique_id=1903682549 node_paths=PackedStringArray("audioStreamPlayer", "gbmStreamPlayer", "soundEffectPlayer")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_hwd4i")
+audioStreamPlayer = NodePath("AudioStreamPlayer")
+gbmStreamPlayer = NodePath("BgmStreamPlayer")
+soundEffectPlayer = NodePath("SoundEffectPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1702860671]
+volume_db = -20.0
+script = ExtResource("2_glms7")
+
+[node name="BgmStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2097105484]
+volume_db = -20.0
+script = ExtResource("3_udu3i")
+
+[node name="SoundEffectPlayer" type="Node" parent="." unique_id=2097105485]
+script = ExtResource("4_sfx")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=700085901]
+environment = SubResource("Environment_oo155")

@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://x8b7mfi2mewj" path="res://scripts/scenes/fight_scene.gd" id="1_p8b18"]
 [ext_resource type="Texture2D" uid="uid://cc8yv8yheenk2" path="res://assets/image/background/图片2.png" id="2_keksv"]
+[ext_resource type="Texture2D" uid="uid://jd3mx04glfxt" path="res://assets/image/icon/blood.png" id="3_gksjr"]
+[ext_resource type="Texture2D" uid="uid://bssvnio4412gk" path="res://assets/image/icon/shield.png" id="4_7aqs0"]
 
-[node name="FightScene" type="Node2D" unique_id=989947060 node_paths=PackedStringArray("enemyHandCardContainer", "enemyDeskCardContainer", "playerHandCardContainer", "playerDeskCardContainer", "cardFatherNode")]
+[node name="FightScene" type="Node2D" unique_id=989947060 node_paths=PackedStringArray("enemyHandCardContainer", "enemyDeskCardContainer", "playerHandCardContainer", "playerDeskCardContainer", "cardFatherNode", "bloodLabel", "shieldLabel")]
 script = ExtResource("1_p8b18")
 enemyHandCardContainer = NodePath("Enemy/HandCard/ScrollContainer/CardContainer")
 enemyDeskCardContainer = NodePath("Enemy/DeskCard/ScrollContainer/CardContainer")
@@ -14,6 +16,8 @@ playerDeskPosition = Vector2(0, 288)
 playerHandPosition = Vector2(0, 544)
 enemyDeskPosition = Vector2(0, -288)
 enemyHandPosition = Vector2(0, -544)
+bloodLabel = NodePath("Control/BloodLabel")
+shieldLabel = NodePath("Control/ShieldLabel")
 
 [node name="BackgroundSprite" type="Sprite2D" parent="." unique_id=1231855945]
 position = Vector2(1.2874603e-05, -2.4795532e-05)
@@ -85,10 +89,10 @@ offset_bottom = 448.0
 
 [node name="HandCard" type="Control" parent="Player" unique_id=1319317558]
 anchors_preset = 0
-offset_left = 256.0
-offset_top = 376.0
-offset_right = 1152.0
-offset_bottom = 376.0
+offset_left = 1016.0
+offset_top = 416.0
+offset_right = 1888.0
+offset_bottom = 416.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Player/HandCard" unique_id=2063417195]
 layout_mode = 1
@@ -130,3 +134,57 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Control" type="Control" parent="." unique_id=1194318483]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BloodSprite" type="Sprite2D" parent="Control" unique_id=915841864]
+position = Vector2(-160, 640)
+scale = Vector2(0.2516854, 0.22535203)
+texture = ExtResource("3_gksjr")
+
+[node name="ShieldSprite" type="Sprite2D" parent="Control" unique_id=2087428638]
+position = Vector2(104, 642.00006)
+scale = Vector2(0.085197024, 0.08306709)
+texture = ExtResource("4_7aqs0")
+
+[node name="BloodLabel" type="Label" parent="Control" unique_id=260947251]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.0
+offset_top = 564.0
+offset_right = -125.0
+offset_bottom = 688.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 110
+text = "30"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShieldLabel" type="Label" parent="Control" unique_id=1433880712]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 36.0
+offset_top = 564.0
+offset_right = 139.0
+offset_bottom = 688.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 110
+text = "30"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -4,11 +4,12 @@ extends Control
 var mainMenu: MainMenu
 var shopScene: ShopScene
 var fightScene: FightScene
-enum SCENE{MAIN_MENU, SHOP_SCENE, FIGHT_SCENE}
+enum SCENE{MAIN_MENU, SHOP_SCENE, FIGHT_SCENE, GAME_OVER}
 var sceneDict: Dictionary = {
 	SCENE.MAIN_MENU: "res://scenes/main_menu.tscn",
 	SCENE.SHOP_SCENE: "res://scenes/shop_scene.tscn",
-	SCENE.FIGHT_SCENE: "res://scenes/fight_scene.tscn"
+	SCENE.FIGHT_SCENE: "res://scenes/fight_scene.tscn",
+	SCENE.GAME_OVER: "res://scenes/game_over.tscn"
 }
 func change_scene(target_scene: SCENE):
 	get_tree().change_scene_to_file(sceneDict.get(target_scene))
@@ -26,14 +27,25 @@ var shopMinionInfo: Array[MinionInfo] = MinionData.load_shopMinionInfo_from_csv(
 var shopMagicInfo: Array[MagicInfo] = MagicData.load_shopMagicInfo_from_csv(magicInfoPath)
 
 # 玩家相关
-var startCoin: int = 100
-var startCoinLimit: int = 100
-var coinRest: int = 100
-var coinLimit: int = 100
+var startCoin: int = 100 # 开始游戏时的铸币
+var startCoinLimit: int = 100 # 开始游戏时的铸币上限
+var coinRest: int = 100 # 剩余铸币数
+var coinLimit: int = 100 # 铸币上限
 var handCardInfoList: Array[CardInfo] = []
 var deskCardInfoList: Array[CardInfo] = []
-var handCardLimit: int = 6
-var deskCardLimit: int = 7
+var handCardLimit: int = 6 # 手牌数量限制
+var deskCardLimit: int = 7 # 场上卡牌数量限制
+var roundNumber: int = 1 # 回合数
+var blood: int = 30 # 生命
+var shield: int = 5 # 护盾
+func player_take_damage(damage: int) -> void:
+	if shield <= damage:
+		damage -= shield
+		shield = 0
+	else:
+		shield -= damage
+		damage = 0
+	blood -= damage
 
 # 全局效果管理器
 var playerEffectList: PlayerEffectList = PlayerEffectList.new([
@@ -44,9 +56,9 @@ func add_effect(effect: PlayerEffect) -> void:
 	playerEffectList.add_effect(effect)
 
 # 商店相关
-var shopCardNum: int = 7
-var shopLevelCost: Array = [0,5,5,5,5,5]
-var shopLevel: int = 1
+var shopCardNum: int = 7 # 商店正常刷新时的卡牌数量
+var shopLevelCost: Array = [0,5,5,5,5,5] # 商店升级消耗的铸币数
+var shopLevel: int = 1 # 商店等级
 
 # 卡牌相关
 var minionTemplate = preload("res://scenes/minion.tscn")
@@ -73,6 +85,24 @@ var levelSpriteScale = [
 	Vector2(0.087, 0.078),
 	Vector2(0.079, 0.076)
 ]
+var levelSingleSprite = [
+	null,
+	preload("res://assets/image/level/1_single.png"),
+	preload("res://assets/image/level/2_single.png"),
+	preload("res://assets/image/level/3_single.png"),
+	preload("res://assets/image/level/4_single.png"),
+	preload("res://assets/image/level/5_single.png"),
+	preload("res://assets/image/level/6_single.png"),
+]
+var levelSingleSpriteScale = [
+	null,
+	Vector2(0.113, 0.113),
+	Vector2(0.075, 0.076),
+	Vector2(0.073, 0.082),
+	Vector2(0.076, 0.078),
+	Vector2(0.087, 0.078),
+	Vector2(0.079, 0.076)
+]
 
 # 卡牌动画资源
 var animationAssets = AnimationAssets.new()
@@ -89,8 +119,33 @@ func tscnRegistry_create(name: String) -> bool:
 func tscnRegistry_delete(name: String) -> void:
 	GameManager.tscnRegistry.erase(name)
 
+# 游戏音频管理器
+@export var audioStreamPlayer: AudioStreamPlayer
+var audioAssest: AudioAsset = AudioAsset.new()
+func play_audio(stream: AudioStream) -> void:
+	audioStreamPlayer.play_audio_stream(stream)
+@export var gbmStreamPlayer: AudioStreamPlayer
+var bgmAsset: BgmAssets = BgmAssets.new()
+func play_bgm(stream: AudioStream) -> void:
+	gbmStreamPlayer.play_bgm(stream)
+
+# 音效播放器
+@export var soundEffectPlayer: SoundEffectPlayer
+var soundEffectAsset: SoundEffectAsset = SoundEffectAsset.new()
+func play_soundEffect(stream: AudioStream) -> void:
+	soundEffectPlayer.play(stream)
+
+func stop_all_soundEffects() -> void:
+	if soundEffectPlayer != null:
+		soundEffectPlayer.stop_all()
+
+func get_soundEffect_playing_count() -> int:
+	if soundEffectPlayer == null:
+		return 0
+	return soundEffectPlayer.get_playing_count()
+
 # 游戏阶段管理器
-enum GAMESTATE{START, MENU, MENUING, SHOP, SHOPPING, FIGHT, FIGHTING}
+enum GAMESTATE{START, MENU, MENUING, SHOP, SHOPPING, FIGHT, FIGHTING, GAMEOVER}
 var gameState = GAMESTATE.MENU
 
 func _process(delta: float) -> void:
@@ -101,6 +156,8 @@ func _process(delta: float) -> void:
 			self.change_scene(SCENE.MAIN_MENU)
 		GAMESTATE.SHOP:
 			gameState = GAMESTATE.SHOPPING
+			# 添加进入商店页面音频
+			play_audio(audioAssest.get_shopSceneStart())
 			self.change_scene(SCENE.SHOP_SCENE)
 		GAMESTATE.FIGHT:
 			gameState = GAMESTATE.FIGHTING
@@ -119,9 +176,16 @@ func end_shop() -> void:
 		
 func end_fight() -> void:
 	if gameState == GAMESTATE.FIGHTING:
+		if blood <= 0:
+			game_over()
+			return
 		coinRest = coinLimit
+		roundNumber += 1
 		gameState = GAMESTATE.SHOP
-
+func game_over() -> void:
+	gameState = GAMESTATE.GAMEOVER
+	self.change_scene(SCENE.GAME_OVER)
+	
 # 配置方法
 func is_menuing() -> bool:
 	return gameState == GAMESTATE.MENUING

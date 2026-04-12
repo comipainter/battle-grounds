@@ -2,6 +2,7 @@ extends Node2D
 
 class_name FightScene
 
+# 节点相关
 @export var enemyHandCardContainer: HBoxContainer
 @export var enemyDeskCardContainer: HBoxContainer
 @export var playerHandCardContainer: HBoxContainer
@@ -12,6 +13,12 @@ class_name FightScene
 @export var playerHandPosition: Vector2
 @export var enemyDeskPosition: Vector2
 @export var enemyHandPosition: Vector2
+
+@export var bloodLabel: Label
+@export var shieldLabel: Label
+func display_boold_and_shield() -> void:
+	bloodLabel.text = str(GameManager.blood)
+	shieldLabel.text = str(GameManager.shield)
 
 # 分离参数
 var separationSize: int = 250
@@ -32,6 +39,11 @@ func _ready() -> void:
 	enemyHandCardContainer.add_theme_constant_override("separation", separationSize)
 	enemyDeskCardContainer.add_theme_constant_override("separation", separationSize)
 	
+	display_boold_and_shield()
+	
+	# 播放战斗开始音频
+	GameManager.play_audio(GameManager.audioAssest.get_fightSceneStart())
+	
 	var playerDeskCardInfoList: Array[CardInfo]
 	for deskCardInfo in GameManager.deskCardInfoList:
 		playerDeskCardInfoList.append(deskCardInfo.duplicate())
@@ -49,11 +61,27 @@ func _ready() -> void:
 	
 	animationCheck = true
 		
-func end() -> void:
+func end(winner: String) -> void:
 	var handInfoList: Array[CardInfo] = []
 	for card in playerHandCardList:
 		handInfoList.append(card.get_info())
 	GameManager.handCardInfoList = handInfoList.duplicate(true)
+	# 播放结算动画
+	var playerPosition: Vector2 = Vector2(-32, 512)
+	var enemyPosition: Vector2 = Vector2(-8, -472)
+	var fightEndAnimation: PlayerAnimation.FightEnd
+	if winner == "player":
+		fightEndAnimation = PlayerAnimation.FightEnd.new(playerDeskCardList, playerPosition, enemyPosition)
+		GameManager.add_playerAnimation(fightEndAnimation)
+		await fightEndAnimation.finished
+	elif winner == "enemy":
+		fightEndAnimation = PlayerAnimation.FightEnd.new(enemyDeskCardList, enemyPosition, playerPosition)
+		GameManager.add_playerAnimation(fightEndAnimation)
+		await fightEndAnimation.finished
+		var damage: int = 0
+		for card in enemyDeskCardList:
+			damage += card.get_level()
+		GameManager.player_take_damage(damage)
 	GameManager.end_fight()
 	
 enum FIGHTSTATE{PREPARE, ATTACK, ATTACKING, DIE, DYING, END}
@@ -64,6 +92,7 @@ var curr = player_enemy_list[randi()%2]
 var fengnuMinion: Minion
 var fengnuAttack: bool = false # 当前是否触发了风怒的额外攻击
 
+@warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	match fightState:
 		FIGHTSTATE.PREPARE:
@@ -76,16 +105,23 @@ func _process(delta: float) -> void:
 		FIGHTSTATE.ATTACK:
 			# 先检查是否有一方随从全部退场
 			if is_all_dead():
+				fightState = FIGHTSTATE.END
+				# 播放战斗平局声音
+				GameManager.play_audio(GameManager.audioAssest.get_fightDraw())
 				print("对战结束, 平局")
-				end()
+				end("draw")
 			elif is_player_dead():
 				fightState = FIGHTSTATE.END
+				# 播放战斗失败声音
+				GameManager.play_audio(GameManager.audioAssest.get_fightDefeat())
 				print("对战结束, 敌方胜利")
-				end()
+				end("enemy")
 			elif is_enemy_dead():
 				fightState = FIGHTSTATE.END
+				# 播放战斗胜利声音
+				GameManager.play_audio(GameManager.audioAssest.get_fightVictory())
 				print("对战结束, 玩家胜利")
-				end()
+				end("player")
 			else:
 				fightState = FIGHTSTATE.ATTACKING
 				if fengnuAttack and is_instance_valid(fengnuMinion): # 如果当前是风怒随从的额外攻击回合并且该随从还活着
@@ -128,9 +164,13 @@ func _process(delta: float) -> void:
 			# 检查死亡的随从
 			for minion: Minion in playerDeskCardList:
 				if minion.is_dead():
+					# 播放死亡音效
+					GameManager.play_audio(GameManager.audioAssest.minion_die(minion.get_info()))
 					minion.add_animation(MinionAnimation.DieAnimation.new(minion))
 			for minion: Minion in enemyDeskCardList:
 				if minion.is_dead():
+					# 播放死亡音效
+					GameManager.play_audio(GameManager.audioAssest.minion_die(minion.get_info()))
 					minion.add_animation(MinionAnimation.DieAnimation.new(minion))
 		FIGHTSTATE.DYING:
 			await GameManager.get_tree().process_frame
@@ -140,6 +180,8 @@ func _process(delta: float) -> void:
 				
 func attack(attackMinion: Minion, behitMinion: Minion) -> void:
 	attackMinion.attackPrior = true
+	# 播放攻击声音
+	GameManager.play_audio(GameManager.audioAssest.minion_attack(attackMinion.get_info()))
 	attackMinion.add_animation(MinionAnimation.AttackStartAnimation.new(attackMinion, behitMinion))
 	
 func get_behit_minion(cardList: Array[Card]) -> Card:
@@ -201,11 +243,41 @@ func is_enemy_dead() -> bool:
 	
 func generate_enemyCardInfoList() -> Array[CardInfo]:
 	var list: Array[CardInfo] = []
-	for i in range(initEnemyDeskCardNum):
-		#var info: CardInfo = MinionData.get_random_minion()
-		var info: CardInfo = MinionData.get_minion_by_id(GameManager.shopMinionInfo, 1)
-		info.attack = 30
+
+	# 获取当前回合数
+	var roundNum: int = GameManager.roundNumber
+
+	# 根据回合数计算敌人数量（基础3个，每2回合+1，上限7个）
+	@warning_ignore("integer_division")
+	var enemyCount: int = mini(3 + (roundNum - 1) / 2, GameManager.deskCardLimit)
+
+	# 根据回合数计算敌人等级上限（回合1-2: 2级, 回合3-4: 3级, 回合5-6: 4级, 回合7-8: 5级, 回合9+: 6级）
+	@warning_ignore("integer_division")
+	var enemyLevelCap: int = mini(1 + (roundNum + 1) / 2, GameManager.shopLevelCost.size())
+
+	# 根据回合数计算基础属性加成（回合1: +0, 每回合+1攻击和+1生命）
+	var baseStatBonus: int = roundNum - 1
+
+	# 根据回合数计算属性乘数（回合1: 1.0, 每回合+0.1，上限2.0）
+	@warning_ignore("narrowing_conversion")
+	var statMultiplier: float = mini(1.0 + (roundNum - 1) * 0.1, 2.0)
+
+	# 生成敌人随从
+	for i in range(enemyCount):
+		# 随机选择等级范围内的随从
+		var info: MinionInfo = MinionData.get_random_minion_under_level(GameManager.shopMinionInfo, enemyLevelCap)
+
+		# 应用属性乘数
+		var newAttack: int = int(info.attack * statMultiplier)
+		var newHealth: int = int(info.health * statMultiplier)
+
+		# 应用基础属性加成
+		newAttack += baseStatBonus
+		newHealth += baseStatBonus
+
+		info.set_stats(Stats.new(newAttack, newHealth))
 		list.append(info)
+
 	return list
 	
 func create_player_handCard(info: CardInfo, startPosition: Vector2) -> Card:
