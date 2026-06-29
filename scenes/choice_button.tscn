@@ -1,0 +1,226 @@
+[gd_scene format=3 uid="uid://dj3qns5ubu4ma"]
+
+[ext_resource type="Script" uid="uid://c5a85uyuglbvk" path="res://scripts/entity/animation/choice_button.gd" id="1_0i16n"]
+[ext_resource type="Shader" uid="uid://bd1pnkhg4wyi0" path="res://scripts/shader/minion.gdshader" id="2_043ys"]
+[ext_resource type="Script" uid="uid://byjy5wtt8mvu5" path="res://scripts/entity/card/component/common/hand_name_label.gd" id="2_b1nxn"]
+[ext_resource type="Texture2D" uid="uid://bfwic1p4bf3qb" path="res://assets/image/minion/爆裂飓风.png" id="3_qu4k7"]
+[ext_resource type="Texture2D" uid="uid://cnpkwvo6qac5g" path="res://assets/image/minion/minion_scene/hold_name.png" id="4_043ys"]
+[ext_resource type="FontFile" uid="uid://duyxc4txftnwp" path="res://assets/font/兰米汉隶_爱给网_aigei_com.ttf" id="4_k76xk"]
+[ext_resource type="Shader" uid="uid://kx0sxy5hcajc" path="res://scripts/shader/hold_background.gdshader" id="5_qu4k7"]
+[ext_resource type="Texture2D" uid="uid://d0jx84c5vam0t" path="res://assets/image/minion/minion_scene/hold_background.png" id="6_gee5u"]
+[ext_resource type="Texture2D" uid="uid://b8r2wy6h7hgia" path="res://assets/image/minion/minion_scene/Blood.png" id="10_cg5m7"]
+[ext_resource type="Texture2D" uid="uid://b4tmif20ccpu2" path="res://assets/image/minion/minion_scene/Attack.png" id="11_0kqof"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gee5u"]
+shader = ExtResource("2_043ys")
+shader_parameter/ellipse_center = Vector2(0.5, 0.5)
+shader_parameter/ellipse_scale_x = 0.49600002030012
+shader_parameter/ellipse_scale_y = 0.49600002030012
+shader_parameter/global_scale = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0kqof"]
+shader = ExtResource("5_qu4k7")
+shader_parameter/brightness_threshold = 1.0
+shader_parameter/saturation_threshold = 1.0
+shader_parameter/ellipse_center = Vector2(0.505, 0.315)
+shader_parameter/ellipse_radius = Vector2(0.256, 0.253)
+
+[sub_resource type="Curve2D" id="Curve2D_7c4lv"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 20, 0, -180, 32, -20, 0, 20, -3, -120, 28, -20, 4, 20, -4, -60, 19, -20, 3, 20, -3, 0, 10, -20, 1.5, 20, -1, 60, 3, -20, 0, 20, 4, 120, 5, -20, -7, 0, 0, 180, 22)
+}
+point_count = 7
+
+[sub_resource type="LabelSettings" id="LabelSettings_cg5m7"]
+resource_local_to_scene = true
+font = ExtResource("4_k76xk")
+font_size = 48
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0i16n"]
+bg_color = Color(0, 0, 0, 0.24705882)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ioyl"]
+bg_color = Color(0, 0, 0, 0.46666667)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k76xk"]
+bg_color = Color(0, 0, 0, 0.043137256)
+
+[node name="ChoiceButton" type="Control" unique_id=1647043920]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0i16n")
+
+[node name="MinionSprite" type="Sprite2D" parent="." unique_id=640693530]
+material = SubResource("ShaderMaterial_gee5u")
+position = Vector2(0.99999994, -174)
+scale = Vector2(0.44, 0.44)
+texture = ExtResource("3_qu4k7")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="." unique_id=542007918]
+material = SubResource("ShaderMaterial_0kqof")
+scale = Vector2(0.895, 0.895)
+texture = ExtResource("6_gee5u")
+
+[node name="Name" type="Control" parent="." unique_id=1751862554]
+anchors_preset = 0
+offset_top = 26.000002
+offset_bottom = 26.000002
+scale = Vector2(2.655, 2.655)
+
+[node name="NameSprite" type="Sprite2D" parent="Name" unique_id=360675679]
+scale = Vector2(0.0621, 0.0621)
+texture = ExtResource("4_043ys")
+
+[node name="NameLabel" type="Path2D" parent="Name" unique_id=1445983592]
+scale = Vector2(0.50025, 0.50025)
+curve = SubResource("Curve2D_7c4lv")
+script = ExtResource("2_b1nxn")
+text = "随从的名字长长"
+label_settings = SubResource("LabelSettings_cg5m7")
+
+[node name="DescriptionLabel" type="Label" parent="." unique_id=1402052083]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = 136.0
+offset_right = 238.0
+offset_bottom = 387.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -2
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 32
+text = "这是一张牌
+这是第二行"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="." unique_id=1731236411]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -450.0
+offset_right = 300.0
+offset_bottom = 454.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_0i16n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1ioyl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_k76xk")
+
+[node name="Stats" type="Control" parent="." unique_id=1275587402]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -400.0
+offset_right = 250.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Health" type="Control" parent="Stats" unique_id=1274517719]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(2.08, 2.08)
+mouse_filter = 2
+
+[node name="HealthSprite" type="Sprite2D" parent="Stats/Health" unique_id=1263917072]
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("10_cg5m7")
+
+[node name="HealthLabelControl" type="Control" parent="Stats/Health" unique_id=1376326496]
+layout_mode = 1
+anchor_left = 0.125
+anchor_top = 0.8
+anchor_right = 0.125
+anchor_bottom = 0.8
+mouse_filter = 2
+
+[node name="HealthLabel" type="Label" parent="Stats/Health/HealthLabelControl" unique_id=1127031885]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -34.5
+offset_right = 14.5
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2592735, 0.99999994, 0.24916145, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 50
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Attack" type="Control" parent="Stats" unique_id=1867170715]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+scale = Vector2(2.08, 2.08)
+mouse_filter = 2
+
+[node name="AttackSprite" type="Sprite2D" parent="Stats/Attack" unique_id=1107319370]
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("11_0kqof")
+
+[node name="AttackLabelControl" type="Control" parent="Stats/Attack" unique_id=206256157]
+layout_mode = 1
+anchor_left = 0.125
+anchor_top = 0.8
+anchor_right = 0.125
+anchor_bottom = 0.8
+mouse_filter = 2
+
+[node name="AttackLabel" type="Label" parent="Stats/Attack/AttackLabelControl" unique_id=201152192]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -34.5
+offset_right = 14.5
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.25882354, 1, 0.2509804, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 50
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

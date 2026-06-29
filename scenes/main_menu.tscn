@@ -1,0 +1,287 @@
+[gd_scene format=3 uid="uid://eef7snw8fal0"]
+
+[ext_resource type="Script" uid="uid://cigoqj54h7nea" path="res://scripts/entity/main_menu/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://d26dwf11aegq1" path="res://assets/image/main_scene/background_shadow.png" id="2_ekxnf"]
+[ext_resource type="Script" uid="uid://6wcj2s62yjc8" path="res://scripts/entity/main_menu/manu_interaction_component.gd" id="3_wu84c"]
+[ext_resource type="FontFile" uid="uid://duyxc4txftnwp" path="res://assets/font/兰米汉隶_爱给网_aigei_com.ttf" id="4_wu84c"]
+[ext_resource type="Script" uid="uid://chbyt4frtnlyh" path="res://scripts/entity/main_menu/menu_saves_component.gd" id="5_8ln24"]
+[ext_resource type="Script" uid="uid://cl8dfbc45q2q3" path="res://scripts/entity/main_menu/menu_save_list_component.gd" id="6_rtw2f"]
+[ext_resource type="Script" uid="uid://c1wcntqg87aja" path="res://scripts/entity/main_menu/menu_save_info_display_component.gd" id="7_oa1go"]
+
+[node name="MainMenu" type="Control" unique_id=505277659]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_l6cm7")
+
+[node name="BackGround" type="Control" parent="." unique_id=1929413067]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackGroundSprite" type="Sprite2D" parent="BackGround" unique_id=1306402756]
+position = Vector2(0, 4)
+scale = Vector2(1.395, 1.31)
+skew = -0.02094395
+texture = ExtResource("2_ekxnf")
+
+[node name="Interaction" type="Control" parent="." unique_id=354478593]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_wu84c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Interaction" unique_id=2060947187]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 200
+
+[node name="Start" type="Control" parent="Interaction/VBoxContainer" unique_id=1122960207]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="Interaction/VBoxContainer/Start" unique_id=1740732014]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -56.75
+offset_right = 134.0
+offset_bottom = 56.75
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartLabel" type="Label" parent="Interaction/VBoxContainer/Start" unique_id=1807049272]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.5
+offset_right = 32.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_wu84c")
+theme_override_font_sizes/font_size = 64
+text = "新游戏"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Save" type="Control" parent="Interaction/VBoxContainer" unique_id=465497823]
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="Interaction/VBoxContainer/Save" unique_id=72397738]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -56.75
+offset_right = 134.0
+offset_bottom = 56.75
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SaveLabel" type="Label" parent="Interaction/VBoxContainer/Save" unique_id=1378508502]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.5
+offset_right = 32.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_wu84c")
+theme_override_font_sizes/font_size = 64
+text = "加载存档"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Saves" type="Control" parent="." unique_id=1662326910]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_8ln24")
+
+[node name="BackgroundPanel" type="Panel" parent="Saves" unique_id=2113138055]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SaveList" type="Control" parent="Saves" unique_id=291783357]
+layout_mode = 1
+anchor_left = 0.25
+anchor_top = 0.5
+anchor_right = 0.25
+anchor_bottom = 0.5
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_rtw2f")
+
+[node name="Panel" type="Panel" parent="Saves/SaveList" unique_id=706660906]
+layout_mode = 0
+offset_left = -178.0
+offset_top = -507.0
+offset_right = 159.0
+offset_bottom = 602.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Saves/SaveList" unique_id=1189962930]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -411.0
+offset_right = -9.0
+offset_bottom = -211.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 150
+
+[node name="DescriptionLabel" type="Label" parent="Saves/SaveList" unique_id=698252920]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -599.0
+offset_right = 128.0
+offset_bottom = -535.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_wu84c")
+theme_override_font_sizes/font_size = 64
+text = "存档列表"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SaveInfoDisplay" type="Control" parent="Saves" unique_id=234448476]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_oa1go")
+
+[node name="Panel" type="Panel" parent="Saves/SaveInfoDisplay" unique_id=1235269238]
+layout_mode = 0
+offset_left = -430.0
+offset_top = -507.0
+offset_right = 870.0
+offset_bottom = 602.0
+mouse_filter = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Saves/SaveInfoDisplay/Panel" unique_id=1298581097]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Saves/SaveInfoDisplay/Panel/ScrollContainer" unique_id=637265753]
+layout_mode = 2
+theme_override_constants/separation = 400
+
+[node name="LoadButton" type="Button" parent="Saves" unique_id=1413163821]
+layout_mode = 0
+offset_left = 1884.0
+offset_top = 1206.0
+offset_right = 2152.0
+offset_bottom = 1319.5
+
+[node name="LoadLabel" type="Label" parent="Saves" unique_id=1309064153]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 616.0
+offset_top = 507.0
+offset_right = 872.0
+offset_bottom = 571.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_wu84c")
+theme_override_font_sizes/font_size = 64
+text = "加载存档"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="Button" parent="Saves" unique_id=1874825520]
+layout_mode = 0
+offset_left = 1884.0
+offset_top = 80.0
+offset_right = 2152.0
+offset_bottom = 193.5
+
+[node name="ExitLabel" type="Label" parent="Saves" unique_id=1852495879]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 609.0
+offset_top = -614.0
+offset_right = 865.0
+offset_bottom = -550.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_wu84c")
+theme_override_font_sizes/font_size = 64
+text = "离开"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_up" from="Interaction/VBoxContainer/Start/StartButton" to="Interaction" method="_on_start_button_button_up"]
+[connection signal="button_up" from="Interaction/VBoxContainer/Save/SaveButton" to="Interaction" method="_on_save_button_button_up"]
+[connection signal="button_up" from="Saves/LoadButton" to="Saves" method="_on_load_button_button_up"]
+[connection signal="button_up" from="Saves/ExitButton" to="Saves" method="_on_exit_button_button_up"]

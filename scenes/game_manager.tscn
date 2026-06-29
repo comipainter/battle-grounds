@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://lec1rlv4c8jt"]
+
+[ext_resource type="Script" uid="uid://buijd4aqa5kpk" path="res://scripts/autoloads/game_manager.gd" id="1_hwd4i"]
+[ext_resource type="Script" uid="uid://c2e3sj3r1sopv" path="res://scripts/autoloads/input_manager.gd" id="2_glms7"]
+
+[node name="GameManager" type="Control" unique_id=1080266152]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_hwd4i")
+
+[node name="InputManager" type="Control" parent="." unique_id=150956437]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_glms7")

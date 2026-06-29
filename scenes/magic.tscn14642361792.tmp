@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://e1agqjq8krsy"]
+
+[ext_resource type="Script" uid="uid://cc3hc0s2hitrd" path="res://scripts/entity/card/magic.gd" id="1_0f2g5"]
+[ext_resource type="Script" uid="uid://c2pde6ix4twiv" path="res://scripts/entity/card/component/card/card_move_component.gd" id="1_788o1"]
+[ext_resource type="Script" uid="uid://bslmb76qshnv1" path="res://scripts/entity/card/component/card/card_interaction_component.gd" id="2_0f2g5"]
+[ext_resource type="Script" uid="uid://2td0s1uactcp" path="res://scripts/entity/card/component/magic/info/magic_background_component.gd" id="2_87hvv"]
+[ext_resource type="Texture2D" uid="uid://d4fshomsftd83" path="res://assets/image/magic/magic_scene/background.png" id="3_87hvv"]
+[ext_resource type="Shader" uid="uid://dej1yowv3uji0" path="res://scripts/shader/magic.gdshader" id="3_hug0r"]
+[ext_resource type="Texture2D" uid="uid://c4ax7b8tg8dw6" path="res://assets/image/magic/三连奖励.png" id="4_wwhys"]
+[ext_resource type="Script" uid="uid://dualvxmgi615h" path="res://scripts/entity/card/component/magic/info/magic_cost_component.gd" id="6_a718x"]
+[ext_resource type="Texture2D" uid="uid://cgg40y1hejxg2" path="res://assets/image/magic/magic_scene/coin.png" id="6_wwhys"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fggut"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_87hvv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mgv3p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hug0r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wwhys"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a718x"]
+shader = ExtResource("3_hug0r")
+shader_parameter/_ArchHeight = 0.2000000095
+shader_parameter/_ArchCurve = 0.5
+shader_parameter/_SideMaskWidth = 0.1250000059375
+shader_parameter/_BottomTrim = 0.10000000475
+
+[node name="Magic" type="Node2D" unique_id=204923493 groups=["card", "magic"]]
+script = ExtResource("1_0f2g5")
+
+[node name="Button" type="Button" parent="." unique_id=1240071472]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -140.0
+offset_right = 105.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fggut")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_87hvv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mgv3p")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_hug0r")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wwhys")
+
+[node name="MagicComponent" type="Control" parent="." unique_id=1222183766]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -140.0
+offset_right = 105.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Background" type="Control" parent="MagicComponent" unique_id=1129804744]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_87hvv")
+
+[node name="MagicSprite" type="Sprite2D" parent="MagicComponent/Background" unique_id=213538597]
+material = SubResource("ShaderMaterial_a718x")
+scale = Vector2(0.215, 0.215)
+texture = ExtResource("4_wwhys")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="MagicComponent/Background" unique_id=835070526]
+position = Vector2(4, -33)
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("3_87hvv")
+
+[node name="Cost" type="Control" parent="MagicComponent" unique_id=1826696044]
+layout_mode = 1
+anchor_top = 0.2
+anchor_bottom = 0.2
+script = ExtResource("6_a718x")
+metadata/_edit_use_anchors_ = true
+
+[node name="CoinSprite" type="Sprite2D" parent="MagicComponent/Cost" unique_id=882486468]
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("6_wwhys")
+
+[node name="CostLabel" type="Label" parent="MagicComponent/Cost" unique_id=1415221319]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.5
+offset_top = -27.5
+offset_right = 11.5
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 50
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardMoveComponent" type="Control" parent="." unique_id=59054888]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_788o1")
+
+[node name="CardInteractionComponent" type="Control" parent="." unique_id=1357671746]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("2_0f2g5")
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
