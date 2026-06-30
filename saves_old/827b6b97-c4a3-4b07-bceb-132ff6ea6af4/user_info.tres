@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="UserInfo" format=3]
+
+[ext_resource type="Script" path="res://scripts/pojo/user/user_info.gd" id="1_ltxoq"]
+
+[resource]
+script = ExtResource("1_ltxoq")
+id = "827b6b97-c4a3-4b07-bceb-132ff6ea6af4"
