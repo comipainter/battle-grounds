@@ -1,0 +1,420 @@
+[gd_scene format=3 uid="uid://8r8ekcd0153o"]
+
+[ext_resource type="Texture2D" uid="uid://ceyqe8277lr58" path="res://assets/image/main_scene/card/background.png" id="1_7n1am"]
+[ext_resource type="Script" uid="uid://c6ro2fioyvx51" path="res://scripts/entity/card/minion.gd" id="1_ll15l"]
+[ext_resource type="Texture2D" uid="uid://by7judimyu3x4" path="res://assets/image/main_scene/card/clock.png" id="2_1ddg2"]
+[ext_resource type="Texture2D" uid="uid://b8r2wy6h7hgia" path="res://assets/image/main_scene/card/Blood.png" id="2_y8etf"]
+[ext_resource type="Script" uid="uid://dj2qo6wwmh5q6" path="res://scripts/entity/card/component/minion/info/minion_keyword_component.gd" id="3_8f5at"]
+[ext_resource type="Texture2D" uid="uid://b4tmif20ccpu2" path="res://assets/image/main_scene/card/Attack.png" id="3_b4arb"]
+[ext_resource type="Script" uid="uid://ecd04ycxv4x8" path="res://scripts/entity/card/component/minion/info/minion_stats_component.gd" id="3_jmqb8"]
+[ext_resource type="Script" uid="uid://cgqyh4ejxp503" path="res://scripts/entity/card/component/minion/info/minion_counter_component.gd" id="3_sifpr"]
+[ext_resource type="Script" uid="uid://jkck32pvtpag" path="res://scripts/entity/card/component/minion/minion_background_component.gd" id="5_o6cm8"]
+[ext_resource type="Script" uid="uid://c2pde6ix4twiv" path="res://scripts/entity/card/component/card/card_move_component.gd" id="5_qqrhl"]
+[ext_resource type="Script" uid="uid://dkt4wnywnngpe" path="res://scripts/entity/card/component/minion/info/minion_clock_component.gd" id="6_m3j7i"]
+[ext_resource type="Script" uid="uid://bslmb76qshnv1" path="res://scripts/entity/card/component/card/card_interaction_component.gd" id="7_cnthb"]
+[ext_resource type="Script" uid="uid://bkqtkebw81av" path="res://scripts/entity/card/component/minion/info/minion_click_component.gd" id="8_s41o6"]
+[ext_resource type="Script" uid="uid://dd2li8es7ll24" path="res://scripts/entity/card/component/minion/info/minion_boost_counter_component.gd" id="12_8f5at"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cnthb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8f5at"]
+
+[sub_resource type="Gradient" id="Gradient_sifpr"]
+offsets = PackedFloat32Array(0, 0.509915, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8f5at"]
+gradient = SubResource("Gradient_sifpr")
+width = 1
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_wou5g"]
+colors = PackedColorArray(1, 1, 1, 0.11372549, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2cjdi"]
+gradient = SubResource("Gradient_wou5g")
+
+[sub_resource type="Gradient" id="Gradient_2cjdi"]
+offsets = PackedFloat32Array(0, 0.40418118, 0.72125435)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6nvma"]
+gradient = SubResource("Gradient_2cjdi")
+
+[sub_resource type="Curve" id="Curve_85dma"]
+_limits = [-100.0, 95.80339, 0.0, 1.0]
+_data = [Vector2(0, 1.4920578), 0.0, 0.0, 0, 0, Vector2(0.09846153, 23.626358), 0.0, 0.0, 0, 0, Vector2(0.24307692, -23.529312), 0.0, 0.0, 0, 0, Vector2(0.35384616, 31.325241), 0.0, 0.0, 0, 0, Vector2(0.48923075, -37.96472), 0.0, 0.0, 0, 0, Vector2(0.60615385, 45.76065), 0.0, 0.0, 0, 0, Vector2(0.75384617, -65.873184), 0.0, 0.0, 0, 0, Vector2(0.8646154, 68.8573), 0.0, 0.0, 0, 0, Vector2(1, -33.152924), 0.0, 0.0, 0, 0]
+point_count = 9
+
+[sub_resource type="CurveTexture" id="CurveTexture_k67ok"]
+curve = SubResource("Curve_85dma")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6nvma"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(50, 100, 1)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+gravity = Vector3(40, 2, 0)
+tangential_accel_min = -2.2351742e-06
+tangential_accel_max = 2.0899978
+tangential_accel_curve = SubResource("CurveTexture_k67ok")
+scale_min = 4.0
+scale_max = 8.0
+color_ramp = SubResource("GradientTexture1D_6nvma")
+color_initial_ramp = SubResource("GradientTexture1D_2cjdi")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o6cm8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m3j7i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s41o6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o6cm8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jmqb8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sifpr"]
+
+[node name="Minion" type="Node2D" unique_id=161689371]
+script = ExtResource("1_ll15l")
+
+[node name="MinionComponent" type="Control" parent="." unique_id=1428548329]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -140.0
+offset_right = 105.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Control" parent="MinionComponent" unique_id=635141842]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_o6cm8")
+
+[node name="MinionSprite2" type="Sprite2D" parent="MinionComponent/Background" unique_id=139160191]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_cnthb")
+position = Vector2(96.00001, 128)
+scale = Vector2(0.22222222, 0.22222222)
+
+[node name="MinionSprite" type="Sprite2D" parent="MinionComponent/Background" unique_id=1264050649]
+material = SubResource("ShaderMaterial_cnthb")
+position = Vector2(96, 127.999985)
+scale = Vector2(0.22222222, 0.22222222)
+
+[node name="GoldenBackgroundSprite" type="Sprite2D" parent="MinionComponent/Background" unique_id=2048980008]
+material = SubResource("ShaderMaterial_8f5at")
+position = Vector2(96, 128.00002)
+scale = Vector2(0.14723925, 0.13913043)
+
+[node name="BackgroundSprite" type="Sprite2D" parent="MinionComponent/Background" unique_id=767979981]
+position = Vector2(3, 0)
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("1_7n1am")
+
+[node name="Click" type="Control" parent="MinionComponent" unique_id=1235258358]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 85.0
+offset_top = 120.0
+offset_right = 85.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_s41o6")
+
+[node name="ClickSprite" type="Sprite2D" parent="MinionComponent/Click" unique_id=454431627]
+
+[node name="ClickRegion" type="Control" parent="MinionComponent/Click" unique_id=2110025827]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -28.0
+offset_right = 28.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Clock" type="Control" parent="MinionComponent" unique_id=335725529]
+layout_mode = 1
+anchor_left = 0.875
+anchor_top = 0.1
+anchor_right = 0.875
+anchor_bottom = 0.1
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_m3j7i")
+
+[node name="DialSprite" type="Sprite2D" parent="MinionComponent/Clock" unique_id=2085598954]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_1ddg2")
+
+[node name="PointerSprite" type="Sprite2D" parent="MinionComponent/Clock" unique_id=528317309]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_1ddg2")
+
+[node name="Stats" type="Control" parent="MinionComponent" unique_id=1756200953]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_jmqb8")
+
+[node name="Health" type="Control" parent="MinionComponent/Stats" unique_id=1487834170]
+layout_mode = 1
+anchor_left = 0.875
+anchor_top = 0.8
+anchor_right = 0.875
+anchor_bottom = 0.8
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthSprite" type="Sprite2D" parent="MinionComponent/Stats/Health" unique_id=788283125]
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("2_y8etf")
+
+[node name="HealthLabel" type="Label" parent="MinionComponent/Stats/Health" unique_id=459356402]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.5
+offset_top = -27.5
+offset_right = 11.5
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2592735, 0.99999994, 0.24916145, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 50
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Attack" type="Control" parent="MinionComponent/Stats" unique_id=1897188496]
+layout_mode = 1
+anchor_left = 0.125
+anchor_top = 0.8
+anchor_right = 0.125
+anchor_bottom = 0.8
+
+[node name="AttackSprite" type="Sprite2D" parent="MinionComponent/Stats/Attack" unique_id=2066978268]
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("3_b4arb")
+
+[node name="AttackLabel" type="Label" parent="MinionComponent/Stats/Attack" unique_id=1906363349]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -27.0
+offset_right = 12.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.25882354, 1, 0.2509804, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 50
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Counter" type="Control" parent="MinionComponent" unique_id=1194738309]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 85.0
+offset_top = 240.0
+offset_right = 85.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("3_sifpr")
+
+[node name="CounterLabel" type="Label" parent="MinionComponent/Counter" unique_id=376425698]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -21.0
+offset_right = 0.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Keyword" type="Control" parent="MinionComponent" unique_id=373510273]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_8f5at")
+
+[node name="Shengdun" type="Control" parent="MinionComponent/Keyword" unique_id=243840761]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShengdunSprite" type="Sprite2D" parent="MinionComponent/Keyword/Shengdun" unique_id=1285835466]
+position = Vector2(95.999985, 128)
+scale = Vector2(0.184, 0.174)
+
+[node name="Fengnu" type="Control" parent="MinionComponent/Keyword" unique_id=485662641]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+
+[node name="FengnuParticles" type="GPUParticles2D" parent="MinionComponent/Keyword/Fengnu" unique_id=1480993085]
+amount = 7
+texture = SubResource("GradientTexture2D_8f5at")
+lifetime = 3.0
+preprocess = 1.0
+randomness = 1.0
+fixed_fps = 120
+local_coords = true
+trail_enabled = true
+trail_lifetime = 0.7
+process_material = SubResource("ParticleProcessMaterial_6nvma")
+
+[node name="ChaoFeng" type="Control" parent="MinionComponent/Keyword" unique_id=749382007]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ChaofengSprite" type="Sprite2D" parent="MinionComponent/Keyword/ChaoFeng" unique_id=94566745]
+scale = Vector2(0.385, 0.385)
+offset = Vector2(3.8146973e-05, 3.0517578e-05)
+
+[node name="BoostCounter" type="Control" parent="MinionComponent" unique_id=909303082]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.15
+anchor_right = 0.5
+anchor_bottom = 0.15
+script = ExtResource("12_8f5at")
+
+[node name="BoostCounterLabel" type="Label" parent="MinionComponent/BoostCounter" unique_id=749445747]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -14.0
+offset_right = 20.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 20
+vertical_alignment = 1
+
+[node name="BoostCounterSprite" type="Sprite2D" parent="MinionComponent/BoostCounter" unique_id=847840971]
+visible = false
+material = SubResource("ShaderMaterial_o6cm8")
+position = Vector2(-42, -2)
+scale = Vector2(0.17187499, 0.15625006)
+
+[node name="CardMoveComponent" type="Control" parent="." unique_id=212668067]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_qqrhl")
+
+[node name="CardInteractionComponent" type="Control" parent="." unique_id=1380852345]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("7_cnthb")
+
+[node name="AnimationFather" type="Control" parent="." unique_id=161722300]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+
+[node name="MinionFather" type="Control" parent="." unique_id=1116424169]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Button" type="Button" parent="." unique_id=1360687004]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -140.0
+offset_right = 105.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m3j7i")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_s41o6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o6cm8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jmqb8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sifpr")
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

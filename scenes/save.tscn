@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bgd735jgyia6f"]
+
+[ext_resource type="Script" uid="uid://d36rkq0kcfm3q" path="res://scripts/entity/main_menu/save_component.gd" id="1_r5a0y"]
+[ext_resource type="FontFile" uid="uid://duyxc4txftnwp" path="res://assets/font/兰米汉隶_爱给网_aigei_com.ttf" id="2_7obqq"]
+
+[node name="Save" type="Control" unique_id=1184677265]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r5a0y")
+
+[node name="Button" type="Button" parent="." unique_id=628232268]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -56.75
+offset_right = 134.0
+offset_bottom = 56.75
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=458812053]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.5
+offset_right = 32.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_7obqq")
+theme_override_font_sizes/font_size = 64
+text = "新游戏"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

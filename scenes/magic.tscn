@@ -1,0 +1,734 @@
+[gd_scene format=3 uid="uid://e1agqjq8krsy"]
+
+[ext_resource type="Script" uid="uid://cc3hc0s2hitrd" path="res://scripts/entity/card/magic.gd" id="1_0f2g5"]
+[ext_resource type="Script" uid="uid://c2pde6ix4twiv" path="res://scripts/entity/card/component/card/card_move_component.gd" id="1_788o1"]
+[ext_resource type="Script" uid="uid://bslmb76qshnv1" path="res://scripts/entity/card/component/card/card_interaction_component.gd" id="2_0f2g5"]
+[ext_resource type="Script" uid="uid://2td0s1uactcp" path="res://scripts/entity/card/component/magic/shop/magic_background_component.gd" id="2_87hvv"]
+[ext_resource type="Script" uid="uid://qck4ebtxoptx" path="res://scripts/entity/card/component/card/card_shadow_component.gd" id="2_dqvvf"]
+[ext_resource type="Texture2D" uid="uid://d4fshomsftd83" path="res://assets/image/magic/magic_scene/background.png" id="3_87hvv"]
+[ext_resource type="Shader" uid="uid://dej1yowv3uji0" path="res://scripts/shader/magic.gdshader" id="3_hug0r"]
+[ext_resource type="Script" uid="uid://dhpi5yxx0xsv1" path="res://scripts/entity/card/component/magic/vfx/magic_vfx_component.gd" id="4_a4rr1"]
+[ext_resource type="Shader" uid="uid://bab6ixe8k8448" path="res://scripts/shader/magic_vfx_shop.gdshader" id="5_a4rr1"]
+[ext_resource type="Script" uid="uid://dualvxmgi615h" path="res://scripts/entity/card/component/magic/shop/magic_cost_component.gd" id="6_a718x"]
+[ext_resource type="Shader" uid="uid://ckle6y8h01m7q" path="res://scripts/shader/magic_vfx_hand.gdshader" id="6_va57s"]
+[ext_resource type="Texture2D" uid="uid://cgg40y1hejxg2" path="res://assets/image/magic/magic_scene/coin.png" id="6_wwhys"]
+[ext_resource type="Script" uid="uid://dulu21vbep7g" path="res://scripts/entity/shop/area_component.gd" id="7_18nbi"]
+[ext_resource type="Script" uid="uid://c4m7slyifg3m5" path="res://scripts/entity/card/component/magic/shop/magic_shop_info_component.gd" id="7_u87lm"]
+[ext_resource type="Shader" uid="uid://dwk3p0x7tg71v" path="res://scripts/shader/card_shadow.gdshader" id="11_u87lm"]
+[ext_resource type="Script" uid="uid://24dmhhtfhj5r" path="res://scripts/entity/card/component/card/card_level_component.gd" id="13_3kvjr"]
+[ext_resource type="Texture2D" uid="uid://3qhs8h8l4jff" path="res://assets/image/card/level_background.png" id="14_dl3kk"]
+[ext_resource type="Texture2D" uid="uid://db0tqclqlv3jj" path="res://assets/image/card/star.png" id="15_v4pbq"]
+[ext_resource type="Script" uid="uid://diae4yfwn5bnq" path="res://scripts/entity/card/component/magic/hand/magic_hand_info_component.gd" id="16_dl3kk"]
+[ext_resource type="Shader" uid="uid://bjo7643w37rt2" path="res://scripts/shader/magic_hand_background.gdshader" id="17_7n0yr"]
+[ext_resource type="Texture2D" uid="uid://b2k32exxfdfrf" path="res://assets/image/magic/古神的祝福.png" id="17_qewq2"]
+[ext_resource type="Texture2D" uid="uid://d3bsuxitjs212" path="res://assets/image/magic/magic_scene/magic_hand_background.png" id="17_v4pbq"]
+[ext_resource type="Texture2D" uid="uid://joissy3yr3n" path="res://assets/image/magic/magic_scene/magic_hand_name.png" id="19_isol1"]
+[ext_resource type="Script" uid="uid://daplf80w24ye5" path="res://scripts/entity/card/component/magic/hand/magic_hand_name_component.gd" id="19_s4d4t"]
+[ext_resource type="Script" uid="uid://byjy5wtt8mvu5" path="res://scripts/entity/card/component/common/hand_name_label.gd" id="20_3m8bx"]
+[ext_resource type="FontFile" uid="uid://duyxc4txftnwp" path="res://assets/font/兰米汉隶_爱给网_aigei_com.ttf" id="20_isol1"]
+[ext_resource type="Script" uid="uid://dn7lrehi7gmqa" path="res://scripts/entity/card/component/magic/hand/magic_hand_description_component.gd" id="22_j7437"]
+[ext_resource type="Script" uid="uid://cmgi3g0qfmpf5" path="res://scripts/entity/card/component/card/card_animation_component.gd" id="28_jimm2"]
+[ext_resource type="Shader" uid="uid://ncoge4mtc0el" path="res://scripts/shader/magic_resolve.gdshader" id="29_5eebe"]
+[ext_resource type="Script" uid="uid://c3pri67t8w22w" path="res://scripts/entity/card/component/magic/animation/magic_viewport_component.gd" id="30_42jmn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_10r7q"]
+resource_local_to_scene = true
+shader = ExtResource("11_u87lm")
+shader_parameter/shadow_color = Color(0, 0, 0, 0.6)
+shader_parameter/shadow_offset = Vector2(20, 20)
+shader_parameter/shadow_blur = 20.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_va57s"]
+resource_local_to_scene = true
+shader = ExtResource("5_a4rr1")
+shader_parameter/_ArchHeight = 0.69600003306
+shader_parameter/_ArchTopHeight = 0.610000028975
+shader_parameter/_ArchWidth = 0.24400001159
+shader_parameter/_ArchCurve = 1.230000034675
+shader_parameter/_LeftSideX = 0.2000000095
+shader_parameter/_LeftSideSlope = 0.1780002459550003
+shader_parameter/_RightSideX = 0.7750000368125
+shader_parameter/_RightSideSlope = -0.13999976915000012
+shader_parameter/_BottomTrim = 0.314000014915
+shader_parameter/_GlowColor = Color(0.03529412, 0.8, 0.6784314, 1)
+shader_parameter/_GlowIntensity = 1.50000007125
+shader_parameter/_GlowFalloff = 100.0
+shader_parameter/_PulseSpeed = 4.00000019
+shader_parameter/_PulseAmount = 0.400000019
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jimm2"]
+resource_local_to_scene = true
+shader = ExtResource("6_va57s")
+shader_parameter/_Left = 0.3250000154375
+shader_parameter/_Right = 0.6850000325375
+shader_parameter/_Top = 0.30000001425
+shader_parameter/_Bottom = 0.70000003325
+shader_parameter/_GlowColor = Color(0.03529412, 0.8, 0.6784314, 1)
+shader_parameter/_GlowIntensity = 1.5
+shader_parameter/_GlowFalloff = 30.0
+shader_parameter/_InnerBrightness = 1.0
+shader_parameter/_PulseSpeed = 4.00000019
+shader_parameter/_PulseAmount = 0.050000002375
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a718x"]
+resource_local_to_scene = true
+shader = ExtResource("3_hug0r")
+shader_parameter/_ArchHeight = 0.2000000095
+shader_parameter/_ArchCurve = 0.5
+shader_parameter/_SideMaskWidth = 0.1250000059375
+shader_parameter/_BottomTrim = 0.10000000475
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_18nbi"]
+shader = ExtResource("17_7n0yr")
+shader_parameter/crop_top = 0.150000007125
+shader_parameter/crop_bottom = 0.150000007125
+
+[sub_resource type="Curve2D" id="Curve2D_7n0yr"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -180, 34, -9.475718, 1.845919, 9.475718, -1.845919, -120, 16, 0, 0, 0, 0, -60, 6, 0, 0, 0, 0, -20, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 2, 0, 0, 0, 0, 60, 6, -13.401374, -3.5195527, 13.401374, 3.5195527, 122, 18, 0, 0, 0, 0, 180, 40)
+}
+point_count = 9
+
+[sub_resource type="LabelSettings" id="LabelSettings_j7437"]
+resource_local_to_scene = true
+font = ExtResource("20_isol1")
+font_size = 48
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4rr1"]
+size = Vector2(210, 290)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jimm2"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5eebe"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_42jmn"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_42jmn"]
+resource_local_to_scene = true
+shader = ExtResource("29_5eebe")
+shader_parameter/ellipse_center = Vector2(0.5, 0.5)
+shader_parameter/ellipse_scale_x = 1.0
+shader_parameter/ellipse_scale_y = 1.0
+shader_parameter/global_scale = 1.0
+shader_parameter/edge_feather = 0.1
+shader_parameter/enable_wave = false
+shader_parameter/wave_speed = 3.0000001425
+shader_parameter/wave_frequency = 50.0000019
+shader_parameter/wave_amplitude = 0.0050000002375
+shader_parameter/wave_tint = Color(0.5, 0.7, 1, 1)
+shader_parameter/wave_tint_intensity = 0.3
+shader_parameter/wave_overlay = Color(1, 1, 1, 1)
+shader_parameter/wave_overlay_intensity = 0.30000001425
+shader_parameter/enable_dissolve = false
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/dissolve_edge_color = Color(1, 0.5, 0, 1)
+shader_parameter/dissolve_edge_width = 0.08
+
+[node name="Magic" type="Node2D" unique_id=204923493 groups=["card", "magic"]]
+script = ExtResource("1_0f2g5")
+
+[node name="CardShadowComponent" type="Control" parent="." unique_id=1002374743]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_dqvvf")
+shadow_color = Color(0, 0, 0, 0.3019608)
+
+[node name="ShadowSprite" type="Sprite2D" parent="CardShadowComponent" unique_id=870420492]
+material = SubResource("ShaderMaterial_10r7q")
+scale = Vector2(1.025, 1.025)
+
+[node name="MagicVfx" type="Control" parent="." unique_id=9354579]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("4_a4rr1")
+
+[node name="Shop" type="Control" parent="MagicVfx" unique_id=1964286147]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="MagicVfx/Shop" unique_id=1932222174]
+material = SubResource("ShaderMaterial_va57s")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -280.0
+offset_right = 210.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Hand" type="Control" parent="MagicVfx" unique_id=1433767323]
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="MagicVfx/Hand" unique_id=324481278]
+material = SubResource("ShaderMaterial_jimm2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -280.0
+offset_right = 212.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MagicInfo" type="Control" parent="." unique_id=748994735]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -140.0
+offset_right = 105.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MagicInfo" unique_id=184772211]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -200.0
+offset_right = 150.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="MagicInfo/SubViewportContainer" unique_id=12728839]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(300, 400)
+render_target_update_mode = 4
+
+[node name="ShopMagicInfo" type="Control" parent="MagicInfo/SubViewportContainer/SubViewport" unique_id=1222183766]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -140.0
+offset_right = 105.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_u87lm")
+
+[node name="Background" type="Control" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo" unique_id=1129804744]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_87hvv")
+
+[node name="MagicSprite" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Background" unique_id=213538597]
+material = SubResource("ShaderMaterial_a718x")
+scale = Vector2(0.215, 0.215)
+texture = ExtResource("17_qewq2")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Background" unique_id=835070526]
+position = Vector2(4, -33)
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("3_87hvv")
+
+[node name="Cost" type="Control" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo" unique_id=1826696044]
+layout_mode = 1
+anchor_top = 0.2
+anchor_bottom = 0.2
+script = ExtResource("6_a718x")
+metadata/_edit_use_anchors_ = true
+
+[node name="CoinSprite" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Cost" unique_id=882486468]
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("6_wwhys")
+
+[node name="CostLabel" type="Label" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Cost" unique_id=1415221319]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.5
+offset_top = -27.5
+offset_right = 11.5
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 50
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level" type="Control" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo" unique_id=1526880714]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+script = ExtResource("13_3kvjr")
+
+[node name="LevelBackgroundSprite" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level" unique_id=2116882858]
+position = Vector2(0, 3.54)
+scale = Vector2(0.41, 0.41)
+texture = ExtResource("14_dl3kk")
+
+[node name="Level1" type="Control" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level" unique_id=1282555495]
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level/Level1" unique_id=718780017]
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("15_v4pbq")
+
+[node name="Level2" type="Control" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level" unique_id=1009659707]
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level/Level2" unique_id=20955980]
+position = Vector2(14.645, 0)
+scale = Vector2(0.014, 0.014)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite2" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level/Level2" unique_id=1558229435]
+position = Vector2(-14.645, 0)
+scale = Vector2(0.014, 0.014)
+texture = ExtResource("15_v4pbq")
+
+[node name="Level3" type="Control" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level" unique_id=2078276217]
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level/Level3" unique_id=1060514678]
+position = Vector2(14.645, 8.93)
+scale = Vector2(0.014, 0.014)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite2" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level/Level3" unique_id=2014166198]
+position = Vector2(-14.645, 8.93)
+scale = Vector2(0.014, 0.014)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite3" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level/Level3" unique_id=1903629406]
+position = Vector2(0, -14.465)
+scale = Vector2(0.014, 0.014)
+texture = ExtResource("15_v4pbq")
+
+[node name="Level4" type="Control" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level" unique_id=1458214235]
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level/Level4" unique_id=95198034]
+position = Vector2(13.645, 11.035)
+scale = Vector2(0.013, 0.013)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite2" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level/Level4" unique_id=1483871508]
+position = Vector2(-13.645, 11.035)
+scale = Vector2(0.013, 0.013)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite3" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level/Level4" unique_id=910650401]
+position = Vector2(13.645, -14.465)
+scale = Vector2(0.013, 0.013)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite4" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level/Level4" unique_id=1727058730]
+position = Vector2(-13.645, -14.465)
+scale = Vector2(0.013, 0.013)
+texture = ExtResource("15_v4pbq")
+
+[node name="Level5" type="Control" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level" unique_id=1293103397]
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level/Level5" unique_id=475120858]
+position = Vector2(15.5, 14)
+scale = Vector2(0.012, 0.012)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite2" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level/Level5" unique_id=1566059335]
+position = Vector2(-15.5, 14)
+scale = Vector2(0.012, 0.012)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite3" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level/Level5" unique_id=1957269786]
+position = Vector2(15.5, -21)
+scale = Vector2(0.012, 0.012)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite4" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level/Level5" unique_id=452873200]
+position = Vector2(-15.5, -21)
+scale = Vector2(0.012, 0.012)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite5" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level/Level5" unique_id=1142385101]
+position = Vector2(0, -2.79)
+scale = Vector2(0.012, 0.012)
+texture = ExtResource("15_v4pbq")
+
+[node name="Level6" type="Control" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level" unique_id=229680962]
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level/Level6" unique_id=1900972489]
+position = Vector2(11, 17)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite2" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level/Level6" unique_id=2053551804]
+position = Vector2(-11, 17)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite3" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level/Level6" unique_id=737936343]
+position = Vector2(11, -2)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite4" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level/Level6" unique_id=1096669922]
+position = Vector2(-11, -2)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite5" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level/Level6" unique_id=2033164364]
+position = Vector2(11, -22)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite6" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/ShopMagicInfo/Level/Level6" unique_id=420999427]
+position = Vector2(-11, -22)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("15_v4pbq")
+
+[node name="HandMagicInfo" type="Control" parent="MagicInfo/SubViewportContainer/SubViewport" unique_id=1092683437]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -140.0
+offset_right = 105.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("16_dl3kk")
+
+[node name="Background" type="Control" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo" unique_id=1911235505]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_87hvv")
+
+[node name="MagicSprite" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Background" unique_id=2076706400]
+material = SubResource("ShaderMaterial_18nbi")
+position = Vector2(1.695, -63.6)
+scale = Vector2(0.195, 0.126)
+texture = ExtResource("17_qewq2")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Background" unique_id=12089014]
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("17_v4pbq")
+
+[node name="Name" type="Control" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo" unique_id=464277939]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("19_s4d4t")
+
+[node name="NameSprite" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Name" unique_id=1046313157]
+position = Vector2(0, -3.945)
+scale = Vector2(0.325, 0.325)
+texture = ExtResource("19_isol1")
+
+[node name="NameLabel" type="Path2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Name" unique_id=499545794]
+scale = Vector2(0.5, 0.5)
+curve = SubResource("Curve2D_7n0yr")
+script = ExtResource("20_3m8bx")
+text = "法术的名字长长"
+label_settings = SubResource("LabelSettings_j7437")
+
+[node name="Description" type="Control" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo" unique_id=922557388]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.78
+anchor_right = 0.5
+anchor_bottom = 0.78
+script = ExtResource("22_j7437")
+
+[node name="DescriptionLabel" type="Label" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Description" unique_id=1186482975]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -30.399994
+offset_right = 76.0
+offset_bottom = 41.600006
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -2
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 16
+text = "这是一张牌
+这是第二行"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Level" type="Control" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo" unique_id=1620618278]
+layout_mode = 1
+anchor_left = 0.1
+anchor_top = 0.07
+anchor_right = 0.1
+anchor_bottom = 0.07
+grow_horizontal = 2
+scale = Vector2(0.755, 0.755)
+script = ExtResource("13_3kvjr")
+
+[node name="LevelBackgroundSprite" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level" unique_id=418882101]
+position = Vector2(0, 3.54)
+scale = Vector2(0.41, 0.41)
+texture = ExtResource("14_dl3kk")
+
+[node name="Level1" type="Control" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level" unique_id=2037325275]
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level/Level1" unique_id=1314686640]
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("15_v4pbq")
+
+[node name="Level2" type="Control" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level" unique_id=140171424]
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level/Level2" unique_id=1551643025]
+position = Vector2(14.645, 0)
+scale = Vector2(0.014, 0.014)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite2" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level/Level2" unique_id=411313339]
+position = Vector2(-14.645, 0)
+scale = Vector2(0.014, 0.014)
+texture = ExtResource("15_v4pbq")
+
+[node name="Level3" type="Control" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level" unique_id=1159363218]
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level/Level3" unique_id=515539828]
+position = Vector2(14.645, 8.93)
+scale = Vector2(0.014, 0.014)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite2" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level/Level3" unique_id=1401424023]
+position = Vector2(-14.645, 8.93)
+scale = Vector2(0.014, 0.014)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite3" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level/Level3" unique_id=1762059985]
+position = Vector2(0, -14.465)
+scale = Vector2(0.014, 0.014)
+texture = ExtResource("15_v4pbq")
+
+[node name="Level4" type="Control" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level" unique_id=1308371961]
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level/Level4" unique_id=1937086763]
+position = Vector2(13.645, 11.035)
+scale = Vector2(0.013, 0.013)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite2" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level/Level4" unique_id=123943302]
+position = Vector2(-13.645, 11.035)
+scale = Vector2(0.013, 0.013)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite3" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level/Level4" unique_id=816564965]
+position = Vector2(13.645, -14.465)
+scale = Vector2(0.013, 0.013)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite4" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level/Level4" unique_id=2077296881]
+position = Vector2(-13.645, -14.465)
+scale = Vector2(0.013, 0.013)
+texture = ExtResource("15_v4pbq")
+
+[node name="Level5" type="Control" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level" unique_id=2055858338]
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level/Level5" unique_id=2127860377]
+position = Vector2(15.5, 14)
+scale = Vector2(0.012, 0.012)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite2" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level/Level5" unique_id=744747237]
+position = Vector2(-15.5, 14)
+scale = Vector2(0.012, 0.012)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite3" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level/Level5" unique_id=1709220761]
+position = Vector2(15.5, -21)
+scale = Vector2(0.012, 0.012)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite4" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level/Level5" unique_id=1092633054]
+position = Vector2(-15.5, -21)
+scale = Vector2(0.012, 0.012)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite5" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level/Level5" unique_id=828215719]
+position = Vector2(0, -2.79)
+scale = Vector2(0.012, 0.012)
+texture = ExtResource("15_v4pbq")
+
+[node name="Level6" type="Control" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level" unique_id=2087364052]
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level/Level6" unique_id=118294788]
+position = Vector2(11, 17)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite2" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level/Level6" unique_id=1383572283]
+position = Vector2(-11, 17)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite3" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level/Level6" unique_id=138591438]
+position = Vector2(11, -2)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite4" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level/Level6" unique_id=156748056]
+position = Vector2(-11, -2)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite5" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level/Level6" unique_id=1923784015]
+position = Vector2(11, -22)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("15_v4pbq")
+
+[node name="StarSprite6" type="Sprite2D" parent="MagicInfo/SubViewportContainer/SubViewport/HandMagicInfo/Level/Level6" unique_id=455558502]
+position = Vector2(-11, -22)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("15_v4pbq")
+
+[node name="Move" type="Control" parent="." unique_id=59054888]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_788o1")
+
+[node name="Interaction" type="Node2D" parent="." unique_id=571888730]
+script = ExtResource("2_0f2g5")
+
+[node name="Area" type="Control" parent="Interaction" unique_id=1414775296]
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.8
+anchor_right = 0.5
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("7_18nbi")
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Interaction/Area" unique_id=1739973129]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction/Area/Area2D" unique_id=772843559]
+shape = SubResource("RectangleShape2D_a4rr1")
+
+[node name="Button" type="Button" parent="Interaction" unique_id=1281417942]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -160.0
+offset_right = 115.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_jimm2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5eebe")
+theme_override_styles/hover = SubResource("StyleBoxFlat_42jmn")
+
+[node name="Animation" type="Control" parent="." unique_id=1955020884]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("28_jimm2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Animation" unique_id=2107909502]
+material = SubResource("ShaderMaterial_42jmn")
+script = ExtResource("30_42jmn")
+
+[connection signal="input_event" from="Interaction/Area/Area2D" to="Interaction/Area" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Interaction/Area/Area2D" to="Interaction/Area" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Interaction/Area/Area2D" to="Interaction/Area" method="_on_area_2d_mouse_exited"]

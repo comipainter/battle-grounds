@@ -1,0 +1,363 @@
+[gd_scene format=3 uid="uid://5c3uwmtffaag"]
+
+[ext_resource type="Script" uid="uid://24dmhhtfhj5r" path="res://scripts/entity/card/component/card/card_level_component.gd" id="2_i552a"]
+[ext_resource type="Texture2D" uid="uid://b32ng7sqwg62m" path="res://assets/image/minion/不灭残荷.png" id="3_5e50s"]
+[ext_resource type="Texture2D" uid="uid://3qhs8h8l4jff" path="res://assets/image/card/level_background.png" id="3_35c3p"]
+[ext_resource type="Texture2D" uid="uid://db0tqclqlv3jj" path="res://assets/image/card/star.png" id="4_i3w47"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_osafq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_su3jf"]
+bg_color = Color(0.6, 0.6, 0.6, 0.78431374)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0.8627451)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uyd81"]
+
+[node name="MinionInfoDisplay" type="Control" unique_id=593908175]
+material = SubResource("ShaderMaterial_osafq")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2560.0
+offset_bottom = -1440.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=1914012810]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -108.0
+offset_top = -192.0
+offset_right = 108.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(108, 192)
+theme_override_styles/panel = SubResource("StyleBoxFlat_su3jf")
+
+[node name="MinionSprite2" type="Sprite2D" parent="Panel" unique_id=1874334897]
+material = SubResource("ShaderMaterial_uyd81")
+position = Vector2(108, 136)
+scale = Vector2(0.195, 0.195)
+
+[node name="MinionSprite" type="Sprite2D" parent="Panel" unique_id=248459294]
+material = SubResource("ShaderMaterial_uyd81")
+position = Vector2(108, 136)
+scale = Vector2(0.195, 0.195)
+texture = ExtResource("3_5e50s")
+
+[node name="Stats" type="Control" parent="Panel" unique_id=2125566233]
+anchors_preset = 0
+offset_left = 92.0
+offset_top = 264.0
+offset_right = 132.0
+offset_bottom = 304.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Stats" unique_id=89591557]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 64.0
+theme_override_constants/separation = 45
+
+[node name="Attack" type="Control" parent="Panel/Stats/VBoxContainer" unique_id=1793486208]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/Stats/VBoxContainer/Attack" unique_id=2003317609]
+layout_mode = 0
+offset_left = -48.0
+offset_top = -3.0
+offset_right = 104.0
+offset_bottom = 25.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Stats/VBoxContainer/Attack/CenterContainer" unique_id=98165644]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Control" type="Control" parent="Panel/Stats/VBoxContainer/Attack/CenterContainer/HBoxContainer" unique_id=588585597]
+layout_mode = 2
+
+[node name="AttackSprite" type="Sprite2D" parent="Panel/Stats/VBoxContainer/Attack/CenterContainer/HBoxContainer/Control" unique_id=2114204335]
+position = Vector2(0, 28)
+scale = Vector2(0.069, 0.069)
+
+[node name="AttackLabel" type="Label" parent="Panel/Stats/VBoxContainer/Attack/CenterContainer/HBoxContainer" unique_id=704829359]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "10"
+vertical_alignment = 1
+
+[node name="Health" type="Control" parent="Panel/Stats/VBoxContainer" unique_id=1252481891]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/Stats/VBoxContainer/Health" unique_id=1268396977]
+layout_mode = 0
+offset_left = -48.0
+offset_top = -3.0
+offset_right = 104.0
+offset_bottom = 25.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Stats/VBoxContainer/Health/CenterContainer" unique_id=553602721]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Control" type="Control" parent="Panel/Stats/VBoxContainer/Health/CenterContainer/HBoxContainer" unique_id=1144411653]
+layout_mode = 2
+
+[node name="HealthSprite" type="Sprite2D" parent="Panel/Stats/VBoxContainer/Health/CenterContainer/HBoxContainer/Control" unique_id=31955174]
+position = Vector2(0, 28)
+scale = Vector2(0.056, 0.056)
+
+[node name="HealthLabel" type="Label" parent="Panel/Stats/VBoxContainer/Health/CenterContainer/HBoxContainer" unique_id=490919066]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "10"
+vertical_alignment = 1
+
+[node name="Level" type="Control" parent="Panel" unique_id=1455969618]
+layout_mode = 1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.1
+anchor_bottom = 0.1
+scale = Vector2(1.05, 1.05)
+script = ExtResource("2_i552a")
+
+[node name="LevelBackgroundSprite" type="Sprite2D" parent="Panel/Level" unique_id=241228942]
+visible = false
+position = Vector2(0, 3.54)
+scale = Vector2(0.41, 0.41)
+texture = ExtResource("3_35c3p")
+
+[node name="Level1" type="Control" parent="Panel/Level" unique_id=832631827]
+visible = false
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="Panel/Level/Level1" unique_id=1582560246]
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("4_i3w47")
+
+[node name="Level2" type="Control" parent="Panel/Level" unique_id=1380976547]
+visible = false
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="Panel/Level/Level2" unique_id=590400805]
+position = Vector2(14.645, 0)
+scale = Vector2(0.014, 0.014)
+texture = ExtResource("4_i3w47")
+
+[node name="StarSprite2" type="Sprite2D" parent="Panel/Level/Level2" unique_id=182100921]
+position = Vector2(-14.645, 0)
+scale = Vector2(0.014, 0.014)
+texture = ExtResource("4_i3w47")
+
+[node name="Level3" type="Control" parent="Panel/Level" unique_id=151243478]
+visible = false
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="Panel/Level/Level3" unique_id=1835144025]
+position = Vector2(14.645, 8.93)
+scale = Vector2(0.014, 0.014)
+texture = ExtResource("4_i3w47")
+
+[node name="StarSprite2" type="Sprite2D" parent="Panel/Level/Level3" unique_id=1096392413]
+position = Vector2(-14.645, 8.93)
+scale = Vector2(0.014, 0.014)
+texture = ExtResource("4_i3w47")
+
+[node name="StarSprite3" type="Sprite2D" parent="Panel/Level/Level3" unique_id=1523894197]
+position = Vector2(0, -14.465)
+scale = Vector2(0.014, 0.014)
+texture = ExtResource("4_i3w47")
+
+[node name="Level4" type="Control" parent="Panel/Level" unique_id=382188817]
+visible = false
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="Panel/Level/Level4" unique_id=1424039857]
+position = Vector2(13.645, 11.035)
+scale = Vector2(0.013, 0.013)
+texture = ExtResource("4_i3w47")
+
+[node name="StarSprite2" type="Sprite2D" parent="Panel/Level/Level4" unique_id=1291050180]
+position = Vector2(-13.645, 11.035)
+scale = Vector2(0.013, 0.013)
+texture = ExtResource("4_i3w47")
+
+[node name="StarSprite3" type="Sprite2D" parent="Panel/Level/Level4" unique_id=1487812554]
+position = Vector2(13.645, -14.465)
+scale = Vector2(0.013, 0.013)
+texture = ExtResource("4_i3w47")
+
+[node name="StarSprite4" type="Sprite2D" parent="Panel/Level/Level4" unique_id=86916557]
+position = Vector2(-13.645, -14.465)
+scale = Vector2(0.013, 0.013)
+texture = ExtResource("4_i3w47")
+
+[node name="Level5" type="Control" parent="Panel/Level" unique_id=1553112377]
+visible = false
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="Panel/Level/Level5" unique_id=493601909]
+position = Vector2(15.5, 14)
+scale = Vector2(0.012, 0.012)
+texture = ExtResource("4_i3w47")
+
+[node name="StarSprite2" type="Sprite2D" parent="Panel/Level/Level5" unique_id=795710082]
+position = Vector2(-15.5, 14)
+scale = Vector2(0.012, 0.012)
+texture = ExtResource("4_i3w47")
+
+[node name="StarSprite3" type="Sprite2D" parent="Panel/Level/Level5" unique_id=1263546419]
+position = Vector2(15.5, -21)
+scale = Vector2(0.012, 0.012)
+texture = ExtResource("4_i3w47")
+
+[node name="StarSprite4" type="Sprite2D" parent="Panel/Level/Level5" unique_id=158889594]
+position = Vector2(-15.5, -21)
+scale = Vector2(0.012, 0.012)
+texture = ExtResource("4_i3w47")
+
+[node name="StarSprite5" type="Sprite2D" parent="Panel/Level/Level5" unique_id=1669484704]
+position = Vector2(0, -2.79)
+scale = Vector2(0.012, 0.012)
+texture = ExtResource("4_i3w47")
+
+[node name="Level6" type="Control" parent="Panel/Level" unique_id=1337347318]
+visible = false
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="Panel/Level/Level6" unique_id=850946986]
+position = Vector2(11, 17)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("4_i3w47")
+
+[node name="StarSprite2" type="Sprite2D" parent="Panel/Level/Level6" unique_id=466598360]
+position = Vector2(-11, 17)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("4_i3w47")
+
+[node name="StarSprite3" type="Sprite2D" parent="Panel/Level/Level6" unique_id=227703078]
+position = Vector2(11, -2)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("4_i3w47")
+
+[node name="StarSprite4" type="Sprite2D" parent="Panel/Level/Level6" unique_id=1363611830]
+position = Vector2(-11, -2)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("4_i3w47")
+
+[node name="StarSprite5" type="Sprite2D" parent="Panel/Level/Level6" unique_id=1324034250]
+position = Vector2(11, -22)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("4_i3w47")
+
+[node name="StarSprite6" type="Sprite2D" parent="Panel/Level/Level6" unique_id=2067025719]
+position = Vector2(-11, -22)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("4_i3w47")
+
+[node name="Panel2" type="Panel" parent="." unique_id=1920398953]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = -192.0
+offset_right = 344.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(104, 192)
+theme_override_styles/panel = SubResource("StyleBoxFlat_su3jf")
+
+[node name="Control" type="Control" parent="Panel2" unique_id=1835394276]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 80.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel2/Control" unique_id=145697383]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -116.0
+offset_right = 90.0
+offset_bottom = 116.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/Control/CenterContainer" unique_id=1159425309]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="NameLabel" type="Label" parent="Panel2/Control/CenterContainer/VBoxContainer" unique_id=1124925586]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 34
+text = "不灭残荷"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RaceLabel" type="Label" parent="Panel2/Control/CenterContainer/VBoxContainer" unique_id=160736356]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+text = "元素（水）"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="Panel2/Control/CenterContainer/VBoxContainer" unique_id=136005405]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 20
+text = "当本随从被融合后，使新的元素随从获得两个元素的身材的两倍"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Control" type="Control" parent="." unique_id=889097725]
+anchors_preset = 0
+offset_left = 360.0
+offset_top = -192.0
+offset_right = 360.0
+offset_bottom = -192.0
+
+[node name="EffectFlowContainer" type="FlowContainer" parent="Control" unique_id=1876042076]
+custom_minimum_size = Vector2(1000, 384)
+layout_mode = 0
+offset_right = 1000.0
+offset_bottom = 384.0
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 101
+vertical = true

@@ -1,0 +1,1310 @@
+[gd_scene format=3 uid="uid://dxoqank8icavs"]
+
+[ext_resource type="Script" uid="uid://co3socp1k4qby" path="res://scripts/entity/main_scene/main_scene.gd" id="1_pu3yx"]
+[ext_resource type="Texture2D" uid="uid://d26dwf11aegq1" path="res://assets/image/main_scene/background_shadow.png" id="2_womr8"]
+[ext_resource type="Script" uid="uid://b6h50c1mcex1e" path="res://scripts/entity/shop/shop_component.gd" id="3_gubc5"]
+[ext_resource type="Texture2D" uid="uid://ddj3uefgfg5sw" path="res://assets/image/main_scene/shop/fresh.png" id="4_c16ls"]
+[ext_resource type="Script" uid="uid://biv75nkspgp0i" path="res://scripts/entity/main_scene/hand_container_component.gd" id="5_18nlu"]
+[ext_resource type="Script" uid="uid://djaqt36h4uj1d" path="res://scripts/entity/main_scene/container_component.gd" id="5_gubc5"]
+[ext_resource type="Script" uid="uid://clorddvsvj17t" path="res://scripts/entity/shop/shop_fresh_component.gd" id="7_6u1mn"]
+[ext_resource type="Script" uid="uid://dulu21vbep7g" path="res://scripts/entity/shop/area_component.gd" id="7_c16ls"]
+[ext_resource type="Shader" uid="uid://cnahd7h6ddtsb" path="res://scripts/shader/coin_container.gdshader" id="9_4w45t"]
+[ext_resource type="Texture2D" uid="uid://bmmh7chn5ugd" path="res://assets/image/main_scene/shop/cost.png" id="9_k6f3i"]
+[ext_resource type="Script" uid="uid://ykw6424tr4rm" path="res://scripts/entity/shop/coin_component.gd" id="9_r6p65"]
+[ext_resource type="Texture2D" uid="uid://dh7khlqf3f0af" path="res://assets/image/main_scene/shop/corner.png" id="10_k6f3i"]
+[ext_resource type="Texture2D" uid="uid://cqjir5qwtwthu" path="res://assets/image/main_scene/shop/coin_container.png" id="10_r6p65"]
+[ext_resource type="Texture2D" uid="uid://bjedboq2gy752" path="res://assets/image/main_scene/shop/coin.png" id="11_4w45t"]
+[ext_resource type="FontFile" uid="uid://du8xrul7w7o75" path="res://assets/font/Amalfi Coast手写英文_爱给网_aigei_com.ttf" id="11_xdqt8"]
+[ext_resource type="FontFile" uid="uid://dj8vbquo3ugkw" path="res://assets/font/alkatip字体_爱给网_aigei_com.ttf" id="12_mngbo"]
+[ext_resource type="Script" uid="uid://drkp1ub4sd7b3" path="res://scripts/entity/shop/buy_component.gd" id="12_to7gp"]
+[ext_resource type="Shader" uid="uid://bt2siwsktd2t" path="res://scripts/shader/coin_sprite.gdshader" id="14_01n6w"]
+[ext_resource type="Script" uid="uid://bdhwt2vfl4foo" path="res://scripts/entity/shop/use_component.gd" id="14_u0fll"]
+[ext_resource type="Shader" uid="uid://cxf8hnw0fa362" path="res://scripts/shader/coin.gdshader" id="15_bcnxi"]
+[ext_resource type="Script" uid="uid://bcilv5y3mx0bc" path="res://scripts/entity/shop/shop_card_component.gd" id="15_beobj"]
+[ext_resource type="Texture2D" uid="uid://dmwgpsmmyfb4e" path="res://assets/image/main_scene/shop/coin_number.png" id="16_k6f3i"]
+[ext_resource type="Script" uid="uid://24d4htnoqrk0" path="res://scripts/entity/shop/shop_upgrade_component.gd" id="22_58gk3"]
+[ext_resource type="Texture2D" uid="uid://lxm5ybbuvwhr" path="res://assets/image/main_scene/shop/upgrade.png" id="22_adb74"]
+[ext_resource type="Texture2D" uid="uid://bsmxy426r5nb6" path="res://assets/image/main_scene/shop/sell.png" id="23_58gk3"]
+[ext_resource type="Script" uid="uid://dt2i3rey2v3ed" path="res://scripts/entity/shop/sell_component.gd" id="25_6p3nn"]
+[ext_resource type="Script" uid="uid://ict455tekval" path="res://scripts/entity/shop/exit_component.gd" id="27_k3g67"]
+[ext_resource type="Texture2D" uid="uid://spmo4kf8dds8" path="res://assets/image/main_scene/shop/exit.png" id="27_k67gn"]
+[ext_resource type="Script" uid="uid://dyuju2p27uywh" path="res://scripts/entity/fight/fight_component.gd" id="29_4bgka"]
+[ext_resource type="Script" uid="uid://bnfp0ryv7qvky" path="res://scripts/entity/shop/level_component.gd" id="29_onjth"]
+[ext_resource type="Script" uid="uid://dmjijq3q3sw02" path="res://scripts/entity/fight/fight_handler.gd" id="30_02d50"]
+[ext_resource type="Texture2D" uid="uid://3qhs8h8l4jff" path="res://assets/image/card/level_background.png" id="30_3mjum"]
+[ext_resource type="Shader" uid="uid://cnkqmyrkj3fme" path="res://scripts/shader/hero.gdshader" id="31_iav3h"]
+[ext_resource type="Texture2D" uid="uid://d2qre72vl43n1" path="res://assets/image/player/player_background.png" id="31_kkokr"]
+[ext_resource type="Texture2D" uid="uid://db0tqclqlv3jj" path="res://assets/image/card/star.png" id="31_p27gv"]
+[ext_resource type="Script" uid="uid://civ5nt1ebg48d" path="res://scripts/entity/main_scene/player_component.gd" id="31_womr8"]
+[ext_resource type="Script" uid="uid://bq7cdqqy5jt36" path="res://scripts/entity/main_scene/book_component.gd" id="32_jix7a"]
+[ext_resource type="Texture2D" uid="uid://bdoh8ilj5kp3" path="res://assets/image/player/blood.png" id="32_lhwp2"]
+[ext_resource type="Texture2D" uid="uid://cgs4dt4wvknrw" path="res://assets/image/player/TB_BaconShop_HERO_15.png" id="32_womr8"]
+[ext_resource type="Texture2D" uid="uid://br5gochwed12u" path="res://assets/image/main_scene/shop/book.png" id="32_xp01v"]
+[ext_resource type="Texture2D" uid="uid://u80lg1dpyalj" path="res://assets/image/player/shield.png" id="33_lhwp2"]
+[ext_resource type="Script" uid="uid://ovdpc4u1ddkg" path="res://scripts/entity/main_scene/player_wins_bar_component.gd" id="38_p27gv"]
+[ext_resource type="Texture2D" uid="uid://d3taf2uyfoj5y" path="res://assets/image/main_scene/shop/winBar.png" id="39_cn4eu"]
+[ext_resource type="Texture2D" uid="uid://c03cvcu1polyg" path="res://assets/image/player/score.png" id="42_0wyf6"]
+[ext_resource type="Script" uid="uid://rk06wbv15hi2" path="res://scripts/entity/main_scene/triple_handle_component.gd" id="43_segjr"]
+[ext_resource type="Script" uid="uid://b0bk36d3qjcg4" path="res://scripts/entity/fight/fight_card_component.gd" id="46_beobj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_onjth"]
+resource_local_to_scene = true
+shader = ExtResource("31_iav3h")
+shader_parameter/_ArchHeight = 0.5
+shader_parameter/_ArchCurve = 0.5
+shader_parameter/_SideMaskWidth = 0.02700000128249999
+shader_parameter/_BottomTrim = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdqt8"]
+bg_color = Color(0, 0, 0, 0.11764706)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_adb74"]
+bg_color = Color(0, 0, 0, 0.5019608)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_58gk3"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rt2n2"]
+size = Vector2(2500, 500)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c16ls"]
+size = Vector2(1950, 500)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_si52b"]
+shader = ExtResource("9_4w45t")
+shader_parameter/white_threshold = 0.4800000228
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6p3nn"]
+shader = ExtResource("15_bcnxi")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k67gn"]
+resource_local_to_scene = true
+shader = ExtResource("14_01n6w")
+shader_parameter/blend_factor = 0.0
+shader_parameter/gray_overlay = Color(0, 0, 0, 0.5)
+shader_parameter/pre_deactivate = false
+shader_parameter/glow_color = Color(1, 0.85, 0.2, 1)
+shader_parameter/glow_radius = 0.5
+shader_parameter/glow_intensity = 0.7
+shader_parameter/glow_speed = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k3g67"]
+resource_local_to_scene = true
+shader = ExtResource("14_01n6w")
+shader_parameter/blend_factor = 0.0
+shader_parameter/gray_overlay = Color(0, 0, 0, 0.5)
+shader_parameter/pre_deactivate = false
+shader_parameter/glow_color = Color(1, 0.85, 0.2, 1)
+shader_parameter/glow_radius = 1.0
+shader_parameter/glow_intensity = 0.90000004275
+shader_parameter/glow_speed = 6.000000281740119
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_01n6w"]
+resource_local_to_scene = true
+shader = ExtResource("14_01n6w")
+shader_parameter/blend_factor = 0.0
+shader_parameter/gray_overlay = Color(0, 0, 0, 0.5)
+shader_parameter/pre_deactivate = false
+shader_parameter/glow_color = Color(1, 0.85, 0.2, 1)
+shader_parameter/glow_radius = 1.0
+shader_parameter/glow_intensity = 0.9
+shader_parameter/glow_speed = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bcnxi"]
+resource_local_to_scene = true
+shader = ExtResource("14_01n6w")
+shader_parameter/blend_factor = 0.0
+shader_parameter/gray_overlay = Color(0, 0, 0, 0.5)
+shader_parameter/pre_deactivate = false
+shader_parameter/glow_color = Color(1, 0.85, 0.2, 1)
+shader_parameter/glow_radius = 1.0
+shader_parameter/glow_intensity = 0.9
+shader_parameter/glow_speed = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7nt27"]
+resource_local_to_scene = true
+shader = ExtResource("14_01n6w")
+shader_parameter/blend_factor = 0.0
+shader_parameter/gray_overlay = Color(0, 0, 0, 0.5)
+shader_parameter/pre_deactivate = false
+shader_parameter/glow_color = Color(1, 0.85, 0.2, 1)
+shader_parameter/glow_radius = 1.0
+shader_parameter/glow_intensity = 0.9
+shader_parameter/glow_speed = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6f3i"]
+resource_local_to_scene = true
+shader = ExtResource("14_01n6w")
+shader_parameter/blend_factor = 0.0
+shader_parameter/gray_overlay = Color(0, 0, 0, 0.5)
+shader_parameter/pre_deactivate = false
+shader_parameter/glow_color = Color(1, 0.85, 0.2, 1)
+shader_parameter/glow_radius = 1.0
+shader_parameter/glow_intensity = 0.9
+shader_parameter/glow_speed = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xdqt8"]
+resource_local_to_scene = true
+shader = ExtResource("14_01n6w")
+shader_parameter/blend_factor = 0.0
+shader_parameter/gray_overlay = Color(0, 0, 0, 0.5)
+shader_parameter/pre_deactivate = false
+shader_parameter/glow_color = Color(1, 0.85, 0.2, 1)
+shader_parameter/glow_radius = 1.0
+shader_parameter/glow_intensity = 0.9
+shader_parameter/glow_speed = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_adb74"]
+resource_local_to_scene = true
+shader = ExtResource("14_01n6w")
+shader_parameter/blend_factor = 0.0
+shader_parameter/gray_overlay = Color(0, 0, 0, 0.5)
+shader_parameter/pre_deactivate = false
+shader_parameter/glow_color = Color(1, 0.85, 0.2, 1)
+shader_parameter/glow_radius = 1.0
+shader_parameter/glow_intensity = 0.9
+shader_parameter/glow_speed = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_58gk3"]
+resource_local_to_scene = true
+shader = ExtResource("14_01n6w")
+shader_parameter/blend_factor = 0.0
+shader_parameter/gray_overlay = Color(0, 0, 0, 0.5)
+shader_parameter/pre_deactivate = false
+shader_parameter/glow_color = Color(1, 0.85, 0.2, 1)
+shader_parameter/glow_radius = 1.0
+shader_parameter/glow_intensity = 0.9
+shader_parameter/glow_speed = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_to7gp"]
+resource_local_to_scene = true
+shader = ExtResource("14_01n6w")
+shader_parameter/blend_factor = 0.0
+shader_parameter/gray_overlay = Color(0, 0, 0, 0.5)
+shader_parameter/pre_deactivate = false
+shader_parameter/glow_color = Color(1, 0.85, 0.2, 1)
+shader_parameter/glow_radius = 1.0
+shader_parameter/glow_intensity = 0.9
+shader_parameter/glow_speed = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u0fll"]
+resource_local_to_scene = true
+shader = ExtResource("14_01n6w")
+shader_parameter/blend_factor = 0.0
+shader_parameter/gray_overlay = Color(0, 0, 0, 0.5)
+shader_parameter/pre_deactivate = false
+shader_parameter/glow_color = Color(1, 0.85, 0.2, 1)
+shader_parameter/glow_radius = 1.0
+shader_parameter/glow_intensity = 0.9
+shader_parameter/glow_speed = 6.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6p3nn"]
+size = Vector2(260, 330)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k3g67"]
+bg_color = Color(0, 0, 0, 0.11764706)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4bgka"]
+bg_color = Color(0, 0, 0, 0.5019608)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02d50"]
+bg_color = Color(0, 0, 0, 0)
+
+[node name="MainScene" type="Control" unique_id=442219505]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_pu3yx")
+
+[node name="BackGround" type="Control" parent="." unique_id=1018051007]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackGroundSprite" type="Sprite2D" parent="BackGround" unique_id=1691895991]
+position = Vector2(0, 4)
+scale = Vector2(1.395, 1.31)
+skew = -0.02094395
+texture = ExtResource("2_womr8")
+
+[node name="Player" type="Control" parent="." unique_id=27596577]
+layout_mode = 1
+anchor_left = 0.08
+anchor_top = 0.8
+anchor_right = 0.08
+anchor_bottom = 0.8
+offset_left = 10.200012
+offset_top = -26.0
+offset_right = 10.200012
+offset_bottom = -26.0
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("31_womr8")
+
+[node name="HeroSprite" type="Sprite2D" parent="Player" unique_id=2015945791]
+material = SubResource("ShaderMaterial_onjth")
+scale = Vector2(0.59, 0.59)
+texture = ExtResource("32_womr8")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="Player" unique_id=640710405]
+scale = Vector2(0.505, 0.505)
+texture = ExtResource("31_kkokr")
+
+[node name="WinBar" type="Control" parent="Player" unique_id=492298723]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("38_p27gv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Player/WinBar" unique_id=754029474]
+layout_mode = 0
+offset_left = -176.0
+offset_top = 199.0
+offset_right = 202.0
+offset_bottom = 199.0
+theme_override_constants/separation = 36
+alignment = 1
+
+[node name="Bar" type="Control" parent="Player/WinBar/HBoxContainer" unique_id=1784616138]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/WinBar/HBoxContainer/Bar" unique_id=1567229121]
+scale = Vector2(0.025, 0.03)
+texture = ExtResource("23_58gk3")
+
+[node name="BarSprite" type="Sprite2D" parent="Player/WinBar/HBoxContainer/Bar" unique_id=728050343]
+scale = Vector2(0.025, 0.031)
+texture = ExtResource("39_cn4eu")
+
+[node name="Bar2" type="Control" parent="Player/WinBar/HBoxContainer" unique_id=584772787]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/WinBar/HBoxContainer/Bar2" unique_id=2021386239]
+scale = Vector2(0.025, 0.03)
+texture = ExtResource("23_58gk3")
+
+[node name="BarSprite" type="Sprite2D" parent="Player/WinBar/HBoxContainer/Bar2" unique_id=1472351632]
+scale = Vector2(0.025, 0.031)
+texture = ExtResource("39_cn4eu")
+
+[node name="Bar3" type="Control" parent="Player/WinBar/HBoxContainer" unique_id=1838685875]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/WinBar/HBoxContainer/Bar3" unique_id=1799858556]
+scale = Vector2(0.025, 0.03)
+texture = ExtResource("23_58gk3")
+
+[node name="BarSprite" type="Sprite2D" parent="Player/WinBar/HBoxContainer/Bar3" unique_id=737275553]
+scale = Vector2(0.025, 0.031)
+texture = ExtResource("39_cn4eu")
+
+[node name="Bar4" type="Control" parent="Player/WinBar/HBoxContainer" unique_id=1286730735]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/WinBar/HBoxContainer/Bar4" unique_id=1083516376]
+scale = Vector2(0.025, 0.03)
+texture = ExtResource("23_58gk3")
+
+[node name="BarSprite" type="Sprite2D" parent="Player/WinBar/HBoxContainer/Bar4" unique_id=718321381]
+scale = Vector2(0.025, 0.031)
+texture = ExtResource("39_cn4eu")
+
+[node name="Bar5" type="Control" parent="Player/WinBar/HBoxContainer" unique_id=2006685177]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/WinBar/HBoxContainer/Bar5" unique_id=1085741646]
+scale = Vector2(0.025, 0.03)
+texture = ExtResource("23_58gk3")
+
+[node name="BarSprite" type="Sprite2D" parent="Player/WinBar/HBoxContainer/Bar5" unique_id=789237233]
+scale = Vector2(0.025, 0.031)
+texture = ExtResource("39_cn4eu")
+
+[node name="Bar6" type="Control" parent="Player/WinBar/HBoxContainer" unique_id=1382244679]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/WinBar/HBoxContainer/Bar6" unique_id=694661999]
+scale = Vector2(0.025, 0.03)
+texture = ExtResource("23_58gk3")
+
+[node name="BarSprite" type="Sprite2D" parent="Player/WinBar/HBoxContainer/Bar6" unique_id=825851649]
+scale = Vector2(0.025, 0.031)
+texture = ExtResource("39_cn4eu")
+
+[node name="Bar7" type="Control" parent="Player/WinBar/HBoxContainer" unique_id=1120609955]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/WinBar/HBoxContainer/Bar7" unique_id=1181860474]
+scale = Vector2(0.025, 0.03)
+texture = ExtResource("23_58gk3")
+
+[node name="BarSprite" type="Sprite2D" parent="Player/WinBar/HBoxContainer/Bar7" unique_id=1360240691]
+scale = Vector2(0.025, 0.031)
+texture = ExtResource("39_cn4eu")
+
+[node name="Bar8" type="Control" parent="Player/WinBar/HBoxContainer" unique_id=589846581]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/WinBar/HBoxContainer/Bar8" unique_id=1890224298]
+scale = Vector2(0.025, 0.03)
+texture = ExtResource("23_58gk3")
+
+[node name="BarSprite" type="Sprite2D" parent="Player/WinBar/HBoxContainer/Bar8" unique_id=691052787]
+scale = Vector2(0.025, 0.031)
+texture = ExtResource("39_cn4eu")
+
+[node name="Bar9" type="Control" parent="Player/WinBar/HBoxContainer" unique_id=1175487047]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/WinBar/HBoxContainer/Bar9" unique_id=1010639709]
+scale = Vector2(0.025, 0.03)
+texture = ExtResource("23_58gk3")
+
+[node name="BarSprite" type="Sprite2D" parent="Player/WinBar/HBoxContainer/Bar9" unique_id=453714115]
+scale = Vector2(0.025, 0.031)
+texture = ExtResource("39_cn4eu")
+
+[node name="Bar10" type="Control" parent="Player/WinBar/HBoxContainer" unique_id=697134543]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/WinBar/HBoxContainer/Bar10" unique_id=1434347571]
+scale = Vector2(0.025, 0.03)
+texture = ExtResource("23_58gk3")
+
+[node name="BarSprite" type="Sprite2D" parent="Player/WinBar/HBoxContainer/Bar10" unique_id=1768170450]
+scale = Vector2(0.025, 0.031)
+texture = ExtResource("39_cn4eu")
+
+[node name="BloodSprite" type="Sprite2D" parent="Player" unique_id=547097362]
+position = Vector2(129.20001, 119)
+scale = Vector2(0.395, 0.395)
+texture = ExtResource("32_lhwp2")
+
+[node name="BloodLabel" type="Label" parent="Player" unique_id=861644804]
+layout_mode = 0
+offset_left = 95.20001
+offset_top = 87.0
+offset_right = 171.20001
+offset_bottom = 175.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 64
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShieldSprite" type="Sprite2D" parent="Player" unique_id=625484242]
+position = Vector2(134.20001, 22)
+scale = Vector2(0.34, 0.34)
+texture = ExtResource("33_lhwp2")
+
+[node name="ShieldLabel" type="Label" parent="Player" unique_id=825372610]
+layout_mode = 0
+offset_left = 111.20001
+offset_top = -18.0
+offset_right = 151.20001
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 64
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreSprite" type="Sprite2D" parent="Player" unique_id=1953695723]
+position = Vector2(-116, -109.000015)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("42_0wyf6")
+
+[node name="ScoreLabel" type="Label" parent="Player" unique_id=1651642556]
+layout_mode = 0
+offset_left = -168.0
+offset_top = -136.0
+offset_right = -68.0
+offset_bottom = -64.0
+theme_override_colors/font_color = Color(0.9576265, 0.95042616, 0, 1)
+theme_override_fonts/font = ExtResource("12_mngbo")
+theme_override_font_sizes/font_size = 48
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shop" type="Control" parent="." unique_id=1977256387]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_gubc5")
+
+[node name="Card" type="Control" parent="Shop" unique_id=1331764385]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("15_beobj")
+
+[node name="CardRegion" type="Control" parent="Shop/Card" unique_id=751507783]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ShopCardRegion" type="Control" parent="Shop/Card/CardRegion" unique_id=1911032458]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.2625
+anchor_right = 0.5
+anchor_bottom = 0.2625
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Shop/Card/CardRegion/ShopCardRegion" unique_id=1117336981]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+script = ExtResource("5_gubc5")
+
+[node name="DeskCardRegion" type="Control" parent="Shop/Card/CardRegion" unique_id=1989595375]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.55
+anchor_right = 0.5
+anchor_bottom = 0.55
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Shop/Card/CardRegion/DeskCardRegion" unique_id=808084194]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+script = ExtResource("5_gubc5")
+
+[node name="HandCardRegion" type="Control" parent="Shop/Card/CardRegion" unique_id=1469612460]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.85
+anchor_right = 0.5
+anchor_bottom = 0.85
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Shop/Card/CardRegion/HandCardRegion" unique_id=309588557]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 150
+alignment = 1
+script = ExtResource("5_18nlu")
+
+[node name="CardFather" type="Control" parent="Shop/Card" unique_id=1740457602]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="Shop" type="Control" parent="Shop/Card/CardFather" unique_id=485535348]
+anchors_preset = 0
+mouse_filter = 1
+
+[node name="Desk" type="Control" parent="Shop/Card/CardFather" unique_id=35877445]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="Hand" type="Control" parent="Shop/Card/CardFather" unique_id=726619029]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="None" type="Control" parent="Shop/Card/CardFather" unique_id=1957995953]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Free" type="Control" parent="Shop/Card/CardFather" unique_id=1267877390]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Fresh" type="Control" parent="Shop" unique_id=696004808]
+layout_mode = 1
+anchor_left = 0.85
+anchor_top = 0.08888889
+anchor_right = 0.85
+anchor_bottom = 0.08888889
+mouse_filter = 1
+script = ExtResource("7_6u1mn")
+metadata/_edit_use_anchors_ = true
+
+[node name="FreshSprite" type="Sprite2D" parent="Shop/Fresh" unique_id=309583160]
+scale = Vector2(0.135, 0.135)
+texture = ExtResource("4_c16ls")
+
+[node name="FreshButton" type="Button" parent="Shop/Fresh" unique_id=1839188425]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = -85.0
+offset_right = 85.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_xdqt8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_adb74")
+theme_override_styles/hover = SubResource("StyleBoxFlat_58gk3")
+
+[node name="CostSprite" type="Sprite2D" parent="Shop/Fresh" unique_id=245205646]
+position = Vector2(60.999886, 93)
+rotation = -0.1308997
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("9_k6f3i")
+
+[node name="CornerSprite" type="Sprite2D" parent="Shop/Fresh" unique_id=327997253]
+position = Vector2(59.999992, 54)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("10_k6f3i")
+
+[node name="CostLabel" type="Label" parent="Shop/Fresh" unique_id=1430478100]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 50.0
+offset_right = 83.0
+offset_bottom = 152.0
+theme_override_colors/font_color = Color(0.2923151, 0.1631155, 0.012605275, 1)
+theme_override_fonts/font = ExtResource("11_xdqt8")
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buy" type="Control" parent="Shop" unique_id=684536751]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.8
+anchor_right = 0.5
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("12_to7gp")
+metadata/_edit_use_anchors_ = true
+
+[node name="BuyArea" type="Control" parent="Shop/Buy" unique_id=2053182779]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_c16ls")
+
+[node name="Area2D" type="Area2D" parent="Shop/Buy/BuyArea" unique_id=1684380617]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shop/Buy/BuyArea/Area2D" unique_id=207716673]
+shape = SubResource("RectangleShape2D_rt2n2")
+
+[node name="Use" type="Control" parent="Shop" unique_id=1933925830]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.45
+anchor_right = 0.5
+anchor_bottom = 0.45
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("14_u0fll")
+metadata/_edit_use_anchors_ = true
+
+[node name="UseArea" type="Control" parent="Shop/Use" unique_id=1836727031]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_c16ls")
+
+[node name="Area2D" type="Area2D" parent="Shop/Use/UseArea" unique_id=26181061]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shop/Use/UseArea/Area2D" unique_id=11208662]
+shape = SubResource("RectangleShape2D_c16ls")
+
+[node name="Upgrade" type="Control" parent="Shop" unique_id=1411489711]
+layout_mode = 1
+anchor_left = 0.75
+anchor_top = 0.094444446
+anchor_right = 0.75
+anchor_bottom = 0.094444446
+script = ExtResource("22_58gk3")
+metadata/_edit_use_anchors_ = true
+
+[node name="UpgradeSprite" type="Sprite2D" parent="Shop/Upgrade" unique_id=23315469]
+position = Vector2(0, -10.22)
+scale = Vector2(0.135, 0.135)
+texture = ExtResource("22_adb74")
+
+[node name="UpgradeButton" type="Button" parent="Shop/Upgrade" unique_id=253989638]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = -95.0
+offset_right = 84.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_xdqt8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_adb74")
+theme_override_styles/hover = SubResource("StyleBoxFlat_58gk3")
+
+[node name="CostSprite" type="Sprite2D" parent="Shop/Upgrade" unique_id=1140404095]
+position = Vector2(64, 83)
+rotation = -0.1308997
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("9_k6f3i")
+
+[node name="CornerSprite" type="Sprite2D" parent="Shop/Upgrade" unique_id=2003649876]
+position = Vector2(62.000008, 44.000004)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("10_k6f3i")
+
+[node name="CostLabel" type="Label" parent="Shop/Upgrade" unique_id=801321475]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 43.0
+offset_right = 83.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(0.2923151, 0.1631155, 0.012605275, 1)
+theme_override_fonts/font = ExtResource("11_xdqt8")
+theme_override_font_sizes/font_size = 28
+text = "M"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Coin" type="Control" parent="Shop" unique_id=1853397847]
+layout_mode = 1
+anchor_left = 0.06
+anchor_top = 0.06
+anchor_right = 0.06
+anchor_bottom = 0.06
+script = ExtResource("9_r6p65")
+
+[node name="CoinContainerSprite" type="Sprite2D" parent="Shop/Coin" unique_id=583098212]
+material = SubResource("ShaderMaterial_si52b")
+position = Vector2(0, 405.015)
+rotation = 1.5707964
+scale = Vector2(0.115, 0.207)
+texture = ExtResource("10_r6p65")
+
+[node name="CoinNumberSprite" type="Sprite2D" parent="Shop/Coin" unique_id=68532023]
+scale = Vector2(0.337, 0.37)
+texture = ExtResource("16_k6f3i")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Shop/Coin" unique_id=768275168]
+material = SubResource("ShaderMaterial_6p3nn")
+layout_mode = 0
+offset_top = 88.065
+offset_bottom = 824.065
+
+[node name="SingleCoin" type="Control" parent="Shop/Coin/VBoxContainer" unique_id=961625589]
+material = SubResource("ShaderMaterial_k67gn")
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CoinSprite" type="Sprite2D" parent="Shop/Coin/VBoxContainer/SingleCoin" unique_id=928813977]
+material = SubResource("ShaderMaterial_k3g67")
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("11_4w45t")
+
+[node name="SingleCoin2" type="Control" parent="Shop/Coin/VBoxContainer" unique_id=2126852366]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CoinSprite" type="Sprite2D" parent="Shop/Coin/VBoxContainer/SingleCoin2" unique_id=1264007162]
+material = SubResource("ShaderMaterial_01n6w")
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("11_4w45t")
+
+[node name="SingleCoin3" type="Control" parent="Shop/Coin/VBoxContainer" unique_id=1106287815]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CoinSprite" type="Sprite2D" parent="Shop/Coin/VBoxContainer/SingleCoin3" unique_id=827473567]
+material = SubResource("ShaderMaterial_bcnxi")
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("11_4w45t")
+
+[node name="SingleCoin4" type="Control" parent="Shop/Coin/VBoxContainer" unique_id=1608824014]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CoinSprite" type="Sprite2D" parent="Shop/Coin/VBoxContainer/SingleCoin4" unique_id=1495668888]
+material = SubResource("ShaderMaterial_7nt27")
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("11_4w45t")
+
+[node name="SingleCoin5" type="Control" parent="Shop/Coin/VBoxContainer" unique_id=1824013535]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CoinSprite" type="Sprite2D" parent="Shop/Coin/VBoxContainer/SingleCoin5" unique_id=753104879]
+material = SubResource("ShaderMaterial_k6f3i")
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("11_4w45t")
+
+[node name="SingleCoin6" type="Control" parent="Shop/Coin/VBoxContainer" unique_id=2052594829]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CoinSprite" type="Sprite2D" parent="Shop/Coin/VBoxContainer/SingleCoin6" unique_id=1775118656]
+material = SubResource("ShaderMaterial_xdqt8")
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("11_4w45t")
+
+[node name="SingleCoin7" type="Control" parent="Shop/Coin/VBoxContainer" unique_id=785084817]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CoinSprite" type="Sprite2D" parent="Shop/Coin/VBoxContainer/SingleCoin7" unique_id=1509694316]
+material = SubResource("ShaderMaterial_adb74")
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("11_4w45t")
+
+[node name="SingleCoin8" type="Control" parent="Shop/Coin/VBoxContainer" unique_id=1122455126]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CoinSprite" type="Sprite2D" parent="Shop/Coin/VBoxContainer/SingleCoin8" unique_id=1601257596]
+material = SubResource("ShaderMaterial_58gk3")
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("11_4w45t")
+
+[node name="SingleCoin9" type="Control" parent="Shop/Coin/VBoxContainer" unique_id=1514156850]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CoinSprite" type="Sprite2D" parent="Shop/Coin/VBoxContainer/SingleCoin9" unique_id=244270952]
+material = SubResource("ShaderMaterial_to7gp")
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("11_4w45t")
+
+[node name="SingleCoin10" type="Control" parent="Shop/Coin/VBoxContainer" unique_id=1200454980]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CoinSprite" type="Sprite2D" parent="Shop/Coin/VBoxContainer/SingleCoin10" unique_id=1601560123]
+material = SubResource("ShaderMaterial_u0fll")
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("11_4w45t")
+
+[node name="CoinLabel" type="Label" parent="Shop/Coin" unique_id=505453190]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.5
+offset_top = -43.85
+offset_right = 89.5
+offset_bottom = 51.15
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0016606521
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("12_mngbo")
+theme_override_font_sizes/font_size = 64
+text = "10 / 10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sell" type="Control" parent="Shop" unique_id=1037447285]
+layout_mode = 1
+anchor_left = 0.9320313
+anchor_top = 0.3326389
+anchor_right = 0.9320313
+anchor_bottom = 0.3326389
+script = ExtResource("25_6p3nn")
+metadata/_edit_use_anchors_ = true
+
+[node name="SellSprite" type="Sprite2D" parent="Shop/Sell" unique_id=471568793]
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("23_58gk3")
+
+[node name="Sellarea" type="Control" parent="Shop/Sell" unique_id=513909901]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_c16ls")
+
+[node name="Area2D" type="Area2D" parent="Shop/Sell/Sellarea" unique_id=1435094995]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shop/Sell/Sellarea/Area2D" unique_id=1569069816]
+shape = SubResource("RectangleShape2D_6p3nn")
+
+[node name="Exit" type="Control" parent="Shop" unique_id=488487612]
+layout_mode = 1
+anchor_left = 0.9453125
+anchor_top = 0.0875
+anchor_right = 0.9453125
+anchor_bottom = 0.0875
+script = ExtResource("27_k3g67")
+metadata/_edit_use_anchors_ = true
+
+[node name="ExitSprite" type="Sprite2D" parent="Shop/Exit" unique_id=732667401]
+scale = Vector2(0.135, 0.135)
+texture = ExtResource("27_k67gn")
+
+[node name="ExitButton" type="Button" parent="Shop/Exit" unique_id=756009752]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = -85.0
+offset_right = 85.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_k3g67")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4bgka")
+theme_override_styles/hover = SubResource("StyleBoxFlat_02d50")
+
+[node name="TimerSprite" type="Sprite2D" parent="Shop/Exit" unique_id=985508143]
+position = Vector2(63, 91)
+rotation = -0.1308997
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("9_k6f3i")
+
+[node name="CornerSprite" type="Sprite2D" parent="Shop/Exit" unique_id=514989788]
+position = Vector2(60, 52)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("10_k6f3i")
+
+[node name="TimerLabel" type="Label" parent="Shop/Exit" unique_id=77412156]
+layout_mode = 0
+offset_left = 6.999999
+offset_top = 63.0
+offset_right = 99.0
+offset_bottom = 165.0
+rotation = -0.34906584
+theme_override_colors/font_color = Color(0.2923151, 0.1631155, 0.012605275, 1)
+theme_override_fonts/font = ExtResource("11_xdqt8")
+theme_override_font_sizes/font_size = 24
+text = "120"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level" type="Control" parent="Shop" unique_id=1601015946]
+layout_mode = 1
+anchor_left = 0.17148438
+anchor_top = 0.115277775
+anchor_right = 0.17148438
+anchor_bottom = 0.115277775
+script = ExtResource("29_onjth")
+metadata/_edit_use_anchors_ = true
+
+[node name="BackgroundSprite" type="Sprite2D" parent="Shop/Level" unique_id=36138005]
+position = Vector2(0, 3.54)
+texture = ExtResource("30_3mjum")
+
+[node name="Level1" type="Control" parent="Shop/Level" unique_id=444340539]
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="Shop/Level/Level1" unique_id=364115117]
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("31_p27gv")
+
+[node name="Level2" type="Control" parent="Shop/Level" unique_id=379390742]
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="Shop/Level/Level2" unique_id=271732288]
+position = Vector2(35.000008, 0.99999994)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("31_p27gv")
+
+[node name="StarSprite2" type="Sprite2D" parent="Shop/Level/Level2" unique_id=784647224]
+position = Vector2(-33.000008, 0)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("31_p27gv")
+
+[node name="Level3" type="Control" parent="Shop/Level" unique_id=1439961110]
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="Shop/Level/Level3" unique_id=1188301441]
+position = Vector2(33.725, 8.93)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("31_p27gv")
+
+[node name="StarSprite2" type="Sprite2D" parent="Shop/Level/Level3" unique_id=230300813]
+position = Vector2(-33.36, 8.93)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("31_p27gv")
+
+[node name="StarSprite3" type="Sprite2D" parent="Shop/Level/Level3" unique_id=2082424395]
+position = Vector2(0, -39)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("31_p27gv")
+
+[node name="Level4" type="Control" parent="Shop/Level" unique_id=753180346]
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="Shop/Level/Level4" unique_id=1227495625]
+position = Vector2(35.79, 19.185)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("31_p27gv")
+
+[node name="StarSprite2" type="Sprite2D" parent="Shop/Level/Level4" unique_id=2106520182]
+position = Vector2(-28.325, 18.155)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("31_p27gv")
+
+[node name="StarSprite3" type="Sprite2D" parent="Shop/Level/Level4" unique_id=812681866]
+position = Vector2(35.94, -41.585)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("31_p27gv")
+
+[node name="StarSprite4" type="Sprite2D" parent="Shop/Level/Level4" unique_id=479252223]
+position = Vector2(-29.515, -42.375)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("31_p27gv")
+
+[node name="Level5" type="Control" parent="Shop/Level" unique_id=920352640]
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="Shop/Level/Level5" unique_id=1710641946]
+position = Vector2(34.76, 31.84)
+scale = Vector2(0.027, 0.027)
+texture = ExtResource("31_p27gv")
+
+[node name="StarSprite2" type="Sprite2D" parent="Shop/Level/Level5" unique_id=1796193750]
+position = Vector2(-36.975, 31.755)
+scale = Vector2(0.027, 0.027)
+texture = ExtResource("31_p27gv")
+
+[node name="StarSprite3" type="Sprite2D" parent="Shop/Level/Level5" unique_id=1983226809]
+position = Vector2(36.12, -50.395)
+scale = Vector2(0.027, 0.027)
+texture = ExtResource("31_p27gv")
+
+[node name="StarSprite4" type="Sprite2D" parent="Shop/Level/Level5" unique_id=63427054]
+position = Vector2(-37.85, -50.3)
+scale = Vector2(0.027, 0.027)
+texture = ExtResource("31_p27gv")
+
+[node name="StarSprite5" type="Sprite2D" parent="Shop/Level/Level5" unique_id=1540484701]
+position = Vector2(0, -7.855)
+scale = Vector2(0.027, 0.027)
+texture = ExtResource("31_p27gv")
+
+[node name="Level6" type="Control" parent="Shop/Level" unique_id=1301260112]
+anchors_preset = 0
+
+[node name="StarSprite" type="Sprite2D" parent="Shop/Level/Level6" unique_id=1036587180]
+position = Vector2(36.14, 35.305)
+scale = Vector2(0.026, 0.026)
+texture = ExtResource("31_p27gv")
+
+[node name="StarSprite2" type="Sprite2D" parent="Shop/Level/Level6" unique_id=521838206]
+position = Vector2(-22.35, 35.2)
+scale = Vector2(0.026, 0.026)
+texture = ExtResource("31_p27gv")
+
+[node name="StarSprite3" type="Sprite2D" parent="Shop/Level/Level6" unique_id=1480397827]
+position = Vector2(35.14, -14.45)
+scale = Vector2(0.026, 0.026)
+texture = ExtResource("31_p27gv")
+
+[node name="StarSprite4" type="Sprite2D" parent="Shop/Level/Level6" unique_id=2078370599]
+position = Vector2(-22.7, -15.12)
+scale = Vector2(0.026, 0.026)
+texture = ExtResource("31_p27gv")
+
+[node name="StarSprite5" type="Sprite2D" parent="Shop/Level/Level6" unique_id=219986019]
+position = Vector2(34.405, -64.84)
+scale = Vector2(0.026, 0.026)
+texture = ExtResource("31_p27gv")
+
+[node name="StarSprite6" type="Sprite2D" parent="Shop/Level/Level6" unique_id=702930806]
+position = Vector2(-23.44, -66.385)
+scale = Vector2(0.026, 0.026)
+texture = ExtResource("31_p27gv")
+
+[node name="Book" type="Control" parent="Shop" unique_id=636759269]
+layout_mode = 1
+anchor_left = 0.96835935
+anchor_top = 0.93958336
+anchor_right = 0.96835935
+anchor_bottom = 0.93958336
+script = ExtResource("32_jix7a")
+metadata/_edit_use_anchors_ = true
+
+[node name="BookSprite" type="Sprite2D" parent="Shop/Book" unique_id=1004564598]
+scale = Vector2(0.095, 0.095)
+texture = ExtResource("32_xp01v")
+
+[node name="BookButton" type="Button" parent="Shop/Book" unique_id=1238719138]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -75.0
+offset_right = 75.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_xdqt8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_adb74")
+theme_override_styles/hover = SubResource("StyleBoxFlat_58gk3")
+
+[node name="TripleHandle" type="Control" parent="Shop" unique_id=1351278769]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("43_segjr")
+
+[node name="Fight" type="Control" parent="." unique_id=349818818]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("29_4bgka")
+
+[node name="Handle" type="Control" parent="Fight" unique_id=577309078]
+anchors_preset = 0
+script = ExtResource("30_02d50")
+
+[node name="Card" type="Control" parent="Fight" unique_id=829669858]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("46_beobj")
+
+[node name="CardRegion" type="Control" parent="Fight/Card" unique_id=380896283]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PlayerDeskCardRegion" type="Control" parent="Fight/Card/CardRegion" unique_id=304794400]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.55
+anchor_right = 0.5
+anchor_bottom = 0.55
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Fight/Card/CardRegion/PlayerDeskCardRegion" unique_id=811903446]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+script = ExtResource("5_gubc5")
+
+[node name="PlayerHandCardRegion" type="Control" parent="Fight/Card/CardRegion" unique_id=832836171]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.85
+anchor_right = 0.5
+anchor_bottom = 0.85
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Fight/Card/CardRegion/PlayerHandCardRegion" unique_id=1311239567]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 150
+alignment = 1
+script = ExtResource("5_18nlu")
+
+[node name="EnemyDeskCardRegion" type="Control" parent="Fight/Card/CardRegion" unique_id=1970336631]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.262
+anchor_right = 0.5
+anchor_bottom = 0.262
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Fight/Card/CardRegion/EnemyDeskCardRegion" unique_id=1502550068]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+script = ExtResource("5_gubc5")
+
+[node name="EnemyHandCardRegion" type="Control" parent="Fight/Card/CardRegion" unique_id=1551790133]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.15
+anchor_right = 0.5
+anchor_bottom = 0.15
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Fight/Card/CardRegion/EnemyHandCardRegion" unique_id=1406743761]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+script = ExtResource("5_gubc5")
+
+[node name="CardFather" type="Control" parent="Fight/Card" unique_id=613875025]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="PlayerDesk" type="Control" parent="Fight/Card/CardFather" unique_id=1544717263]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="PlayerHand" type="Control" parent="Fight/Card/CardFather" unique_id=437471445]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="EnemyDesk" type="Control" parent="Fight/Card/CardFather" unique_id=603691234]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="EnemyHand" type="Control" parent="Fight/Card/CardFather" unique_id=1948533653]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="PlayerFree" type="Control" parent="Fight/Card/CardFather" unique_id=323405745]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="EnemyFree" type="Control" parent="Fight/Card/CardFather" unique_id=1036172040]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="None" type="Control" parent="Fight/Card/CardFather" unique_id=550141790]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="button_up" from="Shop/Fresh/FreshButton" to="Shop/Fresh" method="_on_fresh_button_button_up"]
+[connection signal="mouse_entered" from="Shop/Fresh/FreshButton" to="Shop/Fresh" method="_on_fresh_button_mouse_entered"]
+[connection signal="mouse_exited" from="Shop/Fresh/FreshButton" to="Shop/Fresh" method="_on_fresh_button_mouse_exited"]
+[connection signal="button_up" from="Shop/Upgrade/UpgradeButton" to="Shop/Upgrade" method="_on_upgrade_button_button_up"]
+[connection signal="mouse_entered" from="Shop/Upgrade/UpgradeButton" to="Shop/Upgrade" method="_on_upgrade_button_mouse_entered"]
+[connection signal="mouse_exited" from="Shop/Upgrade/UpgradeButton" to="Shop/Upgrade" method="_on_upgrade_button_mouse_exited"]
+[connection signal="button_up" from="Shop/Exit/ExitButton" to="Shop/Exit" method="_on_exit_button_button_up"]
+[connection signal="button_up" from="Shop/Book/BookButton" to="Shop/Book" method="_on_book_button_button_up"]

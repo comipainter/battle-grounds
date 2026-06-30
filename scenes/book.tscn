@@ -1,0 +1,302 @@
+[gd_scene format=3 uid="uid://nbdg4d0v7p64"]
+
+[ext_resource type="Script" uid="uid://g5502hu6skfo" path="res://scripts/entity/main_scene/book.gd" id="1_ble1a"]
+
+[node name="Book" type="Control" unique_id=314210101]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ble1a")
+
+[node name="Panel" type="Panel" parent="." unique_id=1003878332]
+layout_mode = 0
+offset_left = -1152.0
+offset_top = -648.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Kind" type="Control" parent="Panel" unique_id=1363244648]
+anchors_preset = 0
+offset_left = 128.0
+offset_top = 136.0
+offset_right = 128.0
+offset_bottom = 136.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/Kind" unique_id=678526644]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 1048.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Kind/ScrollContainer" unique_id=602803098]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Control" type="Control" parent="Panel/Kind/ScrollContainer/VBoxContainer" unique_id=546864512]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+
+[node name="HaiDaoButton" type="Button" parent="Panel/Kind/ScrollContainer/VBoxContainer/Control" unique_id=836848412]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/Kind/ScrollContainer/VBoxContainer/Control" unique_id=1751584797]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -34.0
+offset_right = 49.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 49
+text = "海盗"
+
+[node name="Control2" type="Control" parent="Panel/Kind/ScrollContainer/VBoxContainer" unique_id=111037788]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+
+[node name="YuanSuButton" type="Button" parent="Panel/Kind/ScrollContainer/VBoxContainer/Control2" unique_id=1279736409]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/Kind/ScrollContainer/VBoxContainer/Control2" unique_id=1071076241]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -34.0
+offset_right = 49.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 49
+text = "元素"
+
+[node name="Control3" type="Control" parent="Panel/Kind/ScrollContainer/VBoxContainer" unique_id=940413899]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+
+[node name="NaJiaButton" type="Button" parent="Panel/Kind/ScrollContainer/VBoxContainer/Control3" unique_id=440540558]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/Kind/ScrollContainer/VBoxContainer/Control3" unique_id=350907789]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -34.0
+offset_right = 49.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 49
+text = "娜迦"
+
+[node name="Control6" type="Control" parent="Panel/Kind/ScrollContainer/VBoxContainer" unique_id=364438968]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+
+[node name="ZhongliButton" type="Button" parent="Panel/Kind/ScrollContainer/VBoxContainer/Control6" unique_id=50405811]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/Kind/ScrollContainer/VBoxContainer/Control6" unique_id=370854130]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -34.0
+offset_right = 49.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 49
+text = "中立"
+
+[node name="Control4" type="Control" parent="Panel/Kind/ScrollContainer/VBoxContainer" unique_id=330050024]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+
+[node name="MagicButton" type="Button" parent="Panel/Kind/ScrollContainer/VBoxContainer/Control4" unique_id=248200248]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/Kind/ScrollContainer/VBoxContainer/Control4" unique_id=9257307]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -34.0
+offset_right = 49.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 49
+text = "法术"
+
+[node name="Control5" type="Control" parent="Panel/Kind/ScrollContainer/VBoxContainer" unique_id=1169003374]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+
+[node name="AutoCastButton" type="Button" parent="Panel/Kind/ScrollContainer/VBoxContainer/Control5" unique_id=556430967]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/Kind/ScrollContainer/VBoxContainer/Control5" unique_id=288229680]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -34.0
+offset_right = 80.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "自动施放: 关"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Card" type="Control" parent="Panel" unique_id=1542954749]
+anchors_preset = 0
+offset_left = 512.0
+offset_top = 80.0
+offset_right = 512.0
+offset_bottom = 80.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/Card" unique_id=1990682746]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1664.0
+offset_bottom = 1136.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/scrollbar_h_separation = 100
+theme_override_constants/scrollbar_v_separation = 20
+
+[node name="FlowContainer" type="FlowContainer" parent="Panel/Card/ScrollContainer" unique_id=1163811084]
+custom_minimum_size = Vector2(1500, 0)
+layout_mode = 2
+theme_override_constants/h_separation = 400
+theme_override_constants/v_separation = 400
+alignment = 1
+last_wrap_alignment = 2
+
+[node name="CardFather" type="Control" parent="." unique_id=472807293]
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1801107932]
+layout_mode = 0
+offset_left = -1408.0
+offset_top = -856.0
+offset_right = 1352.0
+offset_bottom = -600.0
+color = Color(0.20784314, 0.20784314, 0.20784314, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=505302126]
+layout_mode = 0
+offset_left = -1496.0
+offset_top = -856.0
+offset_right = -1072.0
+offset_bottom = 848.0
+color = Color(0.20784314, 0.20784314, 0.20784314, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1950578450]
+layout_mode = 0
+offset_left = -1376.0
+offset_top = 592.0
+offset_right = 1384.0
+offset_bottom = 848.0
+color = Color(0.20784314, 0.20784314, 0.20784314, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="." unique_id=1054896815]
+layout_mode = 0
+offset_left = 1152.0
+offset_top = -856.0
+offset_right = 1576.0
+offset_bottom = 848.0
+color = Color(0.20784314, 0.20784314, 0.20784314, 1)
+
+[node name="EndButton" type="Button" parent="." unique_id=1902283559]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = -1216.0
+offset_top = -768.0
+offset_right = -1088.0
+offset_bottom = -640.0
+
+[node name="Label" type="Label" parent="EndButton" unique_id=1795605821]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "离开"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_up" from="Panel/Kind/ScrollContainer/VBoxContainer/Control/HaiDaoButton" to="." method="_on_hai_dao_button_button_up"]
+[connection signal="button_up" from="Panel/Kind/ScrollContainer/VBoxContainer/Control2/YuanSuButton" to="." method="_on_yuan_su_button_button_up"]
+[connection signal="button_up" from="Panel/Kind/ScrollContainer/VBoxContainer/Control3/NaJiaButton" to="." method="_on_na_jia_button_button_up"]
+[connection signal="button_up" from="Panel/Kind/ScrollContainer/VBoxContainer/Control6/ZhongliButton" to="." method="_on_zhongli_button_button_up"]
+[connection signal="button_up" from="Panel/Kind/ScrollContainer/VBoxContainer/Control4/MagicButton" to="." method="_on_magic_button_button_up"]
+[connection signal="button_up" from="EndButton" to="." method="_on_end_button_button_up"]
